@@ -4,11 +4,13 @@ from src.run import run
 import time
 
 def programa_principal(scr):
-    scr.clear_screen()
-    scr.printf("Hola Juanjo!!", 0)
-    scr.printf("Hola Juanjo!!", 1)
-    scr.printf("Hola Juanjo!!", 2)
-    scr.printf("Hola Juanjo!!", 3)
-    scr.printf("Hola Juanjo!!", 4)
-    scr.printf("Hola Juanjo!!", 5)
+    i = 0
+    for y in range(24, -1, -1):
+        for x in range(0, 40):
+            scr.poke(x, y, i)
+            i = i + 1
+
+    scr.poke(10, 10, u'╭')
+
+
 run(programa_principal)

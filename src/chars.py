@@ -14,7 +14,7 @@ class Chars(object):
             if '.bmp' not in filename:
                 continue
             bitmap = Char(dirpath, filename, Bitmap)
-            if bitmap.code > 0 and bitmap.code < 400:
+            if bitmap.code >= 0 and bitmap.code < 400:
                self.chars[bitmap.code] = bitmap
 
     def get_bitmap(self, code):

@@ -59,8 +59,8 @@ class Colors(object):
             self.colors_by_name[name]=value
             self.color_name_list.append(name)
 
-        for index, color_name in enumerate(self.color_name_list):
-            print '{:>2} - {:<}'.format(index, color_name)
+        # for index, color_name in enumerate(self.color_name_list):
+        #     print '{:>2} - {:<}'.format(index, color_name)
 
     def get_color(self, color_code):
         if isinstance(color_code, int):

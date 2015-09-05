@@ -63,7 +63,7 @@ class ScreenMap(object):
     def clear(self, color):
         for x in range(0, NUM_COLS):
             for y in range(0, NUM_ROWS):
-                self.poked(x, y, color)
+                self.set_poked(x, y, None, color)
 
     def get_poked(self, x, y):
         poked = self.map[x][y]

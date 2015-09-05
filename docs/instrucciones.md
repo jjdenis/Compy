@@ -1,3 +1,5 @@
+
+
 Cómo ejecutar un programa
 --------------------------
 
@@ -25,24 +27,3 @@ Para parar el programa y salir, pulsa escape.
 
 También puedes esperar 10 segundos a que se cierre.
 
-
-Primer programa
------------------
-
-Cambia juego.py de esta manera:
-
-def programa_principal(pantalla):
-
-    screen.printf("Hola")
-    screen.printf("Hola")
-    screen.printf("Hola")
-    screen.printf("Hola")
-    screen.printf("Hola")
-    screen.printf("Hola")
-    screen.printf("Hola")
-    screen.printf("Hola")
-
-Tenemos un problema, que hay que cerrar la pantalla a mano,
-vamos a solucionarlo, añade esta linea:
-
-    screen.cierra()

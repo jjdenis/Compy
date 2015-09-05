@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# git push blanco master
+# En final: git pull
+
 import traceback
 import multiprocessing
 

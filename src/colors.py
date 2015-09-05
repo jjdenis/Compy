@@ -60,7 +60,7 @@ class Colors(object):
             self.color_name_list.append(name)
 
         for index, color_name in enumerate(self.color_name_list):
-            print color_name, index
+            print '{:>2} - {:<}'.format(index, color_name)
 
     def get_color(self, color_code):
         if isinstance(color_code, int):
@@ -69,13 +69,11 @@ class Colors(object):
             try:
                 color = self.colors_by_name[color_code]
             except:
-                print color_code
                 name_and_match = process.extractOne(color_code, self.color_name_list)
                 color_name = name_and_match[0]
                 color = self.colors_by_name[color_name]
         else:
             color = color_code
-        print "Color",color
         return color
 
 

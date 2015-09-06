@@ -28,7 +28,7 @@ class Chars(object):
 
         if not char: # No problemo, I'll get you something!
 
-            char = self.chars[63]  # Interrogation sign
+            char = self.chars[32]  # Sino menos Interrogation sign
 
         return char.bitmap
 
@@ -43,7 +43,7 @@ class Chars(object):
 
         if not char: # No problemo, I'll get you something!
 
-            char = self.chars[63]  # Interrogation sign
+            char = self.chars[45]  # Signo menos Interrogation sign
 
         return char.string
 
@@ -82,169 +82,149 @@ class Char(object):
         #         self.used_bitmaps[222] = bmp
 
 
-unichar = {
+unichar = [
 
+    (0,  u'♥',  'Black Heart Suit'),
+    (1,  u'♣',  'Black Club Suit'),
+    (2,  u'♦',  'Black Diamond Suit'),
+    (3,  u'♠',  'Black Spade Suit'),
+    (4,  u'●',  'Black Circle'),
+    (5,  u'○',  'White Circle'),
+    (6,  u'π',  'Greek Small Letter Pi'),
+    (7,  u'£',  'Pound Sign'),
+    (8,  u'◤',  'Black Upper Left Triangle'),
+    (9,  u'◥',  'Black Upper Right Triangle'),
 
-    0:  u'♥',  # Black Heart Suit
-    1:  u'♣',  # Black Club Suit
-    2:  u'♦',  # Black Diamond Suit
-    3:  u'♠',  # Black Spade Suit
-    4:  u'●',  # Black Circle
-    5:  u'○',  # White Circle
-    6:  u'•',  # Bullet
+    (32,   u' ',   'Space'),
+    (33,   u'!',   'Exclamation mark'),
+    (34,   u'"',   'Double quotes (or speech marks)'),
+    (35,   u'#',   'Number'),
+    (36,   u'$',   'Dollar'),
+    (37,   u'%',   'Procenttecken'),
+    (38,   u'&',   'Ampersand'),
+    (39,   u"'",   'Single quote'),
+    (40,   u'(',   'Open parenthesis (or open bracket)'),
+    (41,   u')',   'Close parenthesis (or close bracket)'),
+    (42,   u'*',   'Asterisk'),
+    (43,   u'+',   'Plus'),
+    (44,   u',',   'Comma'),
+    (45,   u'-',   'Hyphen'),
+    (46,   u'.',   'Period, dot or full stop'),
+    (47,   u'/',   'Slash or divide'),
+    (48,   u'0',   'Zero'),
+    (49,   u'1',   'One'),
+    (50,   u'2',   'Two'),
+    (51,   u'3',   'Three'),
+    (52,   u'4',   'Four'),
+    (53,   u'5',   'Five'),
+    (54,   u'6',   'Six'),
+    (55,   u'7',   'Seven'),
+    (56,   u'8',   'Eight'),
+    (57,   u'9',   'Nine'),
+    (58,   u',',   'Colon'),
+    (59,   u';',   'Semicolon'),
+    (60,   u'<',   'Less than (or open angled bracket)'),
+    (61,   u'=',   'Equals'),
+    (62,   u'>',   'Greater than (or close angled bracket)'),
+    (63,   u'?',   'Question mark'),
+    (64,   u'@',   'At symbol'),
+    (65,   u'A',   'Uppercase A'),
+    (66,   u'B',   'Uppercase B'),
+    (67,   u'C',   'Uppercase C'),
+    (68,   u'D',   'Uppercase D'),
+    (69,   u'E',   'Uppercase E'),
+    (70,   u'F',   'Uppercase F'),
+    (71,   u'G',   'Uppercase G'),
+    (72,   u'H',   'Uppercase H'),
+    (73,   u'I',   'Uppercase I'),
+    (74,   u'J',   'Uppercase J'),
+    (75,   u'K',   'Uppercase K'),
+    (76,   u'L',   'Uppercase L'),
+    (77,   u'M',   'Uppercase M'),
+    (78,   u'N',   'Uppercase N'),
+    (79,   u'O',   'Uppercase O'),
+    (80,   u'P',   'Uppercase P'),
+    (81,   u'Q',   'Uppercase Q'),
+    (82,   u'R',   'Uppercase R'),
+    (83,   u'S',   'Uppercase S'),
+    (84,   u'T',   'Uppercase T'),
+    (85,   u'U',   'Uppercase U'),
+    (86,   u'V',   'Uppercase V'),
+    (87,   u'W',   'Uppercase W'),
+    (88,   u'X',   'Uppercase X'),
+    (89,   u'Y',   'Uppercase Y'),
+    (90,   u'Z',   'Uppercase Z'),
+    (91,   u'[',   'Opening bracket'),
+    (92,   u'\\',  'Backslash'),
+    (93,   u']',   'Closing bracket'),
+    (94,   u'^',   'Caret - circumflex'),
+    (95,   u'_',   'Underscore'),
+    (96,   u'`',   'Grave accent'),
+    (97,   u'a',   'Lowercase a'),
+    (98,   u'b',   'Lowercase b'),
+    (99,   u'c',   'Lowercase c'),
+    (100,  u'd',   'Lowercase d'),
+    (101,  u'e',   'Lowercase e'),
+    (102,  u'f',   'Lowercase f'),
+    (103,  u'g',   'Lowercase g'),
+    (104,  u'h',   'Lowercase h'),
+    (105,  u'i',   'Lowercase i'),
+    (106,  u'j',   'Lowercase j'),
+    (107,  u'k',   'Lowercase k'),
+    (108,  u'l',   'Lowercase l'),
+    (109,  u'm',   'Lowercase m'),
+    (110,  u'n',   'Lowercase n'),
+    (111,  u'o',   'Lowercase o'),
+    (112,  u'p',   'Lowercase p'),
+    (113,  u'q',   'Lowercase q'),
+    (114,  u'r',   'Lowercase r'),
+    (115,  u's',   'Lowercase s'),
+    (116,  u't',   'Lowercase t'),
+    (117,  u'u',   'Lowercase u'),
+    (118,  u'v',   'Lowercase v'),
+    (119,  u'w',   'Lowercase w'),
+    (120,  u'x',   'Lowercase x'),
+    (121,  u'y',   'Lowercase y'),
+    (122,  u'z',   'Lowercase z'),
+    (123,  u'{',   'Opening brace'),
+    (124,  u'|',   'Vertical bar'),
+    (125,  u'}',   'Closing brace'),
+    (126,  u'→',  'Rightwards Arrow'),
+    (127,  u'↓',  'Downwards Arrow'),
+    (128,  u'←',  'Leftwards Arrow'),
+    (129,  u'↑',  'Upwards Arrow'),
 
-    8:  u'✓',  # Check Mark
-    9:  u'π',  # Greek Small Letter Pi
-    10: u'£',  # Pound Sign
-
-    12: u'◤',  # Black Upper Left Triangle
-    13: u'◥',  # Black Upper Right Triangle
-
-    14: u'┏',  # Box Drawings Heavy Down And Right
-   
-    15: u'┓',  # Box Drawings Heavy Down And Left
-
-    16: u'┛',  # Box Drawings Heavy Up And Left
-
-    17: u'┗',  # Box Drawings Heavy Up And Right
-
-    18: u'━',  # Box Drawings Heavy Horizontal
-
-    19: u'┃',  # Box Drawings Heavy Vertical
-
-    20: u'┳',  # Box Drawings Heavy Down And Horizontal
-
-    21: u'┫',  # Box Drawings Heavy Vertical And Left
-
-    22: u'┻',  # Box Drawings Heavy Up And Horizontal
-
-    23: u'┣',  # Box Drawings Heavy Vertical And Right
-
-    24: u'╋',  # Box Drawings Heavy Vertical And Horizontal
-
-    25: u'╭',  # Box Drawings Light Arc Down And Right
-
-    26: u'╮',  # Box Drawings Light Arc Down And Left
-
-    27: u'╯',  # Box Drawings Light Arc Up And Left
-
-    28: u'╰',  # Box Drawings Light Arc Up And Right
-
-    29: u'╱',  # Box Drawings Light Diagonal Upper Right To Lower Left
-
-    30: u'╲',  # Box Drawings Light Diagonal Upper Left To Lower Right
-
-    31: u'╳',  # Box Drawings Light Diagonal Cross
-
-    32:   u' ',   # Space
-    33:   u'!',   # Exclamation mark
-    34:   u'"',   # Double quotes (or speech marks)
-    35:   u'#',   # Number
-    36:   u'$',   # Dollar
-    37:   u'%',   # Procenttecken
-    38:   u'&',   # Ampersand
-    39:   u"'",   # Single quote
-    40:   u'(',   # Open parenthesis (or open bracket)
-    41:   u')',   # Close parenthesis (or close bracket)
-    42:   u'*',   # Asterisk
-    43:   u'+',   # Plus
-    44:   u',',   # Comma
-    45:   u'-',   # Hyphen
-    46:   u'.',   # Period, dot or full stop
-    47:   u'/',   # Slash or divide
-    48:   u'0',   # Zero
-    49:   u'1',   # One
-    50:   u'2',   # Two
-    51:   u'3',   # Three
-    52:   u'4',   # Four
-    53:   u'5',   # Five
-    54:   u'6',   # Six
-    55:   u'7',   # Seven
-    56:   u'8',   # Eight
-    57:   u'9',   # Nine
-    58:   u':',   # Colon
-    59:   u';',   # Semicolon
-    60:   u'<',   # Less than (or open angled bracket)
-    61:   u'=',   # Equals
-    62:   u'>',   # Greater than (or close angled bracket)
-    63:   u'?',   # Question mark
-    64:   u'@',   # At symbol
-    65:   u'A',   # Uppercase A
-    66:   u'B',   # Uppercase B
-    67:   u'C',   # Uppercase C
-    68:   u'D',   # Uppercase D
-    69:   u'E',   # Uppercase E
-    70:   u'F',   # Uppercase F
-    71:   u'G',   # Uppercase G
-    72:   u'H',   # Uppercase H
-    73:   u'I',   # Uppercase I
-    74:   u'J',   # Uppercase J
-    75:   u'K',   # Uppercase K
-    76:   u'L',   # Uppercase L
-    77:   u'M',   # Uppercase M
-    78:   u'N',   # Uppercase N
-    79:   u'O',   # Uppercase O
-    80:   u'P',   # Uppercase P
-    81:   u'Q',   # Uppercase Q
-    82:   u'R',   # Uppercase R
-    83:   u'S',   # Uppercase S
-    84:   u'T',   # Uppercase T
-    85:   u'U',   # Uppercase U
-    86:   u'V',   # Uppercase V
-    87:   u'W',   # Uppercase W
-    88:   u'X',   # Uppercase X
-    89:   u'Y',   # Uppercase Y
-    90:   u'Z',   # Uppercase Z
-    91:   u'[',   # Opening bracket
-    92:   u'\\',  # Backslash
-    93:   u']',   # Closing bracket
-    94:   u'^',   # Caret - circumflex
-    95:   u'_',   # Underscore
-    96:   u'`',   # Grave accent
-    97:   u'a',   # Lowercase a
-    98:   u'b',   # Lowercase b
-    99:   u'c',   # Lowercase c
-    100:  u'd',   # Lowercase d
-    101:  u'e',   # Lowercase e
-    102:  u'f',   # Lowercase f
-    103:  u'g',   # Lowercase g
-    104:  u'h',   # Lowercase h
-    105:  u'i',   # Lowercase i
-    106:  u'j',   # Lowercase j
-    107:  u'k',   # Lowercase k
-    108:  u'l',   # Lowercase l
-    109:  u'm',   # Lowercase m
-    110:  u'n',   # Lowercase n
-    111:  u'o',   # Lowercase o
-    112:  u'p',   # Lowercase p
-    113:  u'q',   # Lowercase q
-    114:  u'r',   # Lowercase r
-    115:  u's',   # Lowercase s
-    116:  u't',   # Lowercase t
-    117:  u'u',   # Lowercase u
-    118:  u'v',   # Lowercase v
-    119:  u'w',   # Lowercase w
-    120:  u'x',   # Lowercase x
-    121:  u'y',   # Lowercase y
-    122:  u'z',   # Lowercase z
-    123:  u'{',   # Opening brace
-    124:  u'|',   # Vertical bar
-    125:  u'}',   # Closing brace
-    126:  u'~',   # Equivalency sign - tilde
-    127:  u' ',   # Delete
-
-    128:  u'←',  # Leftwards Arrow
-    129:  u'↑',  # Upwards Arrow
-    130:  u'→',  # Rightwards Arrow
-    131:  u'↓',  # Downwards Arrow
+    (300, u'┏',  'Box Drawings Heavy Down And Right'),
+    (301, u'┓',  'Box Drawings Heavy Down And Left'),
+    (302, u'┛',  'Box Drawings Heavy Up And Left'),
+    (303, u'┗',  'Box Drawings Heavy Up And Right'),
+    (304, u'━',  'Box Drawings Heavy Horizontal'),
+    (305, u'┃',  'Box Drawings Heavy Vertical'),
+    (306, u'┳',  'Box Drawings Heavy Down And Horizontal'),
+    (307, u'┫',  'Box Drawings Heavy Vertical And Left'),
+    (308, u'┻',  'Box Drawings Heavy Up And Horizontal'),
+    (309, u'┣',  'Box Drawings Heavy Vertical And Right'),
+    (310, u'╋',  'Box Drawings Heavy Vertical And Horizontal'),
+    (311, u'╭',  'Box Drawings Light Arc Down And Right'),
+    (312, u'╮',  'Box Drawings Light Arc Down And Left'),
+    (313, u'╯',  'Box Drawings Light Arc Up And Left'),
+    (314, u'╰',  'Box Drawings Light Arc Up And Right'),
 
 
 
-}
+]
 
+"""
+    (6,  u'•',  'Bullet'),
+    (7,  u'✓',  'Check Mark'),
+    (126,  u'~',   'Equivalency sign - tilde'),
+    (127,  u' ',   'Delete'),
+    (315, u'╱',  'Box Drawings Light Diagonal Upper Right To Lower Left'),
+    (316, u'╲',  'Box Drawings Light Diagonal Upper Left To Lower Right'),
+    (317, u'╳',  'Box Drawings Light Diagonal Cross'),
+"""
 
-
-    # : u'·',  # Middle Dot
+    # , u'·',  # Middle Dot
 
 
 

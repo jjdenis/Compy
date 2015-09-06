@@ -1,92 +1,33 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
-
-class Chars(object):
-    def __init__(self, Bitmap):
-        self.chars = [None] * 400
-
-        for dirpath, dirnames, filenames in os.walk('src/chars'):
-            break
-
-        for filename in filenames:
-            if '.bmp' not in filename:
-                continue
-            bitmap = Char(dirpath, filename, Bitmap)
-            if bitmap.code >= 0 and bitmap.code < 400:
-               self.chars[bitmap.code] = bitmap
-
-    def get_bitmap(self, code):
-        try: # As an int
-            char = self.chars[code]
-        except:
-            try: # As a char
-                char = self.chars[ord(code)]
-            except:
-                char = None
-
-        if not char: # No problemo, I'll get you something!
-
-            char = self.chars[32]  # Sino menos Interrogation sign
-
-        return char.bitmap
-
-    def as_string(self, code):
-        try: # As an int
-            char = self.chars[code]
-        except:
-            try: # As a char
-                char = self.chars[ord(code)]
-            except:
-                char = None
-
-        if not char: # No problemo, I'll get you something!
-
-            char = self.chars[45]  # Signo menos Interrogation sign
-
-        return char.string
-
-
-
-
-class Char(object):
-
-    def __init__(self, dirpath, filename, Bitmap):
-        self.bitmap = Bitmap('{}/{}'.format(dirpath, filename))
-        self.bitmap.SetDepth(1)
-        self.code = int(filename.replace('.bmp', ''))
-        self.string = None
-        self.find_string()
-
-    def find_string(self):
-        try:
-            self.string = chars_by_unicode[self.code]
-        except:
-            self.string = u'#'
-
-
-    def __repr__(self):
-        return "code: {}, char:{}".format(self.code, chr(self.code))
-
-        # if code in self.used_bitmaps.keys():
-        #     return self.used_bitmaps[code]
-        # try:
-        #     self.used_bitmaps[code] = bmp
-        # except:
-        #     if 222 in self.used_bitmaps.keys():
-        #         bmp = self.used_bitmaps[222]
-        #     else:
-        #         bmp = wx.Bitmap('chars/{:03}.bmp'.format(222))
-        #         bmp.SetDepth(1)
-        #         self.used_bitmaps[222] = bmp
+from unidecode import unidecode
 
 
 class CharTable(object):
     def __init__(self):
-        chars_by_unicode = {}
+        self.chars_by_unicode = {}
         for c in unichar:
-            chars_by_unicode[c[1]]=c[0]
+            self.chars_by_unicode[c[1]]=c[0]
+
+    def get_identifier(self, code):
+        if isinstance(code, int):
+            char_id = code
+            return char_id
+        try:
+            char_id = self.chars_by_unicode[code]
+            return char_id
+        except:
+            pass
+
+        try:
+            in_plain_string=unidecode(code)
+            char_id = self.chars_by_unicode[in_plain_string]
+            return char_id
+        except:
+            pass
+
+        return 5
 
 
 

@@ -5,27 +5,27 @@ from fuzzywuzzy import process
 
 COLORS = [
     ('black'       , (   0,   0,   0) ),
-    ('white'       , ( 255, 255, 255) ),
-    ('red'         , ( 136,   0,   0) ),
-    # cyan        , ( 0x66, 0xDA, 0xFF)
-    ('cyan'        , ( 170, 255, 238) ),
-    # 66 DA FF
-    ('purple'      , ( 204,  68, 204) ),
-    ('green'       , (   0, 204,  85) ),
-    ('blue'        , (   0,  0, 170) ),
-    ('yellow'      , ( 238, 238, 119) ),
-    ('orange'      , ( 221,  136,  85) ),
-    ('brown'       , ( 102,  68,  0) ),
-    ('light_red'   , ( 255, 119,  119) ),
     ('dark_grey'   , (  51,  51,  51) ),
     ('grey'        , ( 119, 119, 119) ),
-    #'light_green' , ( 170, 255, 102)
-    ('light_green'  , ( 0x97, 0xFF, 0x97) ),
-    # light_blue  , ( 0,  136, 255)
+    ('light_grey'  , ( 187, 187, 187) ),
+    ('white'       , ( 255, 255, 255) ),
+    # cyan        , ( 0x66, 0xDA, 0xFF)
+    ('blue'        , (   0,  0, 170) ),
     ('light_blue'  , ( 0x97, 0x97, 0xFF) ),
+    ('cyan'        , ( 170, 255, 238) ),
+    ('light_green'  , ( 0x97, 0xFF, 0x97) ),
+    ('green'       , (   0, 204,  85) ),
+    ('yellow'      , ( 238, 238, 119) ),
+    ('orange'      , ( 221,  136,  85) ),
+    ('red'         , ( 136,   0,   0) ),
+    ('light_red'   , ( 255, 119,  119) ),
+    # 66 DA FF
+    ('purple'      , ( 204,  68, 204) ),
+    ('brown'       , ( 102,  68,  0) ),
+    #'light_green' , ( 170, 255, 102)
+    # light_blue  , ( 0,  136, 255)
     # 97 FF 97 8
     # light_blue  , ( 108,  94, 181)
-    ('light_grey'  , ( 187, 187, 187) )
 ]
 
 class Colors(object):

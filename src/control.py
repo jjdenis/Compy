@@ -6,11 +6,11 @@ import datetime as dttm
 
 from src.map import ScreenMap, PrintMap
 from src.colors import colors
-
+from src.char_table import CharTable
 from src.settings import INIT_MSG
-
 from src.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
 
+char_table = CharTable()
 
 class Control(object):
     def __init__(self, queue_to_view, queue_from_view):
@@ -29,18 +29,14 @@ class Control(object):
             color_c = colors.get_color(color)
             self.ch_color = color_c
 
-        if isinstance(code, basestring):
-            code=unicode(code)[0:1]
-        else:
-            code = char.unicode(code)
-
+        char_id = char_table.get_identifier(code)
         # c stands for corrected
-        cx, cy = self.map.set_poked(x, y, code, self.ch_color)
-        self._send_to_view('poke', cx, cy, code, self.ch_color, self.bg_color)
+        cx, cy = self.map.set_poked(x, y, char_id, self.ch_color)
+        self._send_to_view('poke', cx, cy, char_id, self.ch_color, self.bg_color)
 
     def peek(self, x, y):
-        code, color = self.map.get_poked(x, y)
-        return code
+        char_id, color = self.map.get_poked(x, y)
+        return char_id
 
     def printf(self, to_print='', color=None, next_line = True):
         if color is not None:
@@ -65,9 +61,10 @@ class Control(object):
             else:
                 x, y = self.printmap.next_x()
 
+            char_id = char_table.get_identifier(ch)
 
-            cx, cy = self.map.set_poked(x, y, ch, self.ch_color)
-            self._send_to_view('poke', cx, cy, ch, self.ch_color, self.bg_color)
+            cx, cy = self.map.set_poked(x, y, char_id, self.ch_color)
+            self._send_to_view('poke', cx, cy, char_id, self.ch_color, self.bg_color)
 
     def set_bg_color(self, color):
         self.bg_color = color
@@ -123,7 +120,7 @@ class View(object):
 
     def receive(self):
         if not self.from_view.empty():
-            return self.from_view.get_key()
+            return self.from_view.get()
         else:
             return None
 

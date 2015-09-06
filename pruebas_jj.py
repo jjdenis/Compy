@@ -5,6 +5,21 @@ import time
 
 def programa_principal(scr):
 
+    mapa_caracteres(scr)
+
+    scr.clear_screen()
+    scr.printf(u'╭')
+    for i in range(0,100):
+        scr.printf(u'Hola', i, next_line=False)
+
+    scr.poke(10, 10, u'╭', color=0)
+
+    wait_for_key(scr)
+
+    scr.stop()
+
+def mapa_caracteres(scr):
+    scr.clear_screen()
     i = 0
     color = 0
     for y in range(24, -1, -1):
@@ -16,8 +31,15 @@ def programa_principal(scr):
                 color = 7
             if color == 16:
                 color = 0
+    wait_for_key(scr)
 
-    scr.poke(10, 10, u'╭', color=0)
-    scr.printf(u'╭')
+
+def wait_for_key(scr):
+    key = None
+    while not key:
+        key = scr.get_key()
+        if key:
+            print key
+
 
 run(programa_principal)

@@ -129,7 +129,7 @@ class Pinta(object):
         self.set_background(bg_color)
 
     def poke(self, x, y, char_id, fg_color, bg_color):
-        print char_id
+
         dcx, dcy = self.to_window_units(x, y)
 
         dc = wx.WindowDC(self.canvas)

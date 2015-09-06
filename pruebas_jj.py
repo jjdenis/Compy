@@ -4,6 +4,7 @@ from src.run import run
 import time
 
 def programa_principal(scr):
+
     i = 0
     color = 0
     for y in range(24, -1, -1):
@@ -16,7 +17,7 @@ def programa_principal(scr):
             if color == 16:
                 color = 0
 
-    scr.poke(10, 10, u'╭')
-
+    scr.poke(10, 10, u'╭', color=0)
+    scr.printf(u'╭')
 
 run(programa_principal)

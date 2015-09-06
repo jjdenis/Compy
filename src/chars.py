@@ -61,7 +61,7 @@ class Char(object):
 
     def find_string(self):
         try:
-            self.string = unichar[self.code]
+            self.string = chars_by_unicode[self.code]
         except:
             self.string = u'#'
 
@@ -80,6 +80,15 @@ class Char(object):
         #         bmp = wx.Bitmap('chars/{:03}.bmp'.format(222))
         #         bmp.SetDepth(1)
         #         self.used_bitmaps[222] = bmp
+
+
+class CharTable(object):
+    def __init__(self):
+        chars_by_unicode = {}
+        for c in unichar:
+            chars_by_unicode[c[1]]=c[0]
+
+
 
 
 unichar = [

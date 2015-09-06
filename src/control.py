@@ -29,6 +29,11 @@ class Control(object):
             color_c = colors.get_color(color)
             self.ch_color = color_c
 
+        if isinstance(code, basestring):
+            code=unicode(code)[0:1]
+        else:
+            code = char.unicode(code)
+
         # c stands for corrected
         cx, cy = self.map.set_poked(x, y, code, self.ch_color)
         self._send_to_view('poke', cx, cy, code, self.ch_color, self.bg_color)
@@ -41,14 +46,16 @@ class Control(object):
         if color is not None:
             color_c = colors.get_color(color)
             self.ch_color = color_c
-
-        string = str(to_print)
+        if isinstance(to_print, basestring):
+            string=unicode(to_print)
+        else:
+            string = unicode(to_print)
         if not string and next_line:
             self.printmap.next_line()
             self.printmap.end_line()
 
         for i, ch in enumerate(string):
-            if ch == '\n':
+            if ch == u'\n':
                 self.printmap.next_line()
                 self.printmap.end_line()
                 continue

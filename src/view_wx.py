@@ -4,7 +4,7 @@
 import wx
 import random
 
-from src.chars import Chars
+from src.bitmaps import Bitmaps
 from src.colors import colors
 
 from src.settings import NUM_COLS, NUM_ROWS, CHAR_PTS_X, CHAR_PTS_Y, FRAME_PTS_X, FRAME_PTS_Y
@@ -33,7 +33,6 @@ class GUIwx(wx.App):
         self.timer = None
         self.dc = None
         # self.app = wx.App(False)  # Create a new app, don't redirect stdout/stderr to a window.
-        self.chars = None
         self.cierra_por_esc = False
         self.pinta = None
         wx.App.__init__(self, False)
@@ -123,18 +122,19 @@ class Pinta(object):
 
     def __init__(self, canvas):
         self.canvas = canvas
-        self.chars = Chars(wx.Bitmap)
+        self.bitmaps = Bitmaps(wx.Bitmap)
 
     def reset_screen(self, fm_color, bg_color):
         self.set_deep_background(fm_color)
         self.set_background(bg_color)
 
-    def poke(self, x, y, letra, fg_color, bg_color):
+    def poke(self, x, y, char_id, fg_color, bg_color):
+        print char_id
         dcx, dcy = self.to_window_units(x, y)
 
         dc = wx.WindowDC(self.canvas)
 
-        bmp = self.chars.get_bitmap(letra)
+        bmp = self.bitmaps.get_bitmap(char_id)
 
         dc.BeginDrawing()
         dc.SetTextForeground(fg_color)

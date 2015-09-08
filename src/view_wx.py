@@ -3,6 +3,7 @@
 
 import wx
 import random
+from time import time
 
 from src.bitmaps import Bitmaps
 from src.colors import colors
@@ -86,12 +87,14 @@ class GUIwx(wx.App):
         # self.pinta_bloque(0, 0, color="blue")
         # self.pinta_bloque(5, 5, color="blue")
         if key != self.key_pressed:
-            self.envia_comando('key_pressed', key)
+            self.envia_comando('key_pressed', key, time())
+            print 'v pressed', key
             self.key_pressed = key
 
     def on_key_release(self, event):
         key = event.GetKeyCode()
-        self.envia_comando('key_released', None)
+        self.envia_comando('key_released', key, time())
+        print 'v released', key
         self.key_pressed = None
 
     def envia_comando(self, *args):

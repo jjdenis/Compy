@@ -6,6 +6,8 @@ import time
 def programa_principal(scr):
 
     mapa_caracteres(scr)
+    time.sleep(10)
+    wait_for_key(scr)
 
     scr.clear_screen()
     scr.printf(u'╭')
@@ -16,7 +18,7 @@ def programa_principal(scr):
 
     wait_for_key(scr)
 
-    scr.stop()
+    #scr.stop()
 
 def mapa_caracteres(scr):
     scr.clear_screen()
@@ -31,7 +33,7 @@ def mapa_caracteres(scr):
                 color = 7
             if color == 16:
                 color = 0
-    wait_for_key(scr)
+
 
 
 def wait_for_key(scr):

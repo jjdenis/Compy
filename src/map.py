@@ -66,14 +66,12 @@ class ScreenMap(object):
                 self.set_poked(x, y, None, color)
 
     def get_poked(self, x, y):
+        x, y = self.check_coords(x, y)
         poked = self.map[x][y]
         return poked.code, poked.color
 
     def set_poked(self, x, y, code, color):
-        if x >= NUM_COLS:
-            x = NUM_COLS -1
-        if y >= NUM_ROWS:
-            y = NUM_ROWS-1
+        x, y = self.check_coords(x, y)
 
         poked = self.map[x][y]
         poked.code = code
@@ -83,6 +81,13 @@ class ScreenMap(object):
         else:
             self.written.add(poked)
 
+        return x, y
+
+    def check_coords(self, x, y):
+        if x >= NUM_COLS:
+            x = NUM_COLS - 1
+        if y >= NUM_ROWS:
+            y = NUM_ROWS - 1
         return x, y
 
 

@@ -128,6 +128,7 @@ class PressedKey(object):
         self.curr_key = None
         self.last_time_read = 0
         self.key_this_pass = None
+        self.key_queue = []
 
     def wait_for_key(self):
         self._read_from_view()
@@ -137,10 +138,15 @@ class PressedKey(object):
 
     def check_for_key(self):
         self._read_from_view()
-        return self.curr_key
+        if self.curr_key:
+            return self.curr_key
+        else:
+            if self.key_queue:
+                return self.key_queue.pop(0)
+        return None
 
     def _read_from_view(self):
-        while time() - self.last_time_read <= 0.1:
+        while time() - self.last_time_read <= SENSIBILIDAD_TECLADO:
             pass
 
         self.key_this_pass = None
@@ -151,6 +157,8 @@ class PressedKey(object):
             comando, tecla, tiempo = msg
             print comando, tecla, tiempo
             if comando == 'key_pressed':
+                if tecla != self.curr_key:
+                    self.key_queue.append(tecla)
                 self.curr_key = tecla
                 self.key_this_pass = tecla
             elif comando == 'key_released':

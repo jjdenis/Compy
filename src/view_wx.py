@@ -83,12 +83,12 @@ class GUIwx(wx.App):
         key = event.GetKeyCode()
         if key == ESCAPE:
             self.cierra_por_esc = True
+            self.envia_comando('closing', None, None)
         # self.sound.Play(wx.SOUND_ASYNC)
         # self.pinta_bloque(0, 0, color="blue")
         # self.pinta_bloque(5, 5, color="blue")
         if key != self.key_pressed:
             self.envia_comando('key_pressed', key, time())
-            print 'v pressed', key
             self.key_pressed = key
 
     def on_key_release(self, event):

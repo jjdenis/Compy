@@ -6,14 +6,13 @@ from time import time, sleep
 def programa_principal(scr):
 
     mapa_caracteres(scr)
-
-    scr.get_key()
+    scr.wait_key()
 
     prueba_print(scr)
-
-    scr.get_key()
+    scr.wait_key()
 
     prueba_move(scr)
+    scr.stop()
 
     #scr.stop()
 
@@ -46,11 +45,16 @@ def mapa_caracteres(scr):
 
 
 def prueba_move(scr):
-    scr.poke(10, 20, 65, 'light_green')
+    scr.clear_screen()
+    A = 65
+    B = 66
+    Q = 81
+    scr.poke(10, 20, A, 'light_green')
     x = 0
     y = 0
+    scr.poke(x, y, B, 'light_green')
     while True:
-        a = scr.get_key()
+        a = scr.check_key()
         if a:
             scr.poke(x, y, None, 'red')
         if a == 316:
@@ -61,7 +65,7 @@ def prueba_move(scr):
             y += 1
         if a == 317:
             y += -1
-        if a == 81: # q
+        if a == Q: # q
             break
 
         if scr.peek(x, y+1) == 65:

@@ -3,7 +3,7 @@
 
 from time import time, sleep
 import datetime as dttm
-
+import sys
 from src.map import ScreenMap, PrintMap
 from src.colors import colors
 from src.char_table import CharTable
@@ -86,8 +86,12 @@ class Control(object):
         sleep(1)
         self._send_to_view('close_window')
 
-    def get_key(self):
-        key = self.key.get_one_key()
+    def wait_key(self):
+        key = self.key.wait_for_key()
+        return key
+
+    def check_key(self):
+        key = self.key.check_for_key()
         return key
 
     def _write_canvas(self):
@@ -123,28 +127,23 @@ class PressedKey(object):
         self.receive_from_view = receive
         self.curr_key = None
         self.last_time_read = 0
+        self.key_this_pass = None
 
-    def pressed(self, key, tiempo):
-        print 'pressed', key
-        self.curr_key = key
-
-    def released(self, key, tiempo):
-        print 'released', key
-        self.curr_key = None
-
-    def get_one_key(self):
+    def wait_for_key(self):
         self._read_from_view()
-        while not self.curr_key:
+        while not self.key_this_pass:
             self._read_from_view()
-        return self.curr_key
+        return self.key_this_pass
 
-    def get(self):
+    def check_for_key(self):
+        self._read_from_view()
         return self.curr_key
 
     def _read_from_view(self):
         while time() - self.last_time_read <= 0.1:
             pass
 
+        self.key_this_pass = None
         while True:
             msg = self.receive_from_view()
             if not msg:
@@ -152,9 +151,12 @@ class PressedKey(object):
             comando, tecla, tiempo = msg
             print comando, tecla, tiempo
             if comando == 'key_pressed':
-                self.pressed(tecla, tiempo)
+                self.curr_key = tecla
+                self.key_this_pass = tecla
             elif comando == 'key_released':
-                self.released(tecla, tiempo)
+                self.curr_key = None
+            elif comando == 'closing':
+                sys.exit()
             else:
                 pass
         self.last_time_read = time()

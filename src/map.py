@@ -84,9 +84,13 @@ class ScreenMap(object):
         return x, y
 
     def check_coords(self, x, y):
-        if x >= NUM_COLS:
+        if x < 0:
+            x = 0
+        elif x >= NUM_COLS:
             x = NUM_COLS - 1
-        if y >= NUM_ROWS:
+        if y < 0:
+            y = 0
+        elif y >= NUM_ROWS:
             y = NUM_ROWS - 1
         return x, y
 

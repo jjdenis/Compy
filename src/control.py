@@ -10,7 +10,8 @@ from src.char_table import CharTable
 from src.settings import INIT_MSG
 from src.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
 
-SENSIBILIDAD_TECLADO = 0.05
+SENSIBILIDAD_TECLADO = 0.01
+SENSIBILIDAD_INICIO = 0.3
 
 char_table = CharTable()
 
@@ -129,6 +130,7 @@ class PressedKey(object):
         self.last_time_read = 0
         self.key_this_pass = None
         self.key_queue = []
+        self.sensibilidad = SENSIBILIDAD_TECLADO
 
     def wait_for_key(self):
         self._read_from_view()
@@ -138,18 +140,20 @@ class PressedKey(object):
 
     def check_for_key(self):
         self._read_from_view()
-        if self.curr_key:
-            return self.curr_key
-        else:
-            if self.key_queue:
-                return self.key_queue.pop(0)
+        if self.key_queue:
+            return self.key_queue.pop(0)
         return None
 
     def _read_from_view(self):
-        while time() - self.last_time_read <= SENSIBILIDAD_TECLADO:
+
+        while time() - self.last_time_read <= self.sensibilidad:
             pass
 
+        if self.sensibilidad == SENSIBILIDAD_INICIO:
+            self.sensibilidad = SENSIBILIDAD_TECLADO
+
         self.key_this_pass = None
+
         while True:
             msg = self.receive_from_view()
             if not msg:
@@ -157,6 +161,9 @@ class PressedKey(object):
             comando, tecla, tiempo = msg
             print comando, tecla, tiempo
             if comando == 'key_pressed':
+                if not self.curr_key:
+                    self.sensibilidad = SENSIBILIDAD_INICIO
+
                 if tecla != self.curr_key:
                     self.key_queue.append(tecla)
                 self.curr_key = tecla
@@ -164,6 +171,7 @@ class PressedKey(object):
             elif comando == 'key_released':
                 self.curr_key = None
             elif comando == 'closing':
+                sleep(1)
                 sys.exit()
             else:
                 pass

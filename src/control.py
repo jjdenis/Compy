@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import time
+from time import time, sleep
 import datetime as dttm
 
 from src.map import ScreenMap, PrintMap
@@ -83,11 +83,12 @@ class Control(object):
         self.map.clear(self.bg_color)
 
     def stop(self):
-        time.sleep(1)
+        sleep(1)
         self._send_to_view('close_window')
 
     def get_key(self):
-        return self.key.get()
+        key = self.key.get_one_key()
+        return key
 
     def _write_canvas(self):
         self._send_to_view('reset_screen', self.fm_color, self.bg_color)
@@ -116,14 +117,12 @@ class View(object):
             return None
 
 
-
-
-
 class PressedKey(object):
     """ This object ensures that even a tiny press is sent """
     def __init__(self, receive):
         self.receive_from_view = receive
         self.curr_key = None
+        self.last_time_read = 0
 
     def pressed(self, key, tiempo):
         print 'pressed', key
@@ -133,94 +132,30 @@ class PressedKey(object):
         print 'released', key
         self.curr_key = None
 
+    def get_one_key(self):
+        self._read_from_view()
+        while not self.curr_key:
+            self._read_from_view()
+        return self.curr_key
+
     def get(self):
         return self.curr_key
 
     def _read_from_view(self):
+        while time() - self.last_time_read <= 0.1:
+            pass
+
         while True:
             msg = self.receive_from_view()
             if not msg:
                 break
             comando, tecla, tiempo = msg
+            print comando, tecla, tiempo
             if comando == 'key_pressed':
                 self.pressed(tecla, tiempo)
-            if comando == 'key_released':
+            elif comando == 'key_released':
                 self.released(tecla, tiempo)
+            else:
+                pass
+        self.last_time_read = time()
 
-
-class PressedKeykk(object):
-    """ This object ensures that even a tiny press is sent """
-    def __init__(self):
-        self.curr_key = None
-        self.last_key_pressed = None
-        self.time_key_pressed = dttm.datetime.now()
-        self.time_key_sent = dttm.datetime.now()
-
-    def pressed(self, key, tiempo):
-        if self.curr_key is None:
-            self.time_key_pressed = dttm.datetime.now()
-
-        self.last_key_pressed = key
-        self.curr_key = key
-
-    def released(self, key, tiempo):
-        self.curr_key = None
-
-    def get(self):
-        time.sleep(0.01)
-
-        last_key_not_sent = self.time_key_pressed > self.time_key_sent
-
-        if self.curr_key is None and last_key_not_sent:
-            self.time_key_sent = dttm.datetime.now()
-            return self.last_key_pressed
-
-        if self.curr_key:
-            self.time_key_sent = dttm.datetime.now()
-
-        return self.curr_key
-
-
-#
-# def run_control(queue1, queue2, main):
-#     try:
-#         control = Control(queue1, queue2)
-#         main(control)
-#         # main finishes here
-#         # control.stop()
-#     except:
-#         print "FATAL: exited while multiprocessing".format()
-#         traceback.print_exc()
-#
-#
-#
-#
-# def run(main):
-#
-#     q_to_view = multiprocessing.Queue()
-#
-#     q_from_view = multiprocessing.Queue()
-#
-#     control_parallel = multiprocessing.Process(
-#         target=run_control,
-#         args=(q_to_view, q_from_view, main))
-#
-#     control_parallel.start()
-#
-#     gui = view.GUIwx(q_to_view, q_from_view)
-#     gui.run()
-#
-#     control_parallel.join()
-#
-#     while not q_to_view.empty():
-#         q_to_view.get()
-#     while not q_from_view.empty():
-#         q_from_view.get()
-#
-#     q_to_view.close()
-#     q_from_view.close()
-#     q_to_view.join_thread()
-#     q_from_view.join_thread()
-#
-#
-#

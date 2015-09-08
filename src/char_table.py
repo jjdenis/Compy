@@ -11,6 +11,8 @@ class CharTable(object):
             self.chars_by_unicode[c[1]]=c[0]
 
     def get_identifier(self, code):
+        if not code:
+            return 5
         if isinstance(code, int):
             char_id = code
             return char_id

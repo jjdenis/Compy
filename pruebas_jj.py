@@ -1,24 +1,30 @@
 # -*- coding: utf-8 -*-
 
 from src.run import run
-import time
+from time import time, sleep
 
 def programa_principal(scr):
 
     mapa_caracteres(scr)
-    time.sleep(10)
-    wait_for_key(scr)
 
-    scr.clear_screen()
-    scr.printf(u'╭')
-    for i in range(0,100):
-        scr.printf(u'Hola', i, next_line=False)
+    scr.get_key()
 
-    scr.poke(10, 10, u'╭', color=0)
+    prueba_print(scr)
 
-    wait_for_key(scr)
+    scr.get_key()
+
+    prueba_move(scr)
 
     #scr.stop()
+
+
+def prueba_print(scr):
+    scr.clear_screen()
+    scr.printf(u'╭')
+    for i in range(0, 100):
+        scr.printf(u'Hola', i, next_line=False)
+    scr.poke(10, 10, u'╭', color=0)
+
 
 def mapa_caracteres(scr):
     scr.clear_screen()
@@ -36,12 +42,32 @@ def mapa_caracteres(scr):
 
 
 
-def wait_for_key(scr):
-    key = None
-    while not key:
-        key = scr.get_key()
-        if key:
-            print key
+
+
+
+def prueba_move(scr):
+    scr.poke(10, 20, 65, 'light_green')
+    x = 0
+    y = 0
+    while True:
+        a = scr.get_key()
+        if a:
+            scr.poke(x, y, None, 'red')
+        if a == 316:
+            x += 1
+        if a == 314:
+            x -= 1
+        if a == 315:
+            y += 1
+        if a == 317:
+            y += -1
+        if a == 81: # q
+            break
+
+        if scr.peek(x, y+1) == 65:
+            scr.poke(x, y, 66, 'red')
+        else:
+            scr.poke(x, y, 66, 'light_red')
 
 
 run(programa_principal)

@@ -17,7 +17,7 @@ char_table = CharTable()
 class Control(object):
     def __init__(self, queue_to_view, queue_from_view):
         self.view = View(queue_to_view, queue_from_view)
-        self.key = PressedKey()
+        self.key = PressedKey(self.view.receive)
         self.map = ScreenMap()
         self.printmap = PrintMap()
         self.fm_color = INIT_FM_COLOR
@@ -87,8 +87,6 @@ class Control(object):
         self._send_to_view('close_window')
 
     def get_key(self):
-        self._read_from_view()
-        time.sleep(SENSIBILIDAD_TECLADO)
         return self.key.get()
 
     def _write_canvas(self):
@@ -101,15 +99,6 @@ class Control(object):
     def _send_to_view(self, *args):
         self.view.send(*args)
 
-    def _read_from_view(self):
-        while True:
-            msg = self.view.receive()
-            if not msg:
-                break
-            if msg[0] == 'key_pressed':
-                self.key.pressed(msg[1])
-            if msg[0] == 'key_released':
-                self.key.released()
 
 
 class View(object):
@@ -132,23 +121,53 @@ class View(object):
 
 class PressedKey(object):
     """ This object ensures that even a tiny press is sent """
+    def __init__(self, receive):
+        self.receive_from_view = receive
+        self.curr_key = None
+
+    def pressed(self, key, tiempo):
+        print 'pressed', key
+        self.curr_key = key
+
+    def released(self, key, tiempo):
+        print 'released', key
+        self.curr_key = None
+
+    def get(self):
+        return self.curr_key
+
+    def _read_from_view(self):
+        while True:
+            msg = self.receive_from_view()
+            if not msg:
+                break
+            comando, tecla, tiempo = msg
+            if comando == 'key_pressed':
+                self.pressed(tecla, tiempo)
+            if comando == 'key_released':
+                self.released(tecla, tiempo)
+
+
+class PressedKeykk(object):
+    """ This object ensures that even a tiny press is sent """
     def __init__(self):
         self.curr_key = None
         self.last_key_pressed = None
         self.time_key_pressed = dttm.datetime.now()
         self.time_key_sent = dttm.datetime.now()
 
-    def pressed(self, key):
+    def pressed(self, key, tiempo):
         if self.curr_key is None:
             self.time_key_pressed = dttm.datetime.now()
 
         self.last_key_pressed = key
         self.curr_key = key
 
-    def released(self):
+    def released(self, key, tiempo):
         self.curr_key = None
 
     def get(self):
+        time.sleep(0.01)
 
         last_key_not_sent = self.time_key_pressed > self.time_key_sent
 

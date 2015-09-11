@@ -27,9 +27,10 @@ def prueba_print(scr):
 
 def mapa_caracteres(scr):
     scr.clear_screen()
+    scr.printf('\nPinta todos los caracteres\n')
     i = 0
     color = 0
-    for y in range(24, -1, -1):
+    for y in range(16, -1, -1):
         for x in range(0, 40):
             scr.poke(x, y, i, color)
             i = i + 1
@@ -49,29 +50,38 @@ def prueba_move(scr):
     A = 65
     B = 66
     Q = 81
-    scr.poke(10, 20, A, 'light_green')
+    DCHA = 316
+    IZDA = 314
+    ABAJO = 317
+    ARRIBA = 315
+
     x = 0
     y = 0
     scr.poke(x, y, B, 'light_green')
+    scr.poke(10, 20, A, 'light_green')
+    scr.poke(5, 5, A, 'light_green')
     while True:
         a = scr.check_key()
-        if a:
-            scr.poke(x, y, None, 'red')
-        if a == 316:
+        if not a:
+            continue
+        scr.poke(x, y, None, 'red')
+        if a == DCHA:
             x += 1
-        if a == 314:
+        elif a == IZDA:
             x -= 1
-        if a == 315:
+        elif a == ARRIBA:
             y += 1
-        if a == 317:
+        elif a == ABAJO:
             y += -1
-        if a == Q: # q
+        elif a == Q: # q
             break
-
-        if scr.peek(x, y+1) == 65:
-            scr.poke(x, y, 66, 'red')
         else:
-            scr.poke(x, y, 66, 'light_red')
+            pass
+
+        if scr.peek(x, y+1) == A:
+            scr.poke(x, y, B, 'red')
+        else:
+            scr.poke(x, y, B, 'light_red')
 
 
 run(programa_principal)

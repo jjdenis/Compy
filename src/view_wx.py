@@ -111,8 +111,8 @@ class GUIwx(wx.App):
             if comando == 'poke':
                 self.pinta.poke(*args)
 
-            elif comando == 'reset_screen':
-                self.pinta.reset_screen(fm_color=args[0], bg_color=args[1])
+            elif comando == 'reset_canvas':
+                self.pinta.reset_canvas(fm_color=args[0], bg_color=args[1])
 
             elif comando == 'close_window':
                 self.stop()
@@ -127,7 +127,7 @@ class Pinta(object):
         self.canvas = canvas
         self.bitmaps = Bitmaps(wx.Bitmap)
 
-    def reset_screen(self, fm_color, bg_color):
+    def reset_canvas(self, fm_color, bg_color):
         self.set_deep_background(fm_color)
         self.set_background(bg_color)
 

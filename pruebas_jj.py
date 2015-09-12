@@ -27,18 +27,24 @@ def prueba_print(scr):
 
 def mapa_caracteres(scr):
     scr.clear_screen()
-    scr.printf('\nPinta todos los caracteres\n')
 
     for i in range(0, 400):
-        scr.printf('{:>03}='.format(i), next_line=False)
-        scr.printf(i, next_line=False, iscode=True)
-        scr.printf('  '.format(i), next_line=False)
+        if i%10 == 0:
+            scr.printf('{:>03}-{:>03}'.format(i, i+9))
+
+        scr.printf(i, color = 4, next_line=False, iscode=True)
+        scr.printf(31,color=8, next_line=False, iscode = True)
+
         if (i+1)%100 == 0:
             scr.wait_key()
             scr.clear_screen()
             scr.printf('\n')
-        if (i+1)%5 == 0:
+        if (i+1)%10 == 0:
             scr.printf('')
+            scr.printf('       ',next_line=False)
+            for k in range(5, 25):
+                scr.printf(31, color=8, next_line=False, iscode=True)
+
     # i = 0
     # color = 0
     # for y in range(20, -1, -1):

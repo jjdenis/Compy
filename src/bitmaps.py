@@ -13,7 +13,10 @@ class Bitmaps(object):
         for filename in filenames:
             if '.bmp' not in filename:
                 continue
-            char_id = int(filename.replace('.bmp', ''))
+            try:
+                char_id = int(filename.replace('.bmp', ''))
+            except:
+                continue
             if char_id < 0 or char_id > 400:
                 continue
             bitmap = Bitmap('{}/{}'.format(dirpath, filename))

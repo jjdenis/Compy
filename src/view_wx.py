@@ -138,8 +138,6 @@ class Pinta(object):
         dc = wx.WindowDC(self.canvas)
 
         bmp = self.bitmaps.get_bitmap(char_id)
-        print "En canvas", char_id
-        print bmp
 
         dc.BeginDrawing()
         dc.SetTextForeground(fg_color)

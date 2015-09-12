@@ -28,19 +28,31 @@ def prueba_print(scr):
 def mapa_caracteres(scr):
     scr.clear_screen()
     scr.printf('\nPinta todos los caracteres\n')
-    i = 0
-    color = 0
-    for y in range(16, -1, -1):
-        for x in range(0, 40):
-            scr.poke(x, y, i, color)
-            i = i + 1
-            color = color + 1
-            if color == 6:
-                color = 7
-            if color == 16:
-                color = 0
 
-
+    for i in range(0, 400):
+        scr.printf('{:>03}='.format(i), next_line=False)
+        scr.printf(i, next_line=False, iscode=True)
+        scr.printf('  '.format(i), next_line=False)
+        if (i+1)%100 == 0:
+            scr.wait_key()
+            scr.clear_screen()
+            scr.printf('\n')
+        if (i+1)%5 == 0:
+            scr.printf('')
+    # i = 0
+    # color = 0
+    # for y in range(20, -1, -1):
+    #     for x in range(0, 40):
+    #         print "Pintando caracter", i
+    #         scr.poke(x, y, i, color)
+    #         i = i + 1
+    #         color = color + 1
+    #         if color == 6:
+    #             color = 7
+    #         if color == 16:
+    #             color = 0
+    #
+    #
 
 
 

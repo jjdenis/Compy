@@ -35,23 +35,25 @@ class Control(object):
         else:
             char_id = 32
         # c stands for corrected
-        cx, cy = self.map.set_poked(x, y, char_id, self.ch_color)
-        self._send_to_view('poke', cx, cy, char_id, self.ch_color, self.bg_color)
+        self.set_char_in_screen(char_id, x, y)
 
     def peek(self, x, y):
         char_id, color = self.map.get_poked(x, y)
         return char_id
 
-    def printf(self, to_print='', color=None, next_line = True):
+    def printf(self, to_print='', color=None, next_line = True, iscode=False):
         if color is not None:
             color_c = colors.get_color(color)
             self.ch_color = color_c
-        if isinstance(to_print, basestring):
-            string=unicode(to_print)
-        else:
-            string = unicode(to_print)
+
+        if isinstance(to_print, int) and iscode:
+            x, y = self.printmap.next_x()
+            self.set_char_in_screen(to_print, x, y)
+            return
+
+        string=unicode(to_print)
+
         if not string and next_line:
-            self.printmap.next_line()
             self.printmap.end_line()
 
         for i, ch in enumerate(string):
@@ -67,8 +69,11 @@ class Control(object):
 
             char_id = char_table.get_identifier(ch)
 
-            cx, cy = self.map.set_poked(x, y, char_id, self.ch_color)
-            self._send_to_view('poke', cx, cy, char_id, self.ch_color, self.bg_color)
+            self.set_char_in_screen(char_id, x, y)
+
+    def set_char_in_screen(self, char_id, x, y):
+        cx, cy = self.map.set_poked(x, y, char_id, self.ch_color)
+        self._send_to_view('poke', cx, cy, char_id, self.ch_color, self.bg_color)
 
     def set_bg_color(self, color):
         self.bg_color = color

@@ -17,12 +17,18 @@ class PressedKey(object):
         self.sensibilidad = SENSIBILIDAD_TECLADO
 
     def wait_for_key(self):
+        """ Waits and returns one key, even if the keystroke was tiny
+        it also makes sure it only returns one """
         self._read_from_view()
         while not self.key_this_pass:
             self._read_from_view()
         return self.key_this_pass
 
     def check_for_key(self):
+        """
+        Returns one key in one keystroke, multiple keys if constantly pressed
+        The first keystroke is graduated so just one step is possible
+        """
         self._read_from_view()
         if self.key_queue:
             return self.key_queue.pop(0)

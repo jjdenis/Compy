@@ -3,6 +3,15 @@
 from src.run import run
 from time import time, sleep
 
+A = 65
+B = 66
+Q = 81
+DCHA = 316
+IZDA = 314
+ABAJO = 317
+ARRIBA = 315
+
+
 def programa_principal(scr):
 
     mapa_caracteres(scr)
@@ -28,22 +37,27 @@ def prueba_print(scr):
 def mapa_caracteres(scr):
     scr.clear_screen()
 
-    for i in range(0, 400):
-        if i%10 == 0:
-            scr.printf('{:>03}-{:>03}'.format(i, i+9))
+    tecla = 0
+    char_cod = 0
+    while tecla != Q:
+        if char_cod%10 == 0:
+            scr.printf('{:>03}-{:>03}'.format(char_cod, char_cod+9))
 
-        scr.printf(i, color = 4, next_line=False, iscode=True)
+        scr.printf(char_cod, color = 4, next_line=False, iscode=True)
         scr.printf(31,color=8, next_line=False, iscode = True)
 
-        if (i+1)%100 == 0:
-            scr.wait_key()
+        if (char_cod+1)%100 == 0:
+            tecla = scr.wait_key()
+            if tecla == ARRIBA and char_cod > 101:
+                char_cod=char_cod-200
             scr.clear_screen()
             scr.printf('\n')
-        if (i+1)%10 == 0:
+        if (char_cod+1)%10 == 0:
             scr.printf('')
             scr.printf('       ',next_line=False)
             for k in range(5, 25):
                 scr.printf(31, color=8, next_line=False, iscode=True)
+        char_cod = char_cod + 1
 
     # i = 0
     # color = 0
@@ -65,13 +79,6 @@ def mapa_caracteres(scr):
 
 def prueba_move(scr):
     scr.clear_screen()
-    A = 65
-    B = 66
-    Q = 81
-    DCHA = 316
-    IZDA = 314
-    ABAJO = 317
-    ARRIBA = 315
 
     x = 0
     y = 0

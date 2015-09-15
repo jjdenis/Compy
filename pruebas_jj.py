@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from src.run import run
-from time import time, sleep
+from src.helpers import MapaDeCaracteres
 
 A = 65
 B = 66
@@ -12,21 +11,20 @@ ABAJO = 317
 ARRIBA = 315
 
 
-def programa_principal(scr):
+def programa_principal():
 
-    mapa_caracteres(scr)
+    MapaDeCaracteres(scr)
+
+    prueba_print()
     scr.wait_key()
 
-    prueba_print(scr)
-    scr.wait_key()
-
-    prueba_move(scr)
+    prueba_move()
     scr.stop()
 
     #scr.stop()
 
 
-def prueba_print(scr):
+def prueba_print():
     scr.clear_screen()
     scr.printf(u'╭')
     for i in range(0, 100):
@@ -34,7 +32,7 @@ def prueba_print(scr):
     scr.poke(10, 10, u'╭', color=0)
 
 
-def mapa_caracteres(scr):
+def mapa_caracteres1(scr):
     scr.clear_screen()
 
     tecla = 0
@@ -62,25 +60,10 @@ def mapa_caracteres(scr):
                 scr.printf(31, color=8, next_line=False, iscode=True)
         char_cod = char_cod + 1
 
-    # i = 0
-    # color = 0
-    # for y in range(20, -1, -1):
-    #     for x in range(0, 40):
-    #         print "Pintando caracter", i
-    #         scr.poke(x, y, i, color)
-    #         i = i + 1
-    #         color = color + 1
-    #         if color == 6:
-    #             color = 7
-    #         if color == 16:
-    #             color = 0
-    #
-    #
 
 
 
-
-def prueba_move(scr):
+def prueba_move():
     scr.clear_screen()
 
     x = 0
@@ -112,4 +95,12 @@ def prueba_move(scr):
             scr.poke(x, y, B, 'light_red')
 
 
-run(programa_principal)
+##################
+##################
+
+from src.run import run
+def pg(screen):
+    global scr
+    scr=screen
+    programa_principal()
+run(pg)

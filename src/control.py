@@ -33,7 +33,7 @@ class Control(object):
         if code:
             char_id = char_table.get_identifier(code)
         else:
-            char_id = 32
+            char_id = 31
         # c stands for corrected
         self.set_char_in_screen(char_id, x, y)
 

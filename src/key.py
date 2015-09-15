@@ -19,9 +19,11 @@ class PressedKey(object):
     def wait_for_key(self):
         """ Waits and returns one key, even if the keystroke was tiny
         it also makes sure it only returns one """
+        self.key_queue = []
         self._read_from_view()
         while not self.key_this_pass:
             self._read_from_view()
+        self.key_queue = []
         return self.key_this_pass
 
     def check_for_key(self):

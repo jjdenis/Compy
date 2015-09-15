@@ -47,6 +47,7 @@ unichar = [
     (8,  u'◤',  'Black Upper Left Triangle'),
     (9,  u'◥',  'Black Upper Right Triangle'),
 
+    (31,   u'█',   'Full Block'),
     (32,   u' ',   'Space'),
     (33,   u'!',   'Exclamation mark'),
     (34,   u'"',   'Double quotes (or speech marks)'),
@@ -141,26 +142,29 @@ unichar = [
     (123,  u'{',   'Opening brace'),
     (124,  u'|',   'Vertical bar'),
     (125,  u'}',   'Closing brace'),
+    (126,  u'’',   'Right Single Quotation Mark'),
+    (127,  u'>',   'Greater-than Sign'),
+
     (126,  u'→',  'Rightwards Arrow'),
     (127,  u'↓',  'Downwards Arrow'),
     (128,  u'←',  'Leftwards Arrow'),
     (129,  u'↑',  'Upwards Arrow'),
 
-    (300, u'┏',  'Box Drawings Heavy Down And Right'),
-    (301, u'┓',  'Box Drawings Heavy Down And Left'),
-    (302, u'┛',  'Box Drawings Heavy Up And Left'),
-    (303, u'┗',  'Box Drawings Heavy Up And Right'),
-    (304, u'━',  'Box Drawings Heavy Horizontal'),
-    (305, u'┃',  'Box Drawings Heavy Vertical'),
-    (306, u'┳',  'Box Drawings Heavy Down And Horizontal'),
-    (307, u'┫',  'Box Drawings Heavy Vertical And Left'),
-    (308, u'┻',  'Box Drawings Heavy Up And Horizontal'),
-    (309, u'┣',  'Box Drawings Heavy Vertical And Right'),
-    (310, u'╋',  'Box Drawings Heavy Vertical And Horizontal'),
-    (311, u'╭',  'Box Drawings Light Arc Down And Right'),
-    (312, u'╮',  'Box Drawings Light Arc Down And Left'),
-    (313, u'╯',  'Box Drawings Light Arc Up And Left'),
-    (314, u'╰',  'Box Drawings Light Arc Up And Right'),
+    (250, u'┏',  'Box Drawings Heavy Down And Right'),
+    (251, u'┓',  'Box Drawings Heavy Down And Left'),
+    (252, u'┛',  'Box Drawings Heavy Up And Left'),
+    (253, u'┗',  'Box Drawings Heavy Up And Right'),
+    (254, u'━',  'Box Drawings Heavy Horizontal'),
+    (255, u'┃',  'Box Drawings Heavy Vertical'),
+    (256, u'┳',  'Box Drawings Heavy Down And Horizontal'),
+    (257, u'┫',  'Box Drawings Heavy Vertical And Left'),
+    (258, u'┻',  'Box Drawings Heavy Up And Horizontal'),
+    (259, u'┣',  'Box Drawings Heavy Vertical And Right'),
+    (260, u'╋',  'Box Drawings Heavy Vertical And Horizontal'),
+    (261, u'╭',  'Box Drawings Light Arc Down And Right'),
+    (262, u'╮',  'Box Drawings Light Arc Down And Left'),
+    (263, u'╯',  'Box Drawings Light Arc Up And Left'),
+    (264, u'╰',  'Box Drawings Light Arc Up And Right'),
 
 
 
@@ -175,6 +179,8 @@ unichar = [
     (316, u'╲',  'Box Drawings Light Diagonal Upper Left To Lower Right'),
     (317, u'╳',  'Box Drawings Light Diagonal Cross'),
 """
+
+
 
     # , u'·',  # Middle Dot
 

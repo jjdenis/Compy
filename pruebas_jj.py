@@ -39,7 +39,7 @@ def mapa_caracteres(scr):
 
     tecla = 0
     char_cod = 0
-    while tecla != Q:
+    while True:
         if char_cod%10 == 0:
             scr.printf('{:>03}-{:>03}'.format(char_cod, char_cod+9))
 
@@ -48,10 +48,13 @@ def mapa_caracteres(scr):
 
         if (char_cod+1)%100 == 0:
             tecla = scr.wait_key()
+            if tecla == Q:
+                break
             if tecla == ARRIBA and char_cod > 101:
                 char_cod=char_cod-200
             scr.clear_screen()
             scr.printf('\n')
+
         if (char_cod+1)%10 == 0:
             scr.printf('')
             scr.printf('       ',next_line=False)

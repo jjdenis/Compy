@@ -46,6 +46,10 @@ class Control(object):
             color_c = colors.get_color(color)
             self.ch_color = color_c
 
+        if to_print == '' or to_print is None:
+            self.printmap.next_line()
+            return
+
         if isinstance(to_print, int) and iscode:
             x, y = self.printmap.next_x()
             self.set_char_in_screen(to_print, x, y)
@@ -55,23 +59,19 @@ class Control(object):
 
         string=unicode(to_print)
 
-        if not string and next_line:
-            self.printmap.end_line()
 
         for i, ch in enumerate(string):
             if ch == u'\n':
                 self.printmap.next_line()
-                self.printmap.end_line()
                 continue
-            first_char = (i == 0)
-            if next_line and first_char:
-                x, y = self.printmap.next_line()
-            else:
-                x, y = self.printmap.next_x()
+
+            x, y = self.printmap.get_next_pos()
 
             char_id = char_table.get_identifier(ch)
-
             self.set_char_in_screen(char_id, x, y)
+            if i == len(string)-1:
+                if next_line:
+                    self.printmap.next_line()
 
     def set_char_in_screen(self, char_id, x, y):
         cx, cy = self.map.set_poked(x, y, char_id, self.ch_color)
@@ -89,7 +89,7 @@ class Control(object):
 
     def clear_screen(self):
         self._reset_canvas()
-        self.printmap.go_end_scr()
+        self.printmap.go_init_scr()
         self.map.clear(self.bg_color)
 
     def stop(self):

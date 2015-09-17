@@ -12,16 +12,22 @@ LAST_LINE  = 0
 
 class PrintMap(object):
     """
-    LLeva x e y, la posición (en el mapa xy lógico) del último carácter que se imprimió con printf
+    LLeva x e y, la posición (en el mapa xy lógico) del
+    próximo carácter donde se va a imprimir con printf
 
     """
     def __init__(self):
         self.x = None
         self.y = None
-        self.go_end_scr()
+        self.go_init_scr()
 
-    def end_line(self):
+    def ini_line(self):
         self.x = LAST_X
+
+    def get_next_pos(self):
+        posx, posy = (self.x, self.y)
+        self.next_x()
+        return posx, posy
 
     def next_line(self):
         in_last_line = self.y == LAST_LINE
@@ -46,9 +52,9 @@ class PrintMap(object):
     def go_first_x(self):
         self.x = FIRST_X
 
-    def go_end_scr(self):
-        self.x = LAST_X
-        self.y = LAST_LINE
+    def go_init_scr(self):
+        self.go_first_line()
+        self.go_first_x()
 
 
 class ScreenMap(object):

@@ -72,12 +72,12 @@ def demo4():
 
 def demo5():
     scr.clear_screen()
-    scr.printf("Hola Juanjo!!", next_line=True)
-    scr.printf("Hola Juanjo!!", next_line=True)
+    scr.printf("Hola Juanjo!!", next_line=False)
+    scr.printf("Hola Juanjo!!")
     scr.printf("Hola Juanjo!!")
     scr.printf("")
     scr.printf("Hola Juanjo!!")
-    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!", next_line=False)
     scr.printf("Hola Juanjo!!")
     scr.wait_key()
 

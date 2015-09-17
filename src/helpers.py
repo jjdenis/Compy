@@ -29,6 +29,7 @@ class MapaDeCaracteres(object):
 
 
     def pinta_100(self, init_code):
+        print init_code
         self.resetea_pantalla()
         for fila in range(0,10):
             char_cod = 10 * fila + init_code
@@ -37,21 +38,23 @@ class MapaDeCaracteres(object):
             for columna in range(0,10):
                 char_cod = 10 * fila + columna + init_code
                 self.pinta_caracter(char_cod)
+
         self.pinta_separador_filas()
 
 
     def resetea_pantalla(self):
         scr.clear_screen()
-        scr.printf('\n')
+        scr.printf('')
 
     def pinta_separador_filas(self):
         scr.printf()
         scr.printf('       ', next_line=False)
         for k in range(5, 26):
             scr.printf(31, color=8, next_line=False, iscode=True)
+        scr.printf()
 
     def nombre_fila(self, char_cod):
-        scr.printf('{:>03}-{:>03}'.format(char_cod, char_cod + 9))
+        scr.printf('{:>03}-{:>03}'.format(char_cod, char_cod + 9), next_line=False)
         scr.printf(31, color=8, next_line=False, iscode=True)
 
     def pinta_caracter(self, char_cod):

@@ -4,7 +4,7 @@
 
 Escribe, ejecuta y observa el resultado:
 
-    def programa_principal(pnt):
+    def programa_principal(scr):
         scr.printf("Hola!!!")
 
 

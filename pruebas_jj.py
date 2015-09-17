@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from src.helpers import MapaDeCaracteres
+
 
 A = 65
 B = 66
@@ -13,7 +13,9 @@ ARRIBA = 315
 
 def programa_principal():
 
-    MapaDeCaracteres(scr)
+    ejercicios()
+
+    scr.mapa()
 
     prueba_print()
     scr.wait_key()
@@ -22,6 +24,86 @@ def programa_principal():
     scr.stop()
 
     #scr.stop()
+
+
+def ejercicios():
+
+    demo1()
+    demo2()
+    demo3()
+    demo4()
+    demo5()
+    demo6()
+    demo7()
+
+
+def demo1():
+    scr.clear_screen()
+    scr.printf("¡¡Así se imprime en la pantalla!!!")
+    scr.wait_key()
+
+def demo2():
+    scr.clear_screen()
+    a = 'amigo'
+    scr.printf("Hola "+ a)
+    scr.wait_key()
+
+def demo3():
+    scr.clear_screen()
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.wait_key()
+
+def demo4():
+    scr.clear_screen()
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.wait_key()
+
+
+def demo5():
+    scr.clear_screen()
+    scr.printf("Hola Juanjo!!", next_line=True)
+    scr.printf("Hola Juanjo!!", next_line=True)
+    scr.printf("Hola Juanjo!!")
+    scr.printf("")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.wait_key()
+
+
+
+def demo6():
+    pass
+
+def demo7():
+    pass
+
+def demo8():
+    pass
+
+def demo9():
+    pass
+
+def demo10():
+    pass
+
+def demo11():
+    pass
+
+def demo12():
+    pass
+
 
 
 def prueba_print():

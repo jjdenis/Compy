@@ -9,7 +9,7 @@ from src.colors import colors
 from src.char_table import CharTable
 from src.settings import INIT_MSG
 from src.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
-
+from src.helpers import MapaDeCaracteres
 
 char_table = CharTable()
 
@@ -50,6 +50,8 @@ class Control(object):
             x, y = self.printmap.next_x()
             self.set_char_in_screen(to_print, x, y)
             return
+        elif isinstance(to_print, str):
+            to_print=to_print.decode('utf-8')
 
         string=unicode(to_print)
 
@@ -112,6 +114,8 @@ class Control(object):
     def _send_to_view(self, *args):
         self.view.send(*args)
 
+    def mapa(self):
+        MapaDeCaracteres(self)
 
 
 class View(object):

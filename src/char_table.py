@@ -7,30 +7,39 @@ from unidecode import unidecode
 class CharTable(object):
     def __init__(self):
         self.chars_by_unicode = {}
+        self.chars_by_code = {}
         for c in unichar:
             self.chars_by_unicode[c[1]]=c[0]
+            self.chars_by_code[c[0]]=c[1]
 
-    def get_identifier(self, code):
-        if not code:
+    def get_code(self, identifier):
+        if not identifier:
             return 5
-        if isinstance(code, int):
-            char_id = code
-            return char_id
+        if isinstance(identifier, int):
+            code = identifier
+            return code
         try:
-            char_id = self.chars_by_unicode[code]
-            return char_id
+            code = self.chars_by_unicode[identifier]
+            return code
         except:
             pass
 
         try:
-            in_plain_string=unidecode(code)
-            char_id = self.chars_by_unicode[in_plain_string]
-            return char_id
+            in_plain_string=unidecode(identifier)
+            code = self.chars_by_unicode[in_plain_string]
+            return code
         except:
             pass
 
         return 5
 
+    def get_unicode(self, code):
+        a=None
+        try:
+            a = self.chars_by_code[code]
+        except:
+            a=None
+        return a
 
 
 

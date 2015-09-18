@@ -11,13 +11,14 @@ from src.settings import INIT_MSG
 from src.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
 from src.helpers import MapaDeCaracteres
 
-char_table = CharTable()
+
 
 class Control(object):
     def __init__(self, queue_to_view, queue_from_view):
         self.view = View(queue_to_view, queue_from_view)
         self.key = PressedKey(self.view.receive)
         self.map = ScreenMap()
+        self.char_table = CharTable()
         self.printmap = PrintMap()
         self.fm_color = INIT_FM_COLOR
         self.bg_color = INIT_BG_COLOR
@@ -31,7 +32,7 @@ class Control(object):
             self.ch_color = color_c
 
         if code:
-            char_id = char_table.get_identifier(code)
+            char_id = self.char_table.get_code(code)
         else:
             char_id = 31
         # c stands for corrected
@@ -67,7 +68,7 @@ class Control(object):
 
             x, y = self.printmap.get_next_pos()
 
-            char_id = char_table.get_identifier(ch)
+            char_id = self.char_table.get_code(ch)
             self.set_char_in_screen(char_id, x, y)
             if i == len(string)-1:
                 if next_line:
@@ -103,6 +104,19 @@ class Control(object):
     def check_key(self):
         key = self.key.check_for_key()
         return key
+
+    def input(self, message = ''):
+        self.printf(message, next_line=False)
+        input = ''
+        key = 0
+        while key != 13:
+            key = self.key.wait_for_key()
+            char=self.char_table.get_unicode(key)
+            if char:
+                input +=char
+                self.printf(char, next_line=False)
+        self.printf()
+        return input
 
     def _reset_canvas(self):
         self._send_to_view('reset_canvas', self.fm_color, self.bg_color)

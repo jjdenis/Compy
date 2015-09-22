@@ -13,7 +13,7 @@ class CharTable(object):
             self.chars_by_code[c[0]]=c[1]
 
     def get_code(self, identifier):
-        if not identifier:
+        if identifier is None:
             return 5
         if isinstance(identifier, int):
             code = identifier

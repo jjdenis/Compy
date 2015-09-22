@@ -15,6 +15,8 @@ ARRIBA = 315
 def programa_principal():
 
     demo_primera()
+    demo_bg_color()
+    demo_fm_color()
     demo_input()
     demo_printf()
     demo_print_sin_texto()
@@ -34,6 +36,39 @@ def demo_primera():
     scr.clear_screen()
     scr.printf("¡¡Así se imprime en la pantalla!!!")
     scr.wait_key()
+
+def demo_bg_color():
+    scr.clear_screen()
+    scr.xyprint(0,24,"¡¡Así se cambia el color de fondo!!!")
+    scr.xyprint(5,1,"Pulsa cualquier tecla para cambiar")
+    scr.xyprint(15,0,"Pulsa q para continuar")
+
+    color = 0
+    while True:
+        scr.xyprint(0, 22, 'Color =', color)
+        scr.set_bg_color(color)
+        color = color + 1
+        k=scr.wait_key()
+        if k == Q:
+            break
+
+
+def demo_fm_color():
+    scr.clear_screen()
+    scr.xyprint(0,24,"¡¡Así se cambia el color del marco!!!")
+    scr.xyprint(5,1,"Pulsa cualquier tecla para cambiar")
+    scr.xyprint(15,0,"Pulsa q para continuar")
+
+    color = 0
+    while True:
+        scr.xyprint(0, 22, 'Color =', color)
+        scr.set_fm_color(color)
+        color = color + 1
+        k=scr.wait_key()
+        if k == Q:
+            break
+
+
 
 def demo_input():
     scr.clear_screen()

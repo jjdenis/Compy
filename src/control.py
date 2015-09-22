@@ -31,12 +31,29 @@ class Control(object):
             color_c = colors.get_color(color)
             self.ch_color = color_c
 
-        if code:
+        if isinstance(code, int):
             char_id = self.char_table.get_code(code)
+            self.set_char_in_screen(char_id, x, y)
         else:
             char_id = 31
+            self.set_char_in_screen(char_id, x, y)
+
         # c stands for corrected
-        self.set_char_in_screen(char_id, x, y)
+
+    def xyprint(self, x, y, *args):
+        string = u''
+        for to_chain in args:
+            if isinstance(to_chain, str):
+                to_chain=to_chain.decode('utf-8')
+            to_chain=unicode(to_chain)
+            string += to_chain
+
+        for i, ch in enumerate(string):
+            if ch == u'\n':
+                continue
+            char_id = self.char_table.get_code(ch)
+            self.set_char_in_screen(char_id, x, y)
+            x=x+1
 
     def peek(self, x, y):
         char_id, color = self.map.get_poked(x, y)
@@ -79,12 +96,18 @@ class Control(object):
         self._send_to_view('poke', cx, cy, char_id, self.ch_color, self.bg_color)
 
     def set_bg_color(self, color):
-        self.bg_color = color
+        if color is None:
+            return
+        color_c = colors.get_color(color)
+        self.bg_color = color_c
         self._reset_canvas()
         self._write_all_chars()
 
     def set_fm_color(self, color):
-        self.fm_color = color
+        if color is None:
+            return
+        color_c = colors.get_color(color)
+        self.fm_color = color_c
         self._reset_canvas()
         self._write_all_chars()
 
@@ -123,7 +146,7 @@ class Control(object):
 
     def _write_all_chars(self):
         for poked in self.map.written:
-            self._send_to_view('poke', poked.x, poked.y, poked.code, poked.color)
+            self._send_to_view('poke', poked.x, poked.y, poked.code, poked.color, self.bg_color)
 
     def _send_to_view(self, *args):
         self.view.send(*args)

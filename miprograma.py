@@ -4,16 +4,50 @@
 from time import sleep
 
 def programa_principal():
-
     scr.clear_screen()
-    scr.printf("¡¡Así se imprime en la pantalla!!!")
+    i=0
+    key=0
+    x=0
+    y=0
+    imagen = 0
+    while True:
+
+        scr.poke(x, y, imagen, color=i)
+        miroarriba = scr.peek(x, y+1)
+
+        scr.xyprint(0, 24, 'arriba hay un = ', miroarriba, '   ')
+        scr.xyprint(0, 23, 'key=', key)
+
+        # scr.printf('x = ', next_line=False)
+        # scr.printf(x)
+        #
+        # scr.printf('y = ', next_line=False)
+        # scr.printf(y)
+
+        key=scr.wait_key()
+
+        if key == 317:
+            y = y - 1
+        elif key == 315:
+            y = y + 1
+        elif key == 314:
+            x = x - 1
+        elif key == 316:
+            x = x + 1
+        elif key == 87:
+            i=i+1
+        elif key == 65:
+            i=5
+        elif key == 83:
+            imagen=5
+        elif key == 68:
+            imagen=4
+        elif key == 70:
+            imagen=0
+        else:
+            pass
+
     scr.wait_key()
-
-
-
-
-
-
 
 
 

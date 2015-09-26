@@ -138,6 +138,13 @@ class Control(object):
             if char:
                 input +=char
                 self.printf(char, next_line=False)
+        try:
+            input=int(input)
+        except:
+            try:
+                input=float(input)
+            except:
+                pass
         self.printf()
         return input
 

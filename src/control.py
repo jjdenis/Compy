@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from time import sleep
+import sys
 
 from src.key import PressedKey
 from src.map import ScreenMap, PrintMap
@@ -12,17 +13,17 @@ from src.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
 from src.helpers import MapaDeCaracteres
 
 
-
 class Control(object):
     def __init__(self, queue_to_view, queue_from_view):
-        self.view = View(queue_to_view, queue_from_view)
-        self.key = PressedKey(self.view.receive)
         self.map = ScreenMap()
         self.char_table = CharTable()
         self.printmap = PrintMap()
         self.fm_color = INIT_FM_COLOR
         self.bg_color = INIT_BG_COLOR
         self.ch_color = INIT_CH_COLOR
+
+        self.comm_to_view = CommToView(queue_to_view, queue_from_view)
+        self.key = PressedKey(self._receive_from_view)
         self._reset_canvas()
         self.printf(INIT_MSG)
 
@@ -156,13 +157,24 @@ class Control(object):
             self._send_to_view('poke', poked.x, poked.y, poked.code, poked.color, self.bg_color)
 
     def _send_to_view(self, *args):
-        self.view.send(*args)
+        self.comm_to_view.send(*args)
+
+    def _receive_from_view(self):
+        msg = self.comm_to_view.receive()
+        # if msg:
+        #     comando = msg[0]
+        #     if comando == 'closing':
+        #         print comando
+        #         sleep(4)
+        #         sys.exit()
+        return msg
+
 
     def mapa(self):
         MapaDeCaracteres(self)
 
 
-class View(object):
+class CommToView(object):
     def __init__(self, queue1, queue2):
         self.to_view = queue1
         self.from_view = queue2

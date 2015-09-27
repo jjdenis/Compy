@@ -38,7 +38,7 @@ def run(main):
     gui = view.GUIwx(q_to_view, q_from_view)
     gui.run()
 
-    control_parallel.join()
+    print("Gui terminada")
 
     while not q_to_view.empty():
         q_to_view.get()
@@ -50,3 +50,7 @@ def run(main):
     q_to_view.join_thread()
     q_from_view.join_thread()
 
+    control_parallel.terminate()
+    control_parallel.join()
+
+    print("Control terminada")

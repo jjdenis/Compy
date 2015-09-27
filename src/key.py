@@ -63,9 +63,6 @@ class PressedKey(object):
                 self.key_this_pass = tecla
             elif comando == 'key_released':
                 self.curr_key = None
-            elif comando == 'closing':
-                sleep(1)
-                sys.exit()
             else:
                 pass
         self.last_time_read = time()

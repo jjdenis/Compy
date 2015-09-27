@@ -4,12 +4,13 @@
 from time import sleep
 
 
-
 def programa_principal():
     a=3
-    scr.printf(a)
+    bg_color_scrn(3)
+    print_scrn(a)
     s=a+dame_el_doble(7)
-    scr.printf(s)
+    print_scrn(s)
+    otro()
 
 def dame_el_doble(numero):
     return numero+numero+1
@@ -18,38 +19,38 @@ def otro():
     inicio_ana()
 
     while True:
-        opi = scr.input("Dime un numero ")
-        scr.printf(opi, color=opi)
-        scr.printf('Hola', color=opi)
-        scr.printf(opi, color=0)
+        opi = input_scrn("Dime un numero ")
+        print_scrn(opi, color=opi)
+        print_scrn('Hola', color=opi)
+        print_scrn(opi, color=0)
 
 def inicio_ana():
-    scr.clear_screen()
-    scr.set_bg_color(4)
+    clear_scrn()
+    bg_color_scrn(4)
 
-    scr.set_fm_color(6)
-    scr.printf()
+    fm_color_scrn(6)
+    print_scrn()
     num_color = 0
     while num_color<16:
-        scr.printf('           hola ', color=num_color, next_line=False)
-        scr.printf(num_color)
+        print_scrn('           hola ', color=num_color, next_line=False)
+        print_scrn(num_color)
         sleep(0.1)
         num_color = num_color+1
 
     num_color=0
     while num_color<21:
-        scr.set_bg_color(num_color)
+        bg_color_scrn(num_color)
         sleep(0.1)
         num_color = num_color+1
 
     num_color=0
     while num_color<23:
-        scr.set_fm_color(num_color)
+        fm_color_scrn(num_color)
         sleep(0.1)
         num_color = num_color+1
 
 
-    scr.clear_screen()
+    clear_scrn()
 
 
 
@@ -68,13 +69,20 @@ def inicio_ana():
 
 from src.run import run
 def pg(screen):
-    global scr
+    global scr, print_scrn, bg_color_scrn, fm_color_scrn, clear_scrn, input_scrn
     scr=screen
+    print_scrn=scr.printf
+    bg_color_scrn=scr.set_bg_color
+    fm_color_scrn=scr.set_fm_color
+    clear_scrn = scr.clear_screen
+    input_scrn = scr.input
     programa_principal()
 run(pg)
 
 ##################
 ##################
+
+
 
 unichar = [
 

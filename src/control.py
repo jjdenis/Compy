@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from time import sleep
+from time import sleep, time
 import sys
 
 from src.key import PressedKey
@@ -11,7 +11,7 @@ from src.char_table import CharTable
 from src.settings import INIT_MSG
 from src.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
 from src.helpers import MapaDeCaracteres
-
+LIMIT_WO_KEYSTROKE = 120 #secs
 
 class Control(object):
     def __init__(self, queue_to_view, queue_from_view):
@@ -21,6 +21,7 @@ class Control(object):
         self.fm_color = INIT_FM_COLOR
         self.bg_color = INIT_BG_COLOR
         self.ch_color = INIT_CH_COLOR
+        self.last_comm_time = time()
 
         self.comm_to_view = CommToView(queue_to_view, queue_from_view)
         self.key = PressedKey(self._receive_from_view)
@@ -149,6 +150,9 @@ class Control(object):
         self.printf()
         return input
 
+    def mapa(self):
+        MapaDeCaracteres(self)
+
     def _reset_canvas(self):
         self._send_to_view('reset_canvas', self.fm_color, self.bg_color)
 
@@ -158,20 +162,21 @@ class Control(object):
 
     def _send_to_view(self, *args):
         self.comm_to_view.send(*args)
+        self._check_comm_time()
 
     def _receive_from_view(self):
         msg = self.comm_to_view.receive()
-        # if msg:
-        #     comando = msg[0]
-        #     if comando == 'closing':
-        #         print comando
-        #         sleep(4)
-        #         sys.exit()
+        if msg:
+            self.last_comm_time = time()
+        self._check_comm_time()
         return msg
 
+    def _check_comm_time(self):
+        elapsed = time() - self.last_comm_time
+        if elapsed > LIMIT_WO_KEYSTROKE:
+            print 'stop por tiempo'
+            self.stop()
 
-    def mapa(self):
-        MapaDeCaracteres(self)
 
 
 class CommToView(object):

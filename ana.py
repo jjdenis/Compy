@@ -5,7 +5,7 @@ from time import sleep
 
 
 def programa_principal():
-    a=3
+    a = 3
     bg_color_scrn(3)
     print_scrn(a)
     s=a+dame_el_doble(7)

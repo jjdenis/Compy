@@ -1,5 +1,5 @@
 import sys
-from time import time, sleep
+from time import time
 SENSIBILIDAD_TECLADO = 0.05
 SENSIBILIDAD_INICIO = 0.1
 

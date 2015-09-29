@@ -16,10 +16,11 @@ class PrintMap(object):
     próximo carácter donde se va a imprimir con printf
 
     """
-    def __init__(self):
+    def __init__(self, clear_screen):
         self.x = None
         self.y = None
         self.go_init_scr()
+        self.clear_screen = clear_screen
 
     def ini_line(self):
         self.x = LAST_X
@@ -33,6 +34,7 @@ class PrintMap(object):
         in_last_line = self.y == LAST_LINE
         if in_last_line:
             self.go_first_line()
+            self.clear_screen()
         else:
             self.y -= 1
         self.go_first_x()
@@ -42,6 +44,7 @@ class PrintMap(object):
         in_last_x = (self.x == LAST_X)
         if in_last_x:
             self.next_line()
+            self.clear_screen()
         else:
             self.x += 1
         return self.x, self.y

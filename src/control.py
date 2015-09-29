@@ -17,7 +17,7 @@ class Control(object):
     def __init__(self, queue_to_view, queue_from_view):
         self.map = ScreenMap()
         self.char_table = CharTable()
-        self.printmap = PrintMap()
+        self.printmap = PrintMap(self.clear_screen)
         self.fm_color = INIT_FM_COLOR
         self.bg_color = INIT_BG_COLOR
         self.ch_color = INIT_CH_COLOR

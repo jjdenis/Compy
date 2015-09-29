@@ -10,7 +10,7 @@ from src.colors import colors
 from src.char_table import CharTable
 from src.settings import INIT_MSG
 from src.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
-from src.helpers import MapaDeCaracteres
+from src.helpers import MapaDeCaracteres, ListaDeColores
 LIMIT_WO_KEYSTROKE = 120 #secs
 
 class Control(object):
@@ -152,6 +152,9 @@ class Control(object):
 
     def mapa(self):
         MapaDeCaracteres(self)
+
+    def colors(self):
+        ListaDeColores(self)
 
     def _reset_canvas(self):
         self._send_to_view('reset_canvas', self.fm_color, self.bg_color)

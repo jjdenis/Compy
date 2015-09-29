@@ -3,6 +3,7 @@ __author__ = 'jjdenis'
 
 Q = 81
 ARRIBA = 315
+from src.colors import colors
 
 class MapaDeCaracteres(object):
     def __init__(self, screen):
@@ -60,3 +61,22 @@ class MapaDeCaracteres(object):
     def pinta_caracter(self, char_cod):
         scr.printf(char_cod, color=4, next_line=False, iscode=True)
         scr.printf(31, color=8, next_line=False, iscode=True)
+
+class ListaDeColores(object):
+    def __init__(self, screen):
+        global scr
+        scr=screen
+        self.resetea_pantalla()
+        scr.printf('    Lista de colores \n')
+        scr.printf('')
+
+        for i in range(0, 16):
+            color_name=colors.get_color_name(i)
+            scr.printf('    {:>2} '.format(i), color=i, next_line=False)
+            scr.printf(color_name, color=i)
+        scr.wait_key()
+
+
+    def resetea_pantalla(self):
+        scr.clear_screen()
+        scr.printf('')

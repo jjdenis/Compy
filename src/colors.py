@@ -76,8 +76,12 @@ class Colors(object):
             color = color_code
         return color
 
-
-
+    def get_color_name(self, color_code):
+        if isinstance(color_code, int):
+            color_name = self.color_name_list[color_code%16]
+        else:
+             color_name = color_code
+        return color_name
 
 
 colors = Colors()

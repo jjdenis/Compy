@@ -5,12 +5,12 @@ from time import sleep
 
 
 def programa_principal():
+    colors_scrn()
     a = 3
     bg_color_scrn(3)
     print_scrn(a)
     s=a+dame_el_doble(7)
-    print_scrn(s)
-    otro()
+
 
 def dame_el_doble(numero):
     return numero+numero+1
@@ -69,13 +69,14 @@ def inicio_ana():
 
 from src.run import run
 def pg(screen):
-    global scr, print_scrn, bg_color_scrn, fm_color_scrn, clear_scrn, input_scrn
+    global scr, print_scrn, bg_color_scrn, fm_color_scrn, clear_scrn, input_scrn, colors_scrn
     scr=screen
     print_scrn=scr.printf
     bg_color_scrn=scr.set_bg_color
     fm_color_scrn=scr.set_fm_color
     clear_scrn = scr.clear_screen
     input_scrn = scr.input
+    colors_scrn =scr.colors
     programa_principal()
 run(pg)
 

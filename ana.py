@@ -5,10 +5,13 @@ from time import sleep
 
 
 def programa_principal():
-    colors_scrn()
+
     a = 3
     bg_color_scrn(3)
+    print_scrn(a, reverse=True)
     print_scrn(a)
+    input_scrn()
+    colors_scrn()
     s=a+dame_el_doble(7)
 
 

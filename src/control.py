@@ -28,14 +28,14 @@ class Control(object):
         self._reset_canvas()
         self.printf(INIT_MSG)
 
-    def poke(self, x, y, code, color = None):
+    def poke(self, x, y, code, color = None, reverse=False):
         if color:
             color_c = colors.get_color(color)
             self.ch_color = color_c
 
         if isinstance(code, int):
             char_id = self.char_table.get_code(code)
-            self.set_char_in_screen(char_id, x, y)
+            self.set_char_in_screen(char_id, x, y, reverse)
         else:
             char_id = 31
             self.set_char_in_screen(char_id, x, y)
@@ -61,7 +61,7 @@ class Control(object):
         char_id, color = self.map.get_poked(x, y)
         return char_id
 
-    def printf(self, to_print='', color=None, next_line = True, iscode=False):
+    def printf(self, to_print='', color=None, next_line = True, iscode=False, reverse=False):
         if color is not None:
             color_c = colors.get_color(color)
             self.ch_color = color_c
@@ -72,7 +72,7 @@ class Control(object):
 
         if isinstance(to_print, int) and iscode:
             x, y = self.printmap.next_x()
-            self.set_char_in_screen(to_print, x, y)
+            self.set_char_in_screen(to_print, x, y, reverse)
             return
         elif isinstance(to_print, str):
             to_print=to_print.decode('utf-8')
@@ -88,14 +88,18 @@ class Control(object):
             x, y = self.printmap.get_next_pos()
 
             char_id = self.char_table.get_code(ch)
-            self.set_char_in_screen(char_id, x, y)
+            self.set_char_in_screen(char_id, x, y, reverse)
             if i == len(string)-1:
                 if next_line:
                     self.printmap.next_line()
 
-    def set_char_in_screen(self, char_id, x, y):
-        cx, cy = self.map.set_poked(x, y, char_id, self.ch_color)
-        self._send_to_view('poke', cx, cy, char_id, self.ch_color, self.bg_color)
+    def set_char_in_screen(self, char_id, x, y, reverse=False):
+        if not reverse:
+            cx, cy = self.map.set_poked(x, y, char_id, self.ch_color)
+            self._send_to_view('poke', cx, cy, char_id, self.ch_color, self.bg_color)
+        else:
+            cx, cy = self.map.set_poked(x, y, char_id, self.bg_color)
+            self._send_to_view('poke', cx, cy, char_id, self.bg_color, self.ch_color)
 
     def set_bg_color(self, color):
         if color is None:
@@ -157,6 +161,7 @@ class Control(object):
         ListaDeColores(self)
 
     def _reset_canvas(self):
+
         self._send_to_view('reset_canvas', self.fm_color, self.bg_color)
 
     def _write_all_chars(self):

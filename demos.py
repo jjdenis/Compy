@@ -15,6 +15,7 @@ ARRIBA = 315
 def programa_principal():
 
     demo_primera()
+    demo_colores()
     demo_bg_color()
     demo_fm_color()
     demo_input()
@@ -37,15 +38,21 @@ def demo_primera():
     scr.printf("¡¡Así se imprime en la pantalla!!!")
     scr.wait_key()
 
+def demo_colores():
+    scr.colors()
+
+
+
 def demo_bg_color():
     scr.clear_screen()
+    scr.printf('', color=5)
     scr.xyprint(0,24,"¡¡Así se cambia el color de fondo!!!")
     scr.xyprint(5,1,"Pulsa cualquier tecla para cambiar")
     scr.xyprint(15,0,"Pulsa q para continuar")
 
     color = 0
     while True:
-        scr.xyprint(0, 22, 'Color =', color)
+        scr.xyprint(0, 22, 'Color numero: ', color)
         scr.set_bg_color(color)
         color = color + 1
         k=scr.wait_key()

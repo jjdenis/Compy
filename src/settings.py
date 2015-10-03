@@ -23,9 +23,7 @@ Pulsa la tecla "escape" para salir
 
 NUMBER_OF_COLORS = 20
 
-from src.colors import colors
-
-INIT_FM_COLOR = colors.cyan
-INIT_BG_COLOR = colors.white
-INIT_CH_COLOR = colors.blue
+INIT_FM_COLOR = 'ligh_blue'
+INIT_BG_COLOR = 'blue'
+INIT_CH_COLOR = 'light_blue'
 

@@ -70,7 +70,7 @@ class ListaDeColores(object):
         scr.printf('    Lista de colores \n')
         scr.printf('')
 
-        for i in range(0, 16):
+        for i in range(0, 20):
             color_name=colors.get_color_name(i)
             scr.printf('    {:>2} '.format(i), color=i, next_line=False)
             scr.printf(color_name, color=i)

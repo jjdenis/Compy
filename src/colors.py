@@ -3,25 +3,40 @@
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 
+from settings import NUMBER_OF_COLORS
+
 COLORS = [
-    ('black'       , (   0,   0,   0) ),
-    ('dark_grey'   , (  51,  51,  51) ),
-    ('grey'        , ( 119, 119, 119) ),
-    ('light_grey'  , ( 187, 187, 187) ),
+    ('light_blue'  , ( 0xa6, 0xce, 0xe3) ),
+    ('blue'        , (   0x1f,  0x78, 0xb4) ),
+    ('light_green'  , ( 0xb2, 0xdf, 0x8a) ),
+    ('green'       , (   0x33, 0xa0,  0x2c) ),
+    ('pink'       , (   0xfb,   0x9a,   0x99) ),
+    ('red'         , ( 0xe3,   0x1a,   0x1c) ),
+    ('light_orange'      , ( 0xfd,  0xbf,  0x6f) ),
+    ('orange'      , ( 0xff,  0x7f,  0x00) ),
+    ('light_violet'      , ( 0xca,  0xb2, 0xd6) ),
+    ('violet'      , ( 0x6a,  0x3d, 0x9a) ),
+    ('yellow'      , ( 0xff, 0xff, 0x99) ),
+    ('brown'       , ( 0xb1,  0x59,  0x28) ),
     ('white'       , ( 255, 255, 255) ),
+    ('light_grey'  , ( 187, 187, 187) ),
+    ('grey'        , ( 119, 119, 119) ),
+    ('dark_grey'   , (  51,  51,  51) ),
+    ('black'       , (   0x0,   0x0,   0x0) ),
+    # ('red'         , ( 136,   0,   0) ),
+    # ('red1'         , ( 255,   21,   0) ),
     # cyan        , ( 0x66, 0xDA, 0xFF)
-    ('blue'        , (   0,  0, 170) ),
-    ('light_blue'  , ( 0x97, 0x97, 0xFF) ),
-    ('cyan'        , ( 170, 255, 238) ),
-    ('light_green'  , ( 0x97, 0xFF, 0x97) ),
-    ('green'       , (   0, 204,  85) ),
-    ('yellow'      , ( 238, 238, 119) ),
-    ('orange'      , ( 221,  136,  85) ),
-    ('red'         , ( 136,   0,   0) ),
-    ('light_red'   , ( 255, 119,  119) ),
+    # ('cyan'        , ( 0x66, 0xDA, 0xFF)),
+    ('cyan'        , ( 0x00, 0xEB, 0xFF)),
+    ('purple'   , ( 0xb7, 0x40,  0xff) ),
+    ('deep_pink'   , ( 0xff, 0x14,  0x93) ),
+    # ('hot_pink'   , ( 0xff, 0x69,  0xb4) ),
+
+    # ('brown'       , ( 102,  68,  0) ),
+    # ('light_red'   , ( 255, 119,  119) ),
+    # ('orange'      , ( 221,  136,  85) ),
+    # ('cyan'        , ( 170, 255, 238) ),
     # 66 DA FF
-    ('purple'      , ( 204,  68, 204) ),
-    ('brown'       , ( 102,  68,  0) ),
     #'light_green' , ( 170, 255, 102)
     # light_blue  , ( 0,  136, 255)
     # 97 FF 97 8
@@ -64,7 +79,7 @@ class Colors(object):
 
     def get_color(self, color_code):
         if isinstance(color_code, int):
-            color = self.colors_by_number[color_code%16]
+            color = self.colors_by_number[color_code%NUMBER_OF_COLORS]
         elif isinstance(color_code, basestring):
             try:
                 color = self.colors_by_name[color_code]
@@ -78,7 +93,7 @@ class Colors(object):
 
     def get_color_name(self, color_code):
         if isinstance(color_code, int):
-            color_name = self.color_name_list[color_code%16]
+            color_name = self.color_name_list[color_code%NUMBER_OF_COLORS]
         else:
              color_name = color_code
         return color_name
@@ -88,3 +103,25 @@ colors = Colors()
 # https://www.c64-wiki.com/index.php/Color
 
 
+"""
+    ('white'       , ( 255, 255, 255) ),
+    ('red'         , ( 136,   0,   0) ),
+    ('red1'         , ( 255,   21,   0) ),
+    # cyan        , ( 0x66, 0xDA, 0xFF)
+    # ('cyan'        , ( 0x66, 0xDA, 0xFF)),
+    ('cyan'        , ( 0x00, 0xEB, 0xFF)),
+    ('purple'      , ( 204,  68, 204) ),
+    ('green'       , (   0, 204,  85) ),
+    ('blue'        , (   0,  0, 170) ),
+    ('yellow'      , ( 238, 238, 119) ),
+
+    ('orange'      , ( 221,  136,  85) ),
+    ('brown'       , ( 102,  68,  0) ),
+    ('light_red'   , ( 255, 119,  119) ),
+    ('dark_grey'   , (  51,  51,  51) ),
+    ('grey'        , ( 119, 119, 119) ),
+    ('light_green'  , ( 0x97, 0xFF, 0x97) ),
+    ('light_blue'  , ( 0x97, 0x97, 0xFF) ),
+    ('light_grey'  , ( 187, 187, 187) ),
+
+"""

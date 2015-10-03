@@ -13,7 +13,7 @@ def programa_principal():
     input_scrn()
     colors_scrn()
     s=a+dame_el_doble(7)
-
+    print_scrn(s)
 
 def dame_el_doble(numero):
     return numero+numero+1

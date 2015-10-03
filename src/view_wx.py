@@ -21,6 +21,10 @@ TOTAL_CNVS_PTS_Y = ACTIVE_CNVS_PTS_Y + 2 * FRAME_PTS_Y
 
 ESCAPE = 27
 
+from pyscreenshot import grab
+from time import sleep
+import os
+
 # http://zetcode.com/wxpython/gdi/
 
 class GUIwx(wx.App):
@@ -82,8 +86,10 @@ class GUIwx(wx.App):
     def on_key(self, event):
         key = event.GetKeyCode()
         if key == ESCAPE:
-            self.cierra_por_esc = True
-            self.envia_comando('closing', None, None)
+          self.TakeScreenShot()
+          self.cierra_por_esc = True
+          self.envia_comando('closing', None, None)
+
         # self.sound.Play(wx.SOUND_ASYNC)
         # self.pinta_bloque(0, 0, color="blue")
         # self.pinta_bloque(5, 5, color="blue")
@@ -119,6 +125,16 @@ class GUIwx(wx.App):
 
         if self.cierra_por_esc:
             self.stop()
+
+    def TakeScreenShot(self):
+        os.system('screencapture scr.png')
+        screen = wx.Bitmap('scr.png')
+        rect = self.frame.GetRect()
+        bitmap = screen.GetSubBitmap(rect)
+        img = bitmap.ConvertToImage()
+        fileName = "myImage.png"
+        img.SaveFile(fileName, wx.BITMAP_TYPE_PNG)
+
 
 
 class Pinta(object):

@@ -43,6 +43,7 @@ COLORS = [
     # light_blue  , ( 108,  94, 181)
 ]
 
+
 class Colors(object):
 
     def __init__(self):

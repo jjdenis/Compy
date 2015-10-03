@@ -83,7 +83,7 @@ unichar = [
     (55,   u'7',   'Seven'),
     (56,   u'8',   'Eight'),
     (57,   u'9',   'Nine'),
-    (58,   u',',   'Colon'),
+    (58,   u':',   'Colon'),
     (59,   u';',   'Semicolon'),
     (60,   u'<',   'Less than (or open angled bracket)'),
     (61,   u'=',   'Equals'),

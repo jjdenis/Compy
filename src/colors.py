@@ -19,9 +19,9 @@ COLORS = [
     ('yellow'      , ( 0xff, 0xff, 0x99) ),
     ('brown'       , ( 0xb1,  0x59,  0x28) ),
     ('white'       , ( 255, 255, 255) ),
-    ('light_grey'  , ( 187, 187, 187) ),
-    ('grey'        , ( 119, 119, 119) ),
-    ('dark_grey'   , (  51,  51,  51) ),
+    ('light_grey'  , ( 0xe0, 0xe0, 0xe0) ),
+    ('grey'   , (  0x80,  0x80,  0x80) ),
+    ('dark_grey'        , ( 0x40, 0x40, 0x40) ),
     ('black'       , (   0x0,   0x0,   0x0) ),
     # ('red'         , ( 136,   0,   0) ),
     # ('red1'         , ( 255,   21,   0) ),
@@ -89,6 +89,7 @@ class Colors(object):
                 color = self.colors_by_name[color_name]
         else:
             color = color_code
+        print "Returned color {}".format(color)
         return color
 
     def get_color_name(self, color_code):

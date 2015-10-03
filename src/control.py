@@ -18,9 +18,9 @@ class Control(object):
         self.map = ScreenMap()
         self.char_table = CharTable()
         self.printmap = PrintMap(self.clear_screen)
-        self.fm_color = INIT_FM_COLOR
-        self.bg_color = INIT_BG_COLOR
-        self.ch_color = INIT_CH_COLOR
+        self.fm_color = colors.get_color(INIT_FM_COLOR)
+        self.bg_color = colors.get_color(INIT_BG_COLOR)
+        self.ch_color = colors.get_color(INIT_CH_COLOR)
         self.last_comm_time = time()
 
         self.comm_to_view = CommToView(queue_to_view, queue_from_view)

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 __author__ = 'jjdenis'
 
@@ -80,3 +82,23 @@ class ListaDeColores(object):
     def resetea_pantalla(self):
         scr.clear_screen()
         scr.printf('')
+
+
+class ListOfKeys(object):
+    def __init__(self, screen):
+        global scr
+        scr=screen
+        self.resetea_pantalla()
+        scr.printf('Pulsa una tecla (Q para terminar)')
+        while True:
+            a = scr.wait_key()
+            scr.clear_screen()
+            scr.printf(u'El código de tecla pulsado es '+str(a))
+            scr.printf('Pulsa una tecla (Q para terminar)')
+            if a == Q:
+                break
+
+    def resetea_pantalla(self):
+        scr.clear_screen()
+        scr.printf('')
+

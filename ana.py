@@ -5,15 +5,16 @@ from time import sleep
 
 
 def programa_principal():
-
-    a = 3
-    bg_color_scrn(3)
-    print_scrn(a, reverse=True)
-    print_scrn(a)
-    input_scrn()
-    colors_scrn()
-    s=a+dame_el_doble(7)
-    print_scrn(s)
+    scr.clear_screen()
+    scr.printf('')
+    scr.printf('Sum two values challenge'.upper().center(39), color=6)
+    scr.printf('')
+    scr.set_name_of_project('sum_two_values')
+    v1 = scr.input('Give me one value: ', color=10)
+    v2 = scr.input('Give me another value: ')
+    scr.printf()
+    ans = 'The sum of {} and {} is {}'.format(v1, v2, v1+v2)
+    scr.printf(ans)
 
 def dame_el_doble(numero):
     return numero+numero+1
@@ -26,6 +27,7 @@ def otro():
         print_scrn(opi, color=opi)
         print_scrn('Hola', color=opi)
         print_scrn(opi, color=0)
+
 
 def inicio_ana():
     clear_scrn()

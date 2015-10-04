@@ -10,7 +10,7 @@ from src.colors import colors
 from src.char_table import CharTable
 from src.settings import INIT_MSG
 from src.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
-from src.helpers import MapaDeCaracteres, ListaDeColores
+from src.helpers import MapaDeCaracteres, ListaDeColores, ListOfKeys
 LIMIT_WO_KEYSTROKE = 120 #secs
 
 class Control(object):
@@ -41,6 +41,12 @@ class Control(object):
             self.set_char_in_screen(char_id, x, y)
 
         # c stands for corrected
+
+    def set_name_of_project(self, name):
+        self._send_to_view('name_of_project', name)
+
+        # c stands for corrected
+
 
     def xyprint(self, x, y, *args):
         string = u''
@@ -134,7 +140,11 @@ class Control(object):
         key = self.key.check_for_key()
         return key
 
-    def input(self, message = ''):
+    def input(self, message = '', color=None):
+        if color is not None:
+            color_c = colors.get_color(color)
+            self.ch_color = color_c
+
         self.printf(message, next_line=False)
         input = ''
         key = 0
@@ -159,6 +169,9 @@ class Control(object):
 
     def colors(self):
         ListaDeColores(self)
+
+    def keys(self):
+        ListOfKeys(self)
 
     def _reset_canvas(self):
 

@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import wx
 import random
 from time import time
+import datetime as dtm
 
+import wx
 from src.bitmaps import Bitmaps
 from src.colors import colors
-
+from src.markdown import make_html_challenges
 from src.settings import NUM_COLS, NUM_ROWS, CHAR_PTS_X, CHAR_PTS_Y, FRAME_PTS_X, FRAME_PTS_Y
 
 ORG_ACTIVE_CNVS_X = FRAME_PTS_X
@@ -20,9 +21,8 @@ TOTAL_CNVS_PTS_X = ACTIVE_CNVS_PTS_X + 2 * FRAME_PTS_X
 TOTAL_CNVS_PTS_Y = ACTIVE_CNVS_PTS_Y + 2 * FRAME_PTS_Y
 
 ESCAPE = 27
+C_RARA=199
 
-from pyscreenshot import grab
-from time import sleep
 import os
 
 # http://zetcode.com/wxpython/gdi/
@@ -40,6 +40,7 @@ class GUIwx(wx.App):
         # self.app = wx.App(False)  # Create a new app, don't redirect stdout/stderr to a window.
         self.cierra_por_esc = False
         self.pinta = None
+        self.name_of_project = ''
         wx.App.__init__(self, False)
 
     def OnInit(self):
@@ -62,10 +63,11 @@ class GUIwx(wx.App):
         self.frame.Destroy()
 
     def set_frame(self):
-        frame = wx.Frame(None, wx.ID_ANY, "Hello World") # A Frame is a top-level window.
+        frame = wx.Frame(None, wx.ID_ANY) # A Frame is a top-level window.
         frame.SetClientSize((TOTAL_CNVS_PTS_X, TOTAL_CNVS_PTS_Y))
         frame.Bind(wx.EVT_CLOSE, self.OnClose)
         frame.Move((30,30)) # Pone la ventana arriba a la izquierda
+        frame.SetTitle('Hello world')
         return frame
 
     def set_canvas(self, frame):
@@ -86,9 +88,14 @@ class GUIwx(wx.App):
     def on_key(self, event):
         key = event.GetKeyCode()
         if key == ESCAPE:
-          self.TakeScreenShot()
           self.cierra_por_esc = True
           self.envia_comando('closing', None, None)
+          return
+
+        elif key == C_RARA:
+            self.TakeScreenShot()
+            make_html_challenges()
+            return
 
         # self.sound.Play(wx.SOUND_ASYNC)
         # self.pinta_bloque(0, 0, color="blue")
@@ -123,16 +130,25 @@ class GUIwx(wx.App):
             elif comando == 'close_window':
                 self.stop()
 
+            elif comando == 'name_of_project':
+                self.name_of_project=args[0]
+                title = self.name_of_project.replace('_', ' ').upper()
+                self.frame.SetTitle(title)
+
+
         if self.cierra_por_esc:
             self.stop()
 
     def TakeScreenShot(self):
+        if not self.name_of_project:
+            return
         os.system('screencapture scr.png')
         screen = wx.Bitmap('scr.png')
         rect = self.frame.GetRect()
         bitmap = screen.GetSubBitmap(rect)
         img = bitmap.ConvertToImage()
-        fileName = "myImage.png"
+        # fn=dtm.datetime.now().strftime('%dd%HH%MM%SS')
+        fileName = "docs/img/{}.png".format(self.name_of_project)
         img.SaveFile(fileName, wx.BITMAP_TYPE_PNG)
 
 

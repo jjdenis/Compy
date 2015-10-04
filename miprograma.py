@@ -4,6 +4,7 @@
 from time import sleep
 
 def programa_principal():
+    scr.keys()
     scr.clear_screen()
     i=0
     key=0

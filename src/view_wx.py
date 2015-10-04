@@ -3,13 +3,12 @@
 
 import random
 from time import time
-import datetime as dtm
 
 import wx
 from src.bitmaps import Bitmaps
-from src.colors import colors
-from src.markdown import make_html_challenges
-from src.settings import NUM_COLS, NUM_ROWS, CHAR_PTS_X, CHAR_PTS_Y, FRAME_PTS_X, FRAME_PTS_Y
+from src.create_web import make_html_challenges, take_code, TakeScreenShot
+from src.settings import NUM_COLS, NUM_ROWS, CHAR_PTS_X, CHAR_PTS_Y
+from src.settings import FRAME_PTS_X, FRAME_PTS_Y
 
 ORG_ACTIVE_CNVS_X = FRAME_PTS_X
 ORG_ACTIVE_CNVS_Y = FRAME_PTS_Y
@@ -21,11 +20,11 @@ TOTAL_CNVS_PTS_X = ACTIVE_CNVS_PTS_X + 2 * FRAME_PTS_X
 TOTAL_CNVS_PTS_Y = ACTIVE_CNVS_PTS_Y + 2 * FRAME_PTS_Y
 
 ESCAPE = 27
-C_RARA=199
+C_RARA = 199
 
-import os
 
 # http://zetcode.com/wxpython/gdi/
+
 
 class GUIwx(wx.App):
     def __init__(self, queue1, queue2):
@@ -37,7 +36,8 @@ class GUIwx(wx.App):
         self.sound = None
         self.timer = None
         self.dc = None
-        # self.app = wx.App(False)  # Create a new app, don't redirect stdout/stderr to a window.
+        # self.app = wx.App(False)
+        # Create a new app, don't redirect stdout/stderr to a window.
         self.cierra_por_esc = False
         self.pinta = None
         self.name_of_project = ''
@@ -52,7 +52,7 @@ class GUIwx(wx.App):
         return True
 
     def run(self):
-        self.frame.Show(True) # Show the frame.
+        self.frame.Show(True)  # Show the frame.
         self.MainLoop()
 
     def stop(self):
@@ -63,11 +63,11 @@ class GUIwx(wx.App):
         self.frame.Destroy()
 
     def set_frame(self):
-        frame = wx.Frame(None, wx.ID_ANY) # A Frame is a top-level window.
+        frame = wx.Frame(None, wx.ID_ANY)  # A Frame is a top-level window.
         frame.SetClientSize((TOTAL_CNVS_PTS_X, TOTAL_CNVS_PTS_Y))
         frame.Bind(wx.EVT_CLOSE, self.OnClose)
-        frame.Move((30,30)) # Pone la ventana arriba a la izquierda
-        frame.SetTitle('Hello world')
+        frame.Move((30, 30))  # Pone la ventana arriba a la izquierda
+        frame.SetTitle('Comthon')
         return frame
 
     def set_canvas(self, frame):
@@ -82,18 +82,20 @@ class GUIwx(wx.App):
     def set_timer(self, canvas):
         timer = wx.Timer(canvas)
         canvas.Bind(wx.EVT_TIMER, self.on_timer, timer)
-        timer.Start(10) # ms
+        timer.Start(10)  # ms
         return timer
 
     def on_key(self, event):
         key = event.GetKeyCode()
         if key == ESCAPE:
-          self.cierra_por_esc = True
-          self.envia_comando('closing', None, None)
-          return
+            self.cierra_por_esc = True
+            self.envia_comando('closing', None, None)
+            make_html_challenges()
+            return
 
-        elif key == C_RARA:
-            self.TakeScreenShot()
+        if key == C_RARA:
+            TakeScreenShot(self.name_of_project, self.frame)
+            take_code(self.name_of_project)
             make_html_challenges()
             return
 
@@ -131,25 +133,13 @@ class GUIwx(wx.App):
                 self.stop()
 
             elif comando == 'name_of_project':
-                self.name_of_project=args[0]
-                title = self.name_of_project.replace('_', ' ').upper()
-                self.frame.SetTitle(title)
-
+                self.name_of_project = args[0]
+                # title = self.name_of_project.replace('_', ' ').upper()
+                # self.frame.SetTitle(title)
 
         if self.cierra_por_esc:
             self.stop()
 
-    def TakeScreenShot(self):
-        if not self.name_of_project:
-            return
-        os.system('screencapture scr.png')
-        screen = wx.Bitmap('scr.png')
-        rect = self.frame.GetRect()
-        bitmap = screen.GetSubBitmap(rect)
-        img = bitmap.ConvertToImage()
-        # fn=dtm.datetime.now().strftime('%dd%HH%MM%SS')
-        fileName = "docs/img/{}.png".format(self.name_of_project)
-        img.SaveFile(fileName, wx.BITMAP_TYPE_PNG)
 
 
 
@@ -174,7 +164,7 @@ class Pinta(object):
         dc.BeginDrawing()
         dc.SetTextForeground(fg_color)
         dc.SetTextBackground(bg_color)
-        dc.DrawBitmap(bmp, dcx, dcy, useMask= False)
+        dc.DrawBitmap(bmp, dcx, dcy, useMask=False)
         dc.EndDrawing()
         self.canvas.Refresh()
 
@@ -197,7 +187,8 @@ class Pinta(object):
         dc.BeginDrawing()
         dc.SetPen(wx.Pen(color, 1, wx.TRANSPARENT))
         dc.SetBrush(wx.Brush(color, wx.SOLID))
-        dc.DrawRectangle(FRAME_PTS_X, FRAME_PTS_Y, ACTIVE_CNVS_PTS_X, ACTIVE_CNVS_PTS_Y)
+        dc.DrawRectangle(FRAME_PTS_X, FRAME_PTS_Y,
+                         ACTIVE_CNVS_PTS_X, ACTIVE_CNVS_PTS_Y)
         dc.EndDrawing()
         self.canvas.Refresh()
 
@@ -208,9 +199,11 @@ class Q(object):
         y = int(random.random()*20)
         code = int(random.random()*24)+32
 
-        return ['poke', x, y, code, (255,255,255)]
+        return ['poke', x, y, code, (255, 255, 255)]
+
     def put(self, comando):
         pass
+
     def empty(self):
         a = random.choice([True, True, True, True, True, True, True, False])
         return a
@@ -218,10 +211,10 @@ class Q(object):
 
 if __name__ == '__main__':
     from src.colors import Colors
-    colors = Colors()
+    colrs = Colors()
 
     q1 = Q()
     q2 = Q()
-    gui = GUIwx(q1, q2, colors)
-    gui.frame.Show(True) # Show the frame.
+    gui = GUIwx(q1, q2, colrs)
+    gui.frame.Show(True)  # Show the frame.
     gui.MainLoop()

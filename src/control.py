@@ -83,15 +83,16 @@ class Control(object):
         for i, ch in enumerate(string):
             if ch == u'\n':
                 self.printmap.next_line()
+                print 'nono'
                 continue
 
             x, y = self.printmap.get_next_pos()
 
             char_id = self.char_table.get_code(ch)
             self.set_char_in_screen(char_id, x, y, reverse)
-            if i == len(string)-1:
-                if next_line:
-                    self.printmap.next_line()
+
+        if next_line:
+            self.printmap.next_line()
 
     def set_char_in_screen(self, char_id, x, y, reverse=False):
         if not reverse:

@@ -8,7 +8,7 @@ import wx
 from src.bitmaps import Bitmaps
 from src.create_web import make_html_challenges, take_code, TakeScreenShot
 from src.settings import NUM_COLS, NUM_ROWS, CHAR_PTS_X, CHAR_PTS_Y
-from src.settings import FRAME_PTS_X, FRAME_PTS_Y
+from src.settings import FRAME_PTS_X, FRAME_PTS_Y, TITLE
 
 ORG_ACTIVE_CNVS_X = FRAME_PTS_X
 ORG_ACTIVE_CNVS_Y = FRAME_PTS_Y
@@ -40,7 +40,6 @@ class GUIwx(wx.App):
         # Create a new app, don't redirect stdout/stderr to a window.
         self.cierra_por_esc = False
         self.pinta = None
-        self.name_of_project = ''
         wx.App.__init__(self, False)
 
     def OnInit(self):
@@ -67,7 +66,7 @@ class GUIwx(wx.App):
         frame.SetClientSize((TOTAL_CNVS_PTS_X, TOTAL_CNVS_PTS_Y))
         frame.Bind(wx.EVT_CLOSE, self.OnClose)
         frame.Move((30, 30))  # Pone la ventana arriba a la izquierda
-        frame.SetTitle('Comthon')
+        frame.SetTitle(TITLE)
         return frame
 
     def set_canvas(self, frame):
@@ -94,8 +93,8 @@ class GUIwx(wx.App):
             return
 
         if key == C_RARA:
-            TakeScreenShot(self.name_of_project, self.frame)
-            take_code(self.name_of_project)
+            take_code()
+            TakeScreenShot(self.frame)
             make_html_challenges()
             return
 
@@ -132,15 +131,11 @@ class GUIwx(wx.App):
             elif comando == 'close_window':
                 self.stop()
 
-            elif comando == 'name_of_project':
-                self.name_of_project = args[0]
-                # title = self.name_of_project.replace('_', ' ').upper()
-                # self.frame.SetTitle(title)
+            else:
+                pass
 
         if self.cierra_por_esc:
             self.stop()
-
-
 
 
 class Pinta(object):

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
+TITLE = 'Compy, your programmed mate'
 NUM_COLS = 40
 NUM_ROWS = 25
 

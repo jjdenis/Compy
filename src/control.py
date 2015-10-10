@@ -42,12 +42,6 @@ class Control(object):
 
         # c stands for corrected
 
-    def set_name_of_project(self, name):
-        self._send_to_view('name_of_project', name)
-
-        # c stands for corrected
-
-
     def xyprint(self, x, y, *args):
         string = u''
         for to_chain in args:

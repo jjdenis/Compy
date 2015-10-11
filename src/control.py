@@ -11,6 +11,8 @@ from src.char_table import CharTable
 from src.settings import INIT_MSG
 from src.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
 from src.helpers import MapaDeCaracteres, ListaDeColores, ListOfKeys
+
+ENTER = 13
 LIMIT_WO_KEYSTROKE = 120 #secs
 
 class Control(object):
@@ -143,7 +145,7 @@ class Control(object):
         self.printf(message, next_line=False)
         input = ''
         key = 0
-        while key != 13:
+        while key != ENTER:
             key = self.key.wait_for_key()
             char=self.char_table.get_unicode(key)
             if char:

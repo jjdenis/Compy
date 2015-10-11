@@ -6,7 +6,7 @@ from time import sleep
 from src.run import run
 
 def main(scrn):
-
+    scrn.keys()
     scrn.clear_screen()
 
     scrn.printf()

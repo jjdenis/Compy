@@ -24,12 +24,7 @@ def make_html_challenges():
     f.write(md_text)
     f.close()
 
-def TakeScreenShot(frame):
-    os.system('screencapture docs/img/scr.png')
-    screen = wx.Bitmap('docs/img/scr.png')
-    rect = frame.GetRect()
-    bitmap = screen.GetSubBitmap(rect)
-    img = bitmap.ConvertToImage()
+def save_img(img):
     # fn=dtm.datetime.now().strftime('%dd%HH%MM%SS')
     fileName = "docs/img/{}.png".format(name_of_project)
     img.SaveFile(fileName, wx.BITMAP_TYPE_PNG)

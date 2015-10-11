@@ -3,10 +3,12 @@
 
 import random
 from time import time
+import os
 
 import wx
+
 from src.bitmaps import Bitmaps
-from src.create_web import make_html_challenges, take_code, TakeScreenShot
+from src.esc_commands import EscapeCommands
 from src.settings import NUM_COLS, NUM_ROWS, CHAR_PTS_X, CHAR_PTS_Y
 from src.settings import FRAME_PTS_X, FRAME_PTS_Y, TITLE
 
@@ -19,8 +21,6 @@ ACTIVE_CNVS_PTS_Y = NUM_ROWS * CHAR_PTS_Y+1
 TOTAL_CNVS_PTS_X = ACTIVE_CNVS_PTS_X + 2 * FRAME_PTS_X
 TOTAL_CNVS_PTS_Y = ACTIVE_CNVS_PTS_Y + 2 * FRAME_PTS_Y
 
-ESCAPE = 27
-C_RARA = 199
 
 
 # http://zetcode.com/wxpython/gdi/
@@ -38,8 +38,9 @@ class GUIwx(wx.App):
         self.dc = None
         # self.app = wx.App(False)
         # Create a new app, don't redirect stdout/stderr to a window.
-        self.cierra_por_esc = False
+        self.cierra_por_esc_when_turn = False
         self.pinta = None
+        self.esc_commands = None
         wx.App.__init__(self, False)
 
     def OnInit(self):
@@ -48,6 +49,10 @@ class GUIwx(wx.App):
         self.sound = wx.Sound('res/sonido.mp3')
         self.timer = self.set_timer(self.canvas)
         self.pinta = Pinta(self.canvas)
+        self.esc_commands = EscapeCommands(self.pinta.poke,
+                                           self.envia_comando,
+                                           self.cierra_por_esc,
+                                           self.get_img_of_sceen)
         return True
 
     def run(self):
@@ -86,17 +91,7 @@ class GUIwx(wx.App):
 
     def on_key(self, event):
         key = event.GetKeyCode()
-        if key == ESCAPE:
-            self.cierra_por_esc = True
-            self.envia_comando('closing', None, None)
-            make_html_challenges()
-            return
-
-        if key == C_RARA:
-            take_code()
-            TakeScreenShot(self.frame)
-            make_html_challenges()
-            return
+        key = self.esc_commands.run(key)
 
         # self.sound.Play(wx.SOUND_ASYNC)
         # self.pinta_bloque(0, 0, color="blue")
@@ -134,8 +129,20 @@ class GUIwx(wx.App):
             else:
                 pass
 
-        if self.cierra_por_esc:
+        if self.cierra_por_esc_when_turn:
             self.stop()
+
+    def cierra_por_esc(self):
+        self.envia_comando('closing', None, None)
+        self.cierra_por_esc_when_turn = True
+
+    def get_img_of_sceen(self):
+        os.system('screencapture docs/img/scr.png')
+        screen = wx.Bitmap('docs/img/scr.png')
+        rect = self.frame.GetRect()
+        bitmap = screen.GetSubBitmap(rect)
+        img = bitmap.ConvertToImage()
+        return img
 
 
 class Pinta(object):
@@ -143,10 +150,11 @@ class Pinta(object):
     def __init__(self, canvas):
         self.canvas = canvas
         self.bitmaps = Bitmaps(wx.Bitmap)
+        self.fm_color = None
 
     def reset_canvas(self, fm_color, bg_color):
-        self.set_deep_background(fm_color)
-        self.set_background(bg_color)
+        self._set_deep_background(fm_color)
+        self._set_background(bg_color)
 
     def poke(self, x, y, char_id, fg_color, bg_color):
 
@@ -168,7 +176,8 @@ class Pinta(object):
         dcy = TOTAL_CNVS_PTS_Y - FRAME_PTS_Y - (y + 1) * 16
         return dcx, dcy
 
-    def set_deep_background(self, color):
+    def _set_deep_background(self, color):
+        self.fm_color = color
         dc = wx.WindowDC(self.canvas)
         dc.BeginDrawing()
         dc.SetPen(wx.Pen(color, 1, wx.TRANSPARENT))
@@ -177,7 +186,7 @@ class Pinta(object):
         dc.EndDrawing()
         self.canvas.Refresh()
 
-    def set_background(self, color):
+    def _set_background(self, color):
         dc = wx.WindowDC(self.canvas)
         dc.BeginDrawing()
         dc.SetPen(wx.Pen(color, 1, wx.TRANSPARENT))

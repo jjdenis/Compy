@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import codecs
-import markdown2
 from jinja2 import Environment, PackageLoader
 import wx
+from src.colors import colors
 
 import __main__
 from pygments import highlight
@@ -18,6 +18,12 @@ def make_all_html():
     make_html('index.html')
     make_html('install.html')
     make_html('examples.html')
+    clrs = []
+    for col_code in range(0, 20):
+        clrs.append((col_code,
+                    colors.get_color_name(col_code),
+                    colors.get_color(col_code)))
+    make_html('reference.html', colors = clrs)
 
 
 def make_html(name_html, **kwargs):

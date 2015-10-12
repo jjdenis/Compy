@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Examples{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+<h1> Reference </h1>
+
+<p> Here we show you examples of the commands you can
+issue to the Compy screen.</p>
+
+<h2> Color </h2>
+
+<ul>
+{% for code, name, color in colors %}
+    <li style="color={{ color }}"> Code: {{ code }} Name: {{ name }}</li>
+{% endfor %}
+
+</ul>
+
+<hr/>
+
+{% endblock %}

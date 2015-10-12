@@ -3,10 +3,12 @@
 
 import os
 
-class Bitmaps(object):
-    def __init__(self, Bitmap):
-        self.bitmaps = [None] * 400
+class CharImages(object):
+    def __init__(self):
+        self.images = [None] * 400
+        self.populate()
 
+    def populate(self):
         for dirpath, dirnames, filenames in os.walk('src/chars'):
             break
 
@@ -14,14 +16,26 @@ class Bitmaps(object):
             if '.bmp' not in filename:
                 continue
             try:
-                char_id = int(filename.replace('.bmp', ''))
+                img_cod = int(filename.replace('.bmp', ''))
             except:
                 continue
-            if char_id < 0 or char_id > 400:
+            if img_cod < 0 or img_cod > 400:
                 continue
-            bitmap = Bitmap('{}/{}'.format(dirpath, filename))
-            bitmap.SetDepth(1)
-            self.bitmaps[char_id] = bitmap
+            full_path= '{}/{}'.format(dirpath, filename)
+            self.images[img_cod] = full_path
+
+char_images = CharImages()
+
+class Bitmaps(object):
+    def __init__(self, Bitmap):
+        self.bitmaps = [None] * 400
+
+        for img_cod in range(0, 400):
+            full_path= char_images[img_cod]
+            if full_path:
+                bitmap = Bitmap(full_path)
+                bitmap.SetDepth(1)
+                self.bitmaps[char_id] = bitmap
 
     def get_bitmap(self, code):
         bitmap=None

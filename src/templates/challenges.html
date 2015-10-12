@@ -1,49 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+{% block title %}Challenges{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<title>Page Title</title>
+{% block content %}
+<h1> Challenges</h1>
 
-
-</head>
-
-<body>
-
-<h1>Sum two values</h1>
+<h2>Sum two values</h2>
 
 <p><img src="img/sum_two_values.png" alt="" /></p>
 
 {{ prueba }}
 
-
+<pre class="code">
 {% include 'sum_two_values.html' %}
+</pre>
 
+<h2> Sum many values </h2>
 
-# Sum many values
+<h2> Find the minimum of two values </h2>
 
-# Sum two lists of values
+<h2> Find the minimum of many values </h2>
 
-# Find the minimum of two values
+<h2> Find number of vowels </h2>
 
-# Find max of many values
+<h2> Pinta la tabla de multiplicar del número que sea </h2>
 
-# Find number of vowels
+<h2> 10 elefantes </h2>
 
-# Pinta la tabla de multiplicar del número que sea
+<h2> Adivina el número </h2>
 
-# 10 elefantes
+<h2> Pinta una progresión aritmética. </h2>
 
-# Adivina el número
+<h2> Simula un dado </h2>
 
-# Pinta una progresión aritmética.
+<h2> El mediano de una lista </h2>
 
-# Simula un dado
-
-# El mediano de una lista
-
-#
-
-</body>
-</html>
+{% endblock %}

@@ -16,8 +16,8 @@ FRAME_PTS_Y = FRAME_CHARS_Y * CHAR_PTS_Y
 
 
 INIT_MSG =  """
-      **** DENIS SISTEMA POKE ****
-Pulsa la tecla "escape" para salir
+      **** THE COMPY PROJECT ****
+Press esc key twice to quit
 
 """
 
@@ -27,3 +27,4 @@ INIT_FM_COLOR = 'ligh_blue'
 INIT_BG_COLOR = 'blue'
 INIT_CH_COLOR = 'light_blue'
 
+ESC_MESSAGE = u'esc:exit s:screenshot h:html'

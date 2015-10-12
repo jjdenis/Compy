@@ -4,7 +4,7 @@ import codecs
 import markdown2
 from jinja2 import Environment, PackageLoader
 import wx
-import os
+
 import __main__
 from pygments import highlight
 from pygments.lexers import PythonLexer
@@ -13,14 +13,21 @@ from pygments.formatters import HtmlFormatter
 name_of_project= __main__.__file__.split('/')[-1].replace('.py', '')
 env = Environment(loader=PackageLoader('src', 'templates'))
 
-def make_html_challenges():
+def make_all_html():
+    make_html('challenges.html', prueba='variables')
+    make_html('index.html')
+    make_html('install.html')
+    make_html('examples.html')
 
-    template = env.get_template('challenges.html')
 
-    md_text = template.render(prueba='variables')
+def make_html(name_html, **kwargs):
 
-    # html_text = markdown2.markdown(md_text)
-    f = codecs.open('docs/challenges.html', 'w', 'utf-8')
+    template = env.get_template(name_html)
+
+    md_text = template.render(**kwargs)
+
+    final_path = 'docs/{}'.format(name_html)
+    f = codecs.open(final_path, 'w', 'utf-8')
     f.write(md_text)
     f.close()
 

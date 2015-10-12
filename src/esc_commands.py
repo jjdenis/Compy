@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from src.create_web import make_html_challenges, take_code, save_img
+from src.create_web import make_all_html, take_code, save_img
 from src.colors import colors
 from src.char_table import CharTable
-from settings import INIT_FM_COLOR, INIT_BG_COLOR
+from src.settings import INIT_FM_COLOR, INIT_BG_COLOR
+from src.settings import ESC_MESSAGE
 
 S_KEY = 83
+H_KEY = 72
 __author__ = 'jjdenis'
 ESCAPE = 27
 
@@ -23,7 +25,7 @@ class EscapeCommands(object):
     def run(self, key):
         if not self.accepting_commands:
             if key == ESCAPE:
-                self.msg(u'esc:exit s:screenshot')
+                self.msg(ESC_MESSAGE)
                 self.accepting_commands =True
                 return None
             else:
@@ -31,20 +33,20 @@ class EscapeCommands(object):
 
         if key == ESCAPE:
             self.cierra_por_esc()
-            return key
-
-        elif key == S_KEY:
+        elif key == S_KEY: # Take screenshot
+            self.del_msg(ESC_MESSAGE)
             take_code()
+            self.accepting_commands = False
             img = self.get_img()
             save_img(img)
-            make_html_challenges()
+        elif key == H_KEY: # Recreate web site
+            make_all_html()
             self.accepting_commands = False
-            self.del_msg(u'esc:exit s:screenshot')
-
-            return None
+            self.del_msg(ESC_MESSAGE)
         else:
             self.accepting_commands = False
-            return None
+
+        return None
 
     def msg(self, msg):
         color_c = colors.get_color(INIT_BG_COLOR)

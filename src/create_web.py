@@ -4,7 +4,7 @@ import codecs
 from jinja2 import Environment, PackageLoader
 import wx
 from src.colors import colors
-from src.bitmaps import char_images
+from src.bitmaps import bitmap_images
 import __main__
 from pygments import highlight
 from pygments.lexers import PythonLexer
@@ -41,7 +41,12 @@ def make_all_html():
     keys.append((308, 'command'))
     keys.append((8, 'backspace'))
 
-    make_html('reference.html', colors = clrs, keys=keys)
+    bitmaps = []
+    for bitmap_code, bitmap_path in enumerate(bitmap_images):
+        if bitmap_path:
+            path = bitmap_path.replace('src/chars', 'chars')
+            bitmaps.append((bitmap_code, path))
+    make_html('reference.html', colors = clrs, keys=keys, bitmaps=bitmaps)
 
 
 def make_html(name_html, **kwargs):

@@ -16,7 +16,7 @@
 
 <h2> Color Codes</h2>
 
-These are the codes used in commands like scrn.printf() or scrn.set_bg_color().
+These are the meaning of the codes used in commands like scrn.printf() or scrn.set_bg_color().
 
 <ul>
 {% for code, name, color in colors %}
@@ -29,12 +29,16 @@ These are the codes used in commands like scrn.printf() or scrn.set_bg_color().
 
 These are the codes returned by scrn.input(), etc.
 
-<ul>
+
+<table>
+<tr> <th> Key pressed </th> <th> Returned code </th> </tr>
+
 {% for code, key in keys %}
-    <li> Code: {{ code }} - Key: {{ key }}</li>
+    <tr> <td> {{ key }} </td> <td> {{ code }} </td> </tr>
 {% endfor %}
 
-</ul>
+</table>
+
 
 
 <h2> Chars </h2>
@@ -42,12 +46,24 @@ These are the codes returned by scrn.input(), etc.
 These are the codes of chars you can use in scrn.poke()
 
 <ul>
-{% for code, key in keys %}
-    <li> Code: {{ code }} - Key: {{ key }}</li>
-{% endfor %}
 
 </ul>
 
+
+
+<table>
+<tr>
+<th> Code </th>
+<th> Bitmap </th>
+</tr>
+
+{% for code, bitmap_path in bitmaps %}
+    <tr align="middle">
+        <td align="middle"> {{ code }} </td> <td align="bottom"> <img src="{{ bitmap_path }}" alt="Bitmap" > </td>
+    </tr>
+{% endfor %}
+
+</table>
 
 
 <hr/>

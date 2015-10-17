@@ -3,7 +3,7 @@
 
 import os
 
-class CharImages(object):
+class BitmapImages(object):
     def __init__(self):
         self.images = [None] * 400
         self.populate()
@@ -24,18 +24,28 @@ class CharImages(object):
             full_path= '{}/{}'.format(dirpath, filename)
             self.images[img_cod] = full_path
 
-char_images = CharImages()
+    def __iter__(self):
+        """Makes 'for self in ...' work """
+        for image in self.images:
+              yield image
+
+    def __getitem__(self, key):
+        """Defines self[key] """
+        return self.images[key]
+
+
+bitmap_images = BitmapImages()
 
 class Bitmaps(object):
     def __init__(self, Bitmap):
         self.bitmaps = [None] * 400
 
         for img_cod in range(0, 400):
-            full_path= char_images[img_cod]
+            full_path= bitmap_images[img_cod]
             if full_path:
                 bitmap = Bitmap(full_path)
                 bitmap.SetDepth(1)
-                self.bitmaps[char_id] = bitmap
+                self.bitmaps[img_cod] = bitmap
 
     def get_bitmap(self, code):
         bitmap=None

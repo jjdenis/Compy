@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} Chars{% endblock %}
+
+{% block content %}
+
+<h1> Chars reference - The Compy Project</h1>
+
+<p> In this page you can find codes for chars, used
+    to program in Compy.</p>
+
+
+<h2> Chars </h2>
+
+These are the codes of chars you can use in scrn.poke()
+
+<table>
+<tr>
+<th> Code </th>
+<th> Bitmap </th>
+</tr>
+
+{% for code, bitmap_path in bitmaps %}
+    <tr align="middle">
+        <td align="middle"> {{ code }} </td> <td align="bottom"> <img src="{{ bitmap_path }}" alt="Bitmap" > </td>
+    </tr>
+{% endfor %}
+
+</table>
+
+<hr/>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}       Keys       {% endblock %}
+
+
+{% block content %}
+
+<h1> Keys - The Compy Project</h1>
+
+<p> In this page you can find codes for keys, used
+    to program in Compy.</p>
+
+
+<h2> Key codes </h2>
+
+These are the codes returned by sc.input(), etc.
+
+
+<table>
+<tr> <th> Key pressed </th> <th> Returned code </th> </tr>
+
+{% for code, key in keys %}
+    <tr> <td> {{ key }} </td> <td> {{ code }} </td> </tr>
+{% endfor %}
+
+</table>
+
+
+
+{% endblock %}

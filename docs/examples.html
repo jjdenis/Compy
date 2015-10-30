@@ -21,26 +21,37 @@
 
 <body>
     <div id="content">
+
+
 <h1> Examples</h1>
 
-<p> Here we show you examples of the commands you can
-issue to the Compy screen.</p>
+    <p> Here we show you examples of the commands you can
+    issue to the Compy screen.</p>
 
 <h2>Print "Hello world"</h2>
 
-<h3>Result:</h3>
-<p> <img src="img/print_hello_world.png" alt="" /> </p>
+    <h3>Result:</h3>
 
-<h3>Code of 'print_hello_world.py':</h3>
-<pre class="code"> <code> <div class="highlight"><pre><span class="kn">from</span> <span class="nn">src.run</span> <span class="kn">import</span> <span class="n">run</span>
+    <p> <img src="img/print_hello_world.png" alt="" /> </p>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">scrn</span><span class="p">):</span>
-    <span class="n">scrn</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;Hello world !!!&#39;</span><span class="p">)</span>
+    <h3>Code of 'print_hello_world.py':</h3>
 
-<span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+    <pre class="code"> <code> <div class="highlight"><pre><span class="kn">import</span> <span class="nn">compy</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">sc</span><span class="p">):</span>
+
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;Hello world !!!&#39;</span><span class="p">)</span>
+
+
+<span class="n">compy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
 </pre></div> </code> </pre>
 
-<hr/>
+    <hr/>
+
+
+
+
 
 </div>
     <div id="footer">

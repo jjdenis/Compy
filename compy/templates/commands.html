@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Commands{% endblock %}
+
+{% block content %}
+
+<h1> Commands - The Compy Project</h1>
+
+<p> In this page you can find the whole list of commands used
+    to program in Compy.</p>
+
+
+<h2> sc.printf </h2>
+
+<pre class="code"> <code>
+
+    sc.printf('Hello')
+
+    sc.printf('Hello', color='black')
+
+    sc.printf('Hello', color=4)
+
+    sc.printf('Hello, ', next_line=False)
+
+    sc.printf('partner!', color=0)
+
+    sc.printf()
+
+    sc.printf('Hello', reverse = True)
+
+    sc.printf('Hello, or better...', color='light-green', reverse=True, next_line=False)
+
+    sc.printf('Good bye!!!')
+
+</code> </pre>
+
+
+{% endblock %}

@@ -18,6 +18,7 @@ def make_all_html():
     make_html('index.html')
     make_html('install.html')
     make_html('examples.html')
+    make_html('commands.html')
     clrs = []
     for col_code in range(0, 20):
         col_tup =colors.get_color(col_code)

@@ -90,7 +90,6 @@ class Colors(object):
                 color = self.colors_by_name[color_name]
         else:
             color = color_code
-        print "Returned color {}".format(color)
         return color
 
     def get_color_name(self, color_code):

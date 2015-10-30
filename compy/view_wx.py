@@ -103,7 +103,6 @@ class GUIwx(wx.App):
     def on_key_release(self, event):
         key = event.GetKeyCode()
         self.envia_comando('key_released', key, time())
-        print 'v released', key
         self.key_pressed = None
 
     def envia_comando(self, *args):

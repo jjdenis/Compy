@@ -1,8 +1,11 @@
-from compy.run import run
+import compy
 
-def main(scrn):
-    scrn.printf('Hello world !!!')
 
-run(main)
+def main(sc):
+
+    sc.printf('Hello world !!!')
+
+
+compy.run(main)
 
 

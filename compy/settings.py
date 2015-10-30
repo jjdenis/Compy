@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-TITLE = 'Compy, your programmed mate'
+TITLE = 'Compy, your programming mate'
 NUM_COLS = 40
 NUM_ROWS = 25
 
@@ -17,7 +17,6 @@ FRAME_PTS_Y = FRAME_CHARS_Y * CHAR_PTS_Y
 
 INIT_MSG =  """
       **** THE COMPY PROJECT ****
-Press esc key twice to quit
 
 """
 
@@ -27,4 +26,4 @@ INIT_FM_COLOR = 'ligh_blue'
 INIT_BG_COLOR = 'blue'
 INIT_CH_COLOR = 'light_blue'
 
-ESC_MESSAGE = u'esc:exit s:screenshot h:html'
+ESC_MESSAGE = u'esc:exit s:screenshot'

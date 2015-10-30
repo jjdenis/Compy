@@ -52,7 +52,6 @@ class PressedKey(object):
             if not msg:
                 break
             comando, tecla, tiempo = msg
-            print comando, tecla, tiempo
             if comando == 'key_pressed':
                 if not self.curr_key:
                     self.sensibilidad = SENSIBILIDAD_INICIO

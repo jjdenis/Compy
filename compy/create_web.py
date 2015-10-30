@@ -46,7 +46,10 @@ def make_all_html():
         if bitmap_path:
             path = bitmap_path.replace('compy/chars', 'chars')
             bitmaps.append((bitmap_code, path))
-    make_html('reference.html', colors = clrs, keys=keys, bitmaps=bitmaps)
+
+    make_html('colors.html', colors = clrs)
+    make_html('keys.html', keys=keys)
+    make_html('chars.html', bitmaps=bitmaps)
 
 
 def make_html(name_html, **kwargs):
@@ -66,7 +69,6 @@ def save_img(img):
     img.SaveFile(fileName, wx.BITMAP_TYPE_PNG)
 
 def take_code():
-    print name_of_project
     fn = '{}.py'.format(name_of_project)
     f = codecs.open(fn, 'r', 'utf-8')
     code = f.read()

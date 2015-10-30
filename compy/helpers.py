@@ -32,7 +32,6 @@ class MapaDeCaracteres(object):
 
 
     def pinta_100(self, init_code):
-        print init_code
         self.resetea_pantalla()
         for fila in range(0,10):
             char_cod = 10 * fila + init_code

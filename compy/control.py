@@ -85,7 +85,6 @@ class Control(object):
         for i, ch in enumerate(string):
             if ch == u'\n':
                 self.printmap.next_line()
-                print 'nono'
                 continue
 
             x, y = self.printmap.get_next_pos()

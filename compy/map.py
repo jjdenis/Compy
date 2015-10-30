@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from src.settings import NUM_COLS, NUM_ROWS, INIT_BG_COLOR
+from compy.settings import NUM_COLS, NUM_ROWS, INIT_BG_COLOR
 
 
 FIRST_X = 0

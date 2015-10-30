@@ -7,17 +7,18 @@
 import traceback
 import multiprocessing
 
-from src.control import Control
+from compy.control import Control
 
-from src import view_wx as view
+from compy import view_wx as view
 
 
 def run_control(queue1, queue2, main):
     try:
         control = Control(queue1, queue2)
         main(control)
+        print("Main finishes here")
         # main finishes here
-        # control.stop()
+        control.stop()
     except:
         print "FATAL: exited while multiprocessing".format()
         traceback.print_exc()
@@ -38,7 +39,7 @@ def run(main):
     gui = view.GUIwx(q_to_view, q_from_view)
     gui.run()
 
-    print("Gui terminada")
+    print("Finished GUI")
 
     while not q_to_view.empty():
         q_to_view.get()
@@ -53,4 +54,4 @@ def run(main):
     control_parallel.terminate()
     control_parallel.join()
 
-    print("Control terminada")
+    print("Finshed Control")

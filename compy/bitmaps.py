@@ -9,7 +9,7 @@ class BitmapImages(object):
         self.populate()
 
     def populate(self):
-        for dirpath, dirnames, filenames in os.walk('src/chars'):
+        for dirpath, dirnames, filenames in os.walk('compy/chars'):
             break
 
         for filename in filenames:

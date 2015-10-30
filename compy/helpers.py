@@ -5,7 +5,7 @@ __author__ = 'jjdenis'
 
 Q = 81
 ARRIBA = 315
-from src.colors import colors
+from compy.colors import colors
 
 class MapaDeCaracteres(object):
     def __init__(self, screen):

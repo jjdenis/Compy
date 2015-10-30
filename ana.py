@@ -72,7 +72,7 @@ def inicio_ana():
 ##################
 ##################
 
-from src.run import run
+from compy.run import run
 def pg(screen):
     global scr, print_scrn, bg_color_scrn, fm_color_scrn, clear_scrn, input_scrn, colors_scrn
     scr=screen

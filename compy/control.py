@@ -4,13 +4,13 @@
 from time import sleep, time
 import sys
 
-from src.key import PressedKey
-from src.map import ScreenMap, PrintMap
-from src.colors import colors
-from src.char_table import CharTable
-from src.settings import INIT_MSG
-from src.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
-from src.helpers import MapaDeCaracteres, ListaDeColores, ListOfKeys
+from compy.key import PressedKey
+from compy.map import ScreenMap, PrintMap
+from compy.colors import colors
+from compy.char_table import CharTable
+from compy.settings import INIT_MSG
+from compy.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
+from compy.helpers import MapaDeCaracteres, ListaDeColores, ListOfKeys
 
 ENTER = 13
 LIMIT_WO_KEYSTROKE = 120 #secs

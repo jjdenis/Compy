@@ -3,15 +3,15 @@
 import codecs
 from jinja2 import Environment, PackageLoader
 import wx
-from src.colors import colors
-from src.bitmaps import bitmap_images
+from compy.colors import colors
+from compy.bitmaps import bitmap_images
 import __main__
 from pygments import highlight
 from pygments.lexers import PythonLexer
 from pygments.formatters import HtmlFormatter
 
 name_of_project= __main__.__file__.split('/')[-1].replace('.py', '')
-env = Environment(loader=PackageLoader('src', 'templates'))
+env = Environment(loader=PackageLoader('compy', 'templates'))
 
 def make_all_html():
     make_html('challenges.html', prueba='variables')
@@ -44,7 +44,7 @@ def make_all_html():
     bitmaps = []
     for bitmap_code, bitmap_path in enumerate(bitmap_images):
         if bitmap_path:
-            path = bitmap_path.replace('src/chars', 'chars')
+            path = bitmap_path.replace('compy/chars', 'chars')
             bitmaps.append((bitmap_code, path))
     make_html('reference.html', colors = clrs, keys=keys, bitmaps=bitmaps)
 
@@ -74,7 +74,7 @@ def take_code():
 
     f.close()
 
-    fn = 'src/templates/{}.html'.format(name_of_project)
+    fn = 'compy/templates/{}.html'.format(name_of_project)
     f = codecs.open(fn, 'w', 'utf-8')
     f.write(code_html)
     f.close()

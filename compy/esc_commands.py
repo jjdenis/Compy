@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from src.create_web import make_all_html, take_code, save_img
-from src.colors import colors
-from src.char_table import CharTable
-from src.settings import INIT_FM_COLOR, INIT_BG_COLOR
-from src.settings import ESC_MESSAGE
+from compy.create_web import make_all_html, take_code, save_img
+from compy.colors import colors
+from compy.char_table import CharTable
+from compy.settings import INIT_FM_COLOR, INIT_BG_COLOR
+from compy.settings import ESC_MESSAGE
 
 S_KEY = 83
 H_KEY = 72

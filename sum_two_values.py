@@ -1,26 +1,28 @@
-#!/usr/bin/env python
-#  -*- coding: utf-8 -*-
+
+import compy
 
 
-from time import sleep
-from src.run import run
+def main(scr):
 
-def main(scrn):
-    scrn.keys()
-    scrn.clear_screen()
+    scr.clear_screen()
 
-    scrn.printf()
-    scrn.printf('    SUM OF TWO VALUES', color = 4)
-    scrn.printf('    =================')
+    scr.printf()
+    scr.printf('    SUM OF TWO VALUES', color= 4)
+    scr.printf('    =================')
+    scr.printf()
 
-    value_one = scrn.input("Give me one value: ")
-    value_two = scrn.input("Give me another value: ")
+    first_value = scr.input("Give me one value: ", color=8)
 
-    sum_of_values = value_one + value_two
+    second_value = scr.input("Give me another value: ")
 
-    scrn.printf('The sum of {} and {} is {}'.format(
-        value_one, value_two, sum_of_values), color=6)
+    sum_of_values = first_value + second_value
 
-run(main)
+    response = 'The sum of {} and {} is {}'.format(first_value, second_value, sum_of_values)
+
+    scr.printf()
+    scr.printf(response, color=6)
+
+
+compy.run(main)
 
 

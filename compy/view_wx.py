@@ -7,10 +7,10 @@ import os
 
 import wx
 
-from src.bitmaps import Bitmaps
-from src.esc_commands import EscapeCommands
-from src.settings import NUM_COLS, NUM_ROWS, CHAR_PTS_X, CHAR_PTS_Y
-from src.settings import FRAME_PTS_X, FRAME_PTS_Y, TITLE
+from compy.bitmaps import Bitmaps
+from compy.esc_commands import EscapeCommands
+from compy.settings import NUM_COLS, NUM_ROWS, CHAR_PTS_X, CHAR_PTS_Y
+from compy.settings import FRAME_PTS_X, FRAME_PTS_Y, TITLE
 
 ORG_ACTIVE_CNVS_X = FRAME_PTS_X
 ORG_ACTIVE_CNVS_Y = FRAME_PTS_Y
@@ -21,7 +21,7 @@ ACTIVE_CNVS_PTS_Y = NUM_ROWS * CHAR_PTS_Y+1
 TOTAL_CNVS_PTS_X = ACTIVE_CNVS_PTS_X + 2 * FRAME_PTS_X
 TOTAL_CNVS_PTS_Y = ACTIVE_CNVS_PTS_Y + 2 * FRAME_PTS_Y
 
-
+ESCAPE = 27
 
 # http://zetcode.com/wxpython/gdi/
 
@@ -124,7 +124,7 @@ class GUIwx(wx.App):
                 self.pinta.reset_canvas(fm_color=args[0], bg_color=args[1])
 
             elif comando == 'close_window':
-                self.stop()
+                self.esc_commands.run(ESCAPE)
 
             else:
                 pass
@@ -214,7 +214,7 @@ class Q(object):
 
 
 if __name__ == '__main__':
-    from src.colors import Colors
+    from compy.colors import Colors
     colrs = Colors()
 
     q1 = Q()

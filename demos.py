@@ -212,7 +212,7 @@ def demo12():
 ##################
 ##################
 
-from src.run import run
+from compy.run import run
 def pg(screen):
     global scr
     scr=screen

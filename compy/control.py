@@ -63,10 +63,8 @@ class Control(object):
         char_id, color = self.map.get_poked(x, y)
         return char_id
 
-    def printf(self, to_print='', color=None, next_line = True, iscode=False, reverse=False):
-        if color is not None:
-            color_c = colors.get_color(color)
-            self.ch_color = color_c
+    def printf(self, to_print='', color=None, next_line=True, reverse=False, iscode=False):
+        self.set_color(color)
 
         if to_print == '' or to_print is None:
             self.printmap.next_line()
@@ -94,6 +92,11 @@ class Control(object):
 
         if next_line:
             self.printmap.next_line()
+
+    def set_color(self, color):
+        if color is not None:
+            color_c = colors.get_color(color)
+            self.ch_color = color_c
 
     def set_char_in_screen(self, char_id, x, y, reverse=False):
         if not reverse:
@@ -137,9 +140,7 @@ class Control(object):
         return key
 
     def input(self, message = '', color=None):
-        if color is not None:
-            color_c = colors.get_color(color)
-            self.ch_color = color_c
+        self.set_color(color)
 
         self.printf(message, next_line=False)
         input = ''

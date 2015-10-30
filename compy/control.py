@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from time import sleep, time
-import sys
 
 from compy.key import PressedKey
 from compy.map import ScreenMap, PrintMap
@@ -13,6 +12,8 @@ from compy.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
 from compy.helpers import MapaDeCaracteres, ListaDeColores, ListOfKeys
 
 ENTER = 13
+BACKSPACE = 8
+
 LIMIT_WO_KEYSTROKE = 120 #secs
 
 class Control(object):
@@ -63,8 +64,11 @@ class Control(object):
         char_id, color = self.map.get_poked(x, y)
         return char_id
 
-    def printf(self, to_print='', color=None, next_line=True, reverse=False, iscode=False):
+    def printf(self, to_print='', color=None, next_line=True, reverse=False, iscode=False, same_line=False):
         self.set_color(color)
+
+        if same_line:
+            self.printmap.go_first_x()
 
         if to_print == '' or to_print is None:
             self.printmap.next_line()
@@ -78,7 +82,6 @@ class Control(object):
             to_print=to_print.decode('utf-8')
 
         string=unicode(to_print)
-
 
         for i, ch in enumerate(string):
             if ch == u'\n':
@@ -148,7 +151,14 @@ class Control(object):
         while key != ENTER:
             key = self.key.wait_for_key()
             char=self.char_table.get_unicode(key)
-            if char:
+            print char
+            if key==BACKSPACE:
+                input = input[0:-1]
+                l = len(message)+len(input)+1
+                self.printf(' '*l, next_line=False, same_line=True)
+                self.printf(message, next_line=False, same_line=True)
+                self.printf(input, next_line=False)
+            elif char:
                 input +=char
                 self.printf(char, next_line=False)
         try:
@@ -171,7 +181,6 @@ class Control(object):
         ListOfKeys(self)
 
     def _reset_canvas(self):
-
         self._send_to_view('reset_canvas', self.fm_color, self.bg_color)
 
     def _write_all_chars(self):

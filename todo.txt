@@ -4,7 +4,6 @@ Fix:
 
 - backspace in input
 - repeat key
-- print line too long
 
 Done:
 

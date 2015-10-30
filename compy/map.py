@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from compy.settings import NUM_COLS, NUM_ROWS, INIT_BG_COLOR
-
+from time import sleep
 
 FIRST_X = 0
 LAST_X = NUM_COLS - 1
@@ -21,33 +21,11 @@ class PrintMap(object):
         self.y = None
         self.go_init_scr()
         self.clear_screen = clear_screen
+        self.clear_screen_next=False
 
-    def ini_line(self):
-        self.x = LAST_X
-
-    def get_next_pos(self):
-        posx, posy = (self.x, self.y)
-        self.next_x()
-        return posx, posy
-
-    def next_line(self):
-        in_last_line = self.y == LAST_LINE
-        if in_last_line:
-            self.go_first_line()
-            self.clear_screen()
-        else:
-            self.y -= 1
+    def go_init_scr(self):
+        self.go_first_line()
         self.go_first_x()
-        return self.x, self.y
-
-    def next_x(self):
-        in_last_x = (self.x == LAST_X)
-        if in_last_x:
-            self.next_line()
-            self.clear_screen()
-        else:
-            self.x += 1
-        return self.x, self.y
 
     def go_first_line(self):
         self.y = FIRST_LINE
@@ -55,9 +33,35 @@ class PrintMap(object):
     def go_first_x(self):
         self.x = FIRST_X
 
-    def go_init_scr(self):
-        self.go_first_line()
+    def get_next_pos(self):
+        posx, posy = (self.x, self.y)
+        self.next_x()
+        return posx, posy
+
+    def next_x(self):
+        if self.clear_screen_next:
+            sleep(2)
+            self.clear_screen()
+            self.clear_screen_next = False
+
+        in_last_x = (self.x == LAST_X)
+        if in_last_x:
+            self.next_line()
+            # self.clear_screen()
+        else:
+            self.x += 1
+        return self.x, self.y
+
+    def next_line(self):
+        in_last_line = self.y == LAST_LINE
+        if in_last_line:
+            self.go_first_line()
+            self.clear_screen_next=True
+        else:
+            self.y -= 1
         self.go_first_x()
+        return self.x, self.y
+
 
 
 class ScreenMap(object):

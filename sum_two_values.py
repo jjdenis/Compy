@@ -7,7 +7,7 @@ def main(sc):
     sc.clear_screen()
 
     sc.printf()
-    sc.printf('    SUM OF TWO VALUES', color= 4)
+    sc.printf('    SUM OF TWO VALUES', color=4)
     sc.printf('    =================')
     sc.printf()
 

@@ -2,70 +2,222 @@
 #  -*- coding: utf-8 -*-
 
 from time import sleep
+import random
 
+A = 65
+B = 66
+Q = 81
+DCHA = 316
+IZDA = 314
+ABAJO = 317
+ARRIBA = 315
+ENTER = 13
 
 def programa_principal():
+
+    demo_primera()
+    demo_colores()
+    demo_bg_color()
+    demo_fm_color()
+    demo_input()
+    demo_printf()
+    demo_print_sin_texto()
+    demo_print_misma_linea()
+    demo_print_colores()
+    demo_unicode()
+    demo_unicode_move()
+    demo_cod_tecla()
+    demo_mapa_caracteres()
+    demo_poke_movimiento()
+
+    #scr.stop()
+
+
+
+def demo_primera():
     scr.clear_screen()
-    scr.printf('')
-    scr.printf('Sum two values challenge'.upper().center(39), color=6)
-    scr.printf('')
-    scr.set_name_of_project('sum_two_values')
-    v1 = scr.input('Give me one value: ', color=10)
-    v2 = scr.input('Give me another value: ')
+    scr.printf("¡¡That is how you print in the screen!!!")
+    scr.wait_key()
+
+def demo_colores():
+    scr.colors()
+
+
+
+def demo_bg_color():
+    scr.clear_screen()
+    scr.printf('', color=5)
+    scr.xyprint(0, 24, "¡¡Así se cambia el color de fondo!!!")
+    scr.xyprint(5, 1, "Pulsa tres veces cualquier tecla para ver colores")
+
+    color = 0
+    i = 0
+    while True:
+        scr.xyprint(0, 22, 'Color numero: ', color)
+        scr.set_bg_color(color)
+        k=scr.wait_key()
+        color = random.randint(0, 19)
+        if k == 13:
+            i= i+1
+            if i == 3:
+                break
+    scr.set_bg_color(0)
+
+
+def demo_fm_color():
+    scr.clear_screen()
+    scr.xyprint(0,24,"¡¡Así se cambia el color del marco!!!")
+    scr.xyprint(5,1,"Pulsa cualquier tecla para cambiar")
+    scr.xyprint(15,0,"Pulsa q para continuar")
+
+    color = 0
+    i=0
+    while True:
+        scr.xyprint(0, 22, 'Color =', color)
+        scr.set_fm_color(color)
+        color = random.randint(0, 100)
+        k=scr.wait_key()
+        if k == 13:
+            i= i+1
+            if i == 3:
+                break
+
+
+
+def demo_input():
+    scr.clear_screen()
+    a = scr.input('Dime tu nombre')
+    if not a:
+        a = 'sin nombre'
+    scr.printf("Hola " + a)
+    scr.wait_key()
+
+def demo_printf():
+    scr.clear_screen()
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.wait_key()
+
+def demo_print_sin_texto():
+    scr.clear_screen()
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
     scr.printf()
-    ans = 'The sum of {} and {} is {}'.format(v1, v2, v1+v2)
-    scr.printf(ans)
+    scr.printf("Hola Juanjo!!")
+    scr.wait_key()
 
-def dame_el_doble(numero):
-    return numero+numero+1
 
-def otro():
-    inicio_ana()
+def demo_print_misma_linea():
+    scr.clear_screen()
+    scr.printf("Hola Juanjo!!", stay=True)
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("")
+    scr.printf("Hola Juanjo!!")
+    scr.printf("Hola Juanjo!!", stay=True)
+    scr.printf("Hola Juanjo!!")
+    scr.wait_key()
+
+
+def demo_print_colores():
+    scr.clear_screen()
+    for i in range(0, 100):
+        scr.printf(u'Hola', i, stay=True)
+
+
+def demo_unicode():
+    scr.clear_screen()
 
     while True:
-        opi = input_scrn("Dime un numero ")
-        print_scrn(opi, color=opi)
-        print_scrn('Hola', color=opi)
-        print_scrn(opi, color=0)
+        a = scr.check_key()
+        if a:
+            break
+        scr.clear_screen()
+        scr.printf(u'╭o╮')
+        sleep(0.3)
+        scr.clear_screen()
+        scr.printf(u'╰o╯')
+        sleep(0.3)
 
 
-def inicio_ana():
-    clear_scrn()
-    bg_color_scrn(4)
-
-    fm_color_scrn(6)
-    print_scrn()
-    num_color = 0
-    while num_color<16:
-        print_scrn('           hola ', color=num_color, next_line=False)
-        print_scrn(num_color)
-        sleep(0.1)
-        num_color = num_color+1
-
-    num_color=0
-    while num_color<21:
-        bg_color_scrn(num_color)
-        sleep(0.1)
-        num_color = num_color+1
-
-    num_color=0
-    while num_color<23:
-        fm_color_scrn(num_color)
-        sleep(0.1)
-        num_color = num_color+1
+def demo_unicode_move():
+    scr.clear_screen()
+    i = 0
+    while i < 20:
+        a = scr.check_key()
+        if a:
+            break
+        espacio=' '*i
+        i=i+1
+        scr.clear_screen()
+        scr.printf(espacio + u'╭o╮')
+        sleep(0.3)
+        scr.clear_screen()
+        espacio=' '*i
+        i=i+1
+        scr.printf(espacio + u'╰o╯')
+        sleep(0.3)
 
 
-    clear_scrn()
+def demo_cod_tecla():
+    scr.clear_screen()
+    scr.printf('Pulsa una tecla')
+    i=0
+    while True:
+        a = scr.wait_key()
+        scr.clear_screen()
+        scr.printf('El código de tecla pulsado es ' + str(a))
+        scr.printf('Pulsa una tecla')
+        if a==13:
+            i=i+1
+            if i==3:
+                break
+
+def demo_mapa_caracteres():
+    scr.mapa()
 
 
+def demo_poke_movimiento():
+    scr.clear_screen()
 
+    x = 0
+    y = 0
+    scr.poke(x, y, B, 'light_green')
+    scr.poke(10, 20, A, 'light_green')
+    scr.poke(5, 5, A, 'light_green')
+    while True:
+        a = scr.check_key()
+        if not a:
+            continue
+        scr.poke(x, y, None, 'red')
+        if a == DCHA:
+            x += 1
+        elif a == IZDA:
+            x -= 1
+        elif a == ARRIBA:
+            y += 1
+        elif a == ABAJO:
+            y += -1
+        elif a == Q: # q
+            break
+        else:
+            pass
 
+        if scr.peek(x, y+1) == A:
+            scr.poke(x, y, B, 'red')
+        else:
+            scr.poke(x, y, B, 'light_red')
 
-
-
-
-
-
+def demo12():
+    pass
 
 
 
@@ -74,21 +226,13 @@ def inicio_ana():
 
 from compy.run import run
 def pg(screen):
-    global scr, print_scrn, bg_color_scrn, fm_color_scrn, clear_scrn, input_scrn, colors_scrn
+    global scr
     scr=screen
-    print_scrn=scr.printf
-    bg_color_scrn=scr.set_bg_color
-    fm_color_scrn=scr.set_fm_color
-    clear_scrn = scr.clear_screen
-    input_scrn = scr.input
-    colors_scrn =scr.colors
     programa_principal()
 run(pg)
 
 ##################
 ##################
-
-
 
 unichar = [
 

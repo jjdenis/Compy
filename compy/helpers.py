@@ -13,6 +13,7 @@ class MapaDeCaracteres(object):
         scr=screen
         self.resetea_pantalla()
         init_cod=0
+        num_continuation = 0
         while True:
             self.pinta_100(init_cod)
             tecla = scr.wait_key()
@@ -23,9 +24,13 @@ class MapaDeCaracteres(object):
             elif tecla == ARRIBA and init_cod == 0:
                 pass
             elif init_cod == 200:
+                num_continuation +=1
+                if num_continuation == 4:
+                    break
                 pass
             else:
                 init_cod = init_cod + 100
+
 
             # if final_de_linea:
             #     self.pinta_separador_filas()
@@ -45,23 +50,24 @@ class MapaDeCaracteres(object):
 
 
     def resetea_pantalla(self):
+        scr.set_bg_color(1)
         scr.clear_screen()
         scr.printf('')
 
     def pinta_separador_filas(self):
         scr.printf()
-        scr.printf('       ', next_line=False)
+        scr.printf('       ', stay=True)
         for k in range(5, 26):
-            scr.printf(31, color=8, next_line=False, iscode=True)
+            scr.printf(31, color=8, stay=True, iscode=True)
         scr.printf()
 
     def nombre_fila(self, char_cod):
-        scr.printf('{:>03}-{:>03}'.format(char_cod, char_cod + 9), next_line=False)
-        scr.printf(31, color=8, next_line=False, iscode=True)
+        scr.printf('{:>03}-{:>03}'.format(char_cod, char_cod + 9), stay=True)
+        scr.printf(31, color=8, stay=True, iscode=True)
 
     def pinta_caracter(self, char_cod):
-        scr.printf(char_cod, color=4, next_line=False, iscode=True)
-        scr.printf(31, color=8, next_line=False, iscode=True)
+        scr.printf(char_cod, color=4, stay=True, iscode=True)
+        scr.printf(31, color=8, stay=True, iscode=True)
 
 class ListaDeColores(object):
     def __init__(self, screen):
@@ -73,7 +79,7 @@ class ListaDeColores(object):
 
         for i in range(0, 20):
             color_name=colors.get_color_name(i)
-            scr.printf('    {:>2} '.format(i), color=i, next_line=False)
+            scr.printf('    {:>2} '.format(i), color=i, stay=True)
             scr.printf(color_name, color=i)
         scr.wait_key()
 
@@ -92,7 +98,7 @@ class ListOfKeys(object):
         while True:
             a = scr.wait_key()
             scr.clear_screen()
-            scr.printf(u'El código de tecla pulsado es '+str(a))
+            scr.printf(u'El código de tecla pulsado es ' + str(a))
             scr.printf('Pulsa una tecla (Q para terminar)')
             if a == Q:
                 break

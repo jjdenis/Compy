@@ -17,6 +17,7 @@ BACKSPACE = 8
 LIMIT_WO_KEYSTROKE = 120 #secs
 
 class Control(object):
+
     def __init__(self, queue_to_view, queue_from_view):
         self.map = ScreenMap()
         self.char_table = CharTable()
@@ -64,10 +65,10 @@ class Control(object):
         char_id, color = self.map.get_poked(x, y)
         return char_id
 
-    def printf(self, to_print='', color=None, next_line=True, reverse=False, iscode=False, same_line=False):
+    def printf(self, to_print='', color=None, stay=False, reverse=False, iscode=False, carriage_back=False):
         self.set_color(color)
 
-        if same_line:
+        if carriage_back:
             self.printmap.go_first_x()
 
         if to_print == '' or to_print is None:
@@ -93,7 +94,7 @@ class Control(object):
             char_id = self.char_table.get_code(ch)
             self.set_char_in_screen(char_id, x, y, reverse)
 
-        if next_line:
+        if not stay:
             self.printmap.next_line()
 
     def set_color(self, color):
@@ -145,7 +146,7 @@ class Control(object):
     def input(self, message = '', color=None):
         self.set_color(color)
 
-        self.printf(message, next_line=False)
+        self.printf(message, stay=True)
         input = ''
         key = 0
         while key != ENTER:
@@ -155,12 +156,12 @@ class Control(object):
             if key==BACKSPACE:
                 input = input[0:-1]
                 l = len(message)+len(input)+1
-                self.printf(' '*l, next_line=False, same_line=True)
-                self.printf(message, next_line=False, same_line=True)
-                self.printf(input, next_line=False)
+                self.printf(' ' * l, stay=True, carriage_back=True)
+                self.printf(message, stay=True, carriage_back=True)
+                self.printf(input, stay=True)
             elif char:
                 input +=char
-                self.printf(char, next_line=False)
+                self.printf(char, stay=True)
         try:
             input=int(input)
         except:

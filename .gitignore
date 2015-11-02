@@ -34,5 +34,5 @@ sphinx/_build
 *.html.bak
 
 build/
-easygui.egg-info/
+compy.egg-info/
 

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 
 from settings import NUMBER_OF_COLORS

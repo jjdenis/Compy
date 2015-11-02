@@ -1,0 +1,40 @@
+<div class="highlight"><pre> <span class="c"># This is a guess the number game.</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">compy</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">sc</span><span class="p">):</span>
+
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;Well, I am thinking of a number between 1 and 20.&#39;</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+
+    <span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">num_guesses_taken</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">guess</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s">&#39;Take a guess: &#39;</span><span class="p">)</span>
+        <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span>
+        <span class="n">num_guesses_taken</span> <span class="o">=</span> <span class="n">num_guesses_taken</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+            <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;Your guess is too low.&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">number</span><span class="p">:</span>
+            <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;Your guess is too high.&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+            <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s">&#39;Good job! You guessed my number in {} guesses!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_guesses_taken</span><span class="p">)</span>
+            <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span> <span class="c"># Don&#39;t do anything</span>
+
+        <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">num_guesses_taken</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">msg</span><span class="o">=</span><span class="s">&#39;Nope. The number I was thinking of was {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">()</span>
+            <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">break</span>
+
+
+<span class="n">compy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</pre></div>

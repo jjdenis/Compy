@@ -3,13 +3,22 @@
 
 import os
 
+_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+def get_data():
+    return os.path.join(_ROOT, 'chars')
+
+
 class BitmapImages(object):
     def __init__(self):
         self.images = [None] * 400
         self.populate()
 
     def populate(self):
-        for dirpath, dirnames, filenames in os.walk('compy/chars'):
+        filenames = []
+        path_of_chars = get_data()
+        print path_of_chars
+        for dirpath, dirnames, filenames in os.walk(path_of_chars):
             break
 
         for filename in filenames:

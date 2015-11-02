@@ -4,7 +4,7 @@ from collections import namedtuple
 from string import Template
 import codecs
 
-Example = namedtuple('Example', ['title', 'name', 'comments', 'code', 'challenge'], verbose=True)
+Example = namedtuple('Example', ['title', 'name', 'comments', 'code', 'challenge'], verbose=False)
 
 example_template = Template("""
 

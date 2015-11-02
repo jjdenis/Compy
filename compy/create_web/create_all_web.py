@@ -1,20 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import codecs
+
+import shutil
 
 import wx
-from pygments import highlight
-from pygments.lexers import PythonLexer
-
-from pygments.formatters import HtmlFormatter
 
 from compy.colors import colors
 from compy.bitmaps import bitmap_images
-import __main__
 from compy.create_web.create_web_examples import Examples
 from compy.create_web.make_html import make_html
 
-name_of_project= __main__.__file__.split('/')[-1].replace('.py', '')
+import __main__
+name_of_project= __main__.__file__.split('/')[-1]
+
+print __main__.__file__
+
+from ..settings import DOCS_PATH
 
 def make_all_html():
     make_html('index.html')
@@ -94,15 +95,9 @@ def save_img(img):
     img.SaveFile(fileName, wx.BITMAP_TYPE_PNG)
 
 def take_code():
-    fn = '{}.py'.format(name_of_project)
-    f = codecs.open(fn, 'r', 'utf-8')
-    code = f.read()
-    code_html = highlight(code, PythonLexer(), HtmlFormatter())
-    f.close()
+    fno = __main__.__file__
+    fnc = DOCS_PATH + 'temp/{}'.format(name_of_project)
+    shutil.copyfile(fno, fnc)
 
-    fn = 'compy/templates/temp/{}.html'.format(name_of_project)
-    f = codecs.open(fn, 'w', 'utf-8')
-    f.write(code_html)
-    f.close()
 
 

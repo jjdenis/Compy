@@ -27,3 +27,5 @@ INIT_BG_COLOR = 'blue'
 INIT_CH_COLOR = 'light_blue'
 
 ESC_MESSAGE = u'esc:exit s:screenshot'
+
+DOCS_PATH = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/'

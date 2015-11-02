@@ -3,6 +3,10 @@
 from collections import namedtuple
 from string import Template
 import codecs
+from pygments import highlight
+from pygments.lexers import PythonLexer
+
+from pygments.formatters import HtmlFormatter
 
 Example = namedtuple('Example', ['title', 'name', 'comments', 'code', 'challenge'], verbose=False)
 
@@ -45,7 +49,7 @@ class Examples(object):
             name=example.name,
             title=example.title,
             comments=example.comments,
-            code=code,
+            code=self.create_code(example.name),
             challenge=example.challenge
             )
         return html
@@ -60,3 +64,14 @@ class Examples(object):
     def compose_jquery(self, example):
         jq = jquery_template.format(name=example.name)
         return jq
+
+    def create_code(self, name):
+        fn = '{}.py'.format(name)
+
+        f = codecs.open(fn, 'r', 'utf-8')
+        code = f.read()
+        f.close()
+
+        code_html = highlight(code, PythonLexer(), HtmlFormatter())
+
+        return code_html

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-TITLE = 'Compy, your programming mate'
+TITLE = 'Project Compy'
 NUM_COLS = 40
 NUM_ROWS = 25
 
@@ -16,7 +16,7 @@ FRAME_PTS_Y = FRAME_CHARS_Y * CHAR_PTS_Y
 
 
 INIT_MSG =  """
-      **** THE COMPY PROJECT ****
+      **** PROJECT COMPY V0.5 ****
 
 """
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from compy.create_web import make_all_html, take_code, save_img
+from compy.create_web.create_all_web import make_all_html, take_code, save_img
 from compy.colors import colors
 from compy.char_table import CharTable
 from compy.settings import INIT_FM_COLOR, INIT_BG_COLOR

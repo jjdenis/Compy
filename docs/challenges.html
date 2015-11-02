@@ -8,56 +8,155 @@
 
     <link rel="stylesheet" href="css/gutenweb.css" />
 
-    <title>Challenges - The Compy Project</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <title>Challenges - Project Compy </title>
 
     
-    <style type="text/css">
-        .important { color: #336699; }
-    </style>
+
+    <script>
+
+    $(document).ready(function(){
+
+    
+
+        
+
+$("pre.sum_two_values ").hide();
+$("button.sum_two_values ").click(function(){ $("pre.sum_two_values ").show();  });
+
+
+
+    
+
+        
+
+$("pre.guess_the_number ").hide();
+$("button.guess_the_number ").click(function(){ $("pre.guess_the_number ").show();  });
+
+
+
+    
+
+
+    });
+
+    </script>
+
 
 </head>
 
 <body>
     <div id="content">
+
 <h1> Challenges</h1>
 
-<h2>Sum two values</h2>
-
-<p><img src="img/sum_two_values.png" alt="" /></p>
-
-variables
-
-<pre class="code">
-<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
-<span class="c">#  -*- coding: utf-8 -*-</span>
+    Here you will find challenges and their solutions.
 
 
-<span class="kn">import</span> <span class="nn">compy</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">scrn</span><span class="p">):</span>
 
-    <span class="n">scrn</span><span class="o">.</span><span class="n">clear_screen</span><span class="p">()</span>
+    
 
-    <span class="n">scrn</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
-    <span class="n">scrn</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;    SUM OF TWO VALUES&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-    <span class="n">scrn</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;    =================&#39;</span><span class="p">)</span>
-    <span class="n">scrn</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+        <h2 id="sum_two_values "> Sum two numbers </h2>
 
-    <span class="n">value_one</span> <span class="o">=</span> <span class="n">scrn</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s">&quot;Give me one value: &quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span>
+            <p><img src="img/sum_two_values.png" alt="" /></p>
 
-    <span class="n">value_two</span> <span class="o">=</span> <span class="n">scrn</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s">&quot;Give me another value: &quot;</span><span class="p">)</span>
+            <button class="sum_two_values "> Solution </button>
 
-    <span class="n">sum_of_values</span> <span class="o">=</span> <span class="n">value_one</span> <span class="o">+</span> <span class="n">value_two</span>
+            <pre class="code sum_two_values "><code> <div class="highlight"><pre><span class="kn">import</span> <span class="nn">compy</span>
 
-    <span class="n">scrn</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
-    <span class="n">scrn</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;The sum of {} and {} is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">value_one</span><span class="p">,</span> <span class="n">value_two</span><span class="p">,</span> <span class="n">sum_of_values</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">sc</span><span class="p">):</span>
+
+    <span class="n">sc</span><span class="o">.</span><span class="n">clear_screen</span><span class="p">()</span>
+
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;    SUM OF TWO VALUES&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;    =================&#39;</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+
+    <span class="n">first_value</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s">&quot;Give me one value: &quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="n">second_value</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s">&quot;Give me another value: &quot;</span><span class="p">)</span>
+
+    <span class="n">sum_of_values</span> <span class="o">=</span> <span class="n">first_value</span> <span class="o">+</span> <span class="n">second_value</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="s">&#39;The sum of {} and {} is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">first_value</span><span class="p">,</span> <span class="n">second_value</span><span class="p">,</span> <span class="n">sum_of_values</span><span class="p">)</span>
+
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 
 
 <span class="n">compy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
 </pre></div>
-</pre>
+ </code></pre>
+
+            <hr/>
+
+
+
+
+    
+
+        <h2 id="guess_the_number "> Guess the number </h2>
+
+            <p><img src="img/guess_the_number.png" alt="" /></p>
+
+            <button class="guess_the_number "> Solution </button>
+
+            <pre class="code guess_the_number "><code> <div class="highlight"><pre> <span class="c"># This is a guess the number game.</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">compy</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">sc</span><span class="p">):</span>
+
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;Well, I am thinking of a number between 1 and 20.&#39;</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+
+    <span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">num_guesses_taken</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">guess</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s">&#39;Take a guess: &#39;</span><span class="p">)</span>
+        <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span>
+        <span class="n">num_guesses_taken</span> <span class="o">=</span> <span class="n">num_guesses_taken</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+            <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;Your guess is too low.&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">number</span><span class="p">:</span>
+            <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;Your guess is too high.&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+            <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s">&#39;Good job! You guessed my number in {} guesses!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_guesses_taken</span><span class="p">)</span>
+            <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span> <span class="c"># Don&#39;t do anything</span>
+
+        <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">num_guesses_taken</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">msg</span><span class="o">=</span><span class="s">&#39;Nope. The number I was thinking of was {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">()</span>
+            <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">break</span>
+
+
+<span class="n">compy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</pre></div>
+ </code></pre>
+
+            <hr/>
+
+
+
+
+
+
+
+
 
 <h2> Sum many values </h2>
 
@@ -71,7 +170,6 @@ variables
 
 <h2> 10 elefantes </h2>
 
-<h2> Adivina el número </h2>
 
 <h2> Pinta una progresión aritmética. </h2>
 
@@ -79,9 +177,16 @@ variables
 
 <h2> El mediano de una lista </h2>
 
+
+
+
+
 </div>
     <div id="footer">
         
+
+        <p><a href="index.html"> Home </a> </p>
+
         &copy; Copyright 2016 by Juan José Denis Corrales</a>.
         
     </div>

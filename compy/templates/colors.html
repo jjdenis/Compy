@@ -13,11 +13,10 @@
 
 <p>These are the meaning of the codes used in commands like sc.printf() or sc.set_bg_color().</p>
 
-
 <ul>
 
 {% for code, name, color in colors %}
-    <li style="color:{{ color }}"> Code: {{ code }} - Name: {{ name }}</li>
+    <li style="color:{{ color }}"> {{ code }}: {{ name }}</li>
 {% endfor %}
 
 </ul>

@@ -1,25 +1,45 @@
 {% extends "base.html" %}
 {% block title %}Challenges{% endblock %}
+
 {% block head %}
     {{ super() }}
-    <style type="text/css">
-        .important { color: #336699; }
-    </style>
+
+    <script>
+
+    $(document).ready(function(){
+
+    {% for html, jquery in challenges %}
+
+        {{ jquery }}
+
+    {% endfor %}
+
+
+    });
+
+    </script>
+
 {% endblock %}
 
 
 {% block content %}
+
 <h1> Challenges</h1>
 
-<h2>Sum two values</h2>
+    Here you will find challenges and their solutions.
 
-<p><img src="img/sum_two_values.png" alt="" /></p>
 
-{{ prueba }}
 
-<pre class="code">
-{% include 'sum_two_values.html' %}
-</pre>
+{% for body_html, jq in challenges %}
+
+    {{ body_html }}
+
+{% endfor %}
+
+
+
+
+
 
 <h2> Sum many values </h2>
 
@@ -33,12 +53,15 @@
 
 <h2> 10 elefantes </h2>
 
-<h2> Adivina el número </h2>
 
 <h2> Pinta una progresión aritmética. </h2>
 
 <h2> Simula un dado </h2>
 
 <h2> El mediano de una lista </h2>
+
+
+
+
 
 {% endblock %}

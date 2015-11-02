@@ -7,7 +7,9 @@
 
     <link rel="stylesheet" href="css/gutenweb.css" />
 
-    <title>{% block title %}{% endblock %} - The Compy Project</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <title>{% block title %}{% endblock %} - Project Compy </title>
 
     {% endblock %}
 </head>
@@ -16,6 +18,9 @@
     <div id="content">{% block content %}{% endblock %}</div>
     <div id="footer">
         {% block footer %}
+
+        <p><a href="index.html"> Home </a> </p>
+
         &copy; Copyright 2016 by Juan José Denis Corrales</a>.
         {% endblock %}
     </div>

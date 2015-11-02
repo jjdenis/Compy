@@ -2,8 +2,7 @@ Todo:
 
 Fix:
 
-- backspace in input
-- repeat key
+- challenges don't show in html
 
 Done:
 

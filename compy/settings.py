@@ -32,7 +32,7 @@ ESC_MESSAGE = u'esc:exit s:screenshot'
 # this is for development.
 # If false, the screenshots will be in the base path.
 # This is for use after pip install
-SAVE_TO_DOCS_PATH = False
+SAVE_TO_DOCS_PATH = True
 
 DOCS_PATH = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/'
 SSHOTS_PATH = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/img/'

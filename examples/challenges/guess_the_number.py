@@ -31,7 +31,7 @@ def main(sc):
         sc.printf()
 
         if num_guesses_taken == 5:
-            msg='Nope. The number I was thinking of was {}'.format()
+            msg='Nope. The number I was thinking of was {}'.format(number)
             sc.printf(msg)
             break
 

@@ -5,7 +5,7 @@ from jinja2 import Environment, PackageLoader
 
 env = Environment(loader=PackageLoader('compy', 'templates'))
 
-def make_html(name_html, **kwargs):
+def t2wp(name_html, **kwargs):
 
     template = env.get_template(name_html)
 

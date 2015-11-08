@@ -3,23 +3,22 @@
 
 from compy.colors import colors
 from compy.bitmaps import bitmap_images
-from compy.create_web.create_web_examples import Examples
-from compy.create_web.make_html import make_html
+from compy.create_web.html_examples import Examples
+from compy.create_web.template_to_webpage import t2wp
 
 
 def make_all_html():
-    make_html('index.html')
-    make_html('install.html')
-    make_html('examples.html')
-    make_html('commands.html')
-
-    make_colors_html()
-
-    make_keys_html()
-
-    make_chars_html()
+    t2wp('index.html')
+    t2wp('install.html')
+    t2wp('examples.html')
+    t2wp('commands.html')
 
     make_challenges_html()
+
+    make_colors_html()
+    make_keys_html()
+    make_chars_html()
+
 
 
 def make_challenges_html():
@@ -37,7 +36,7 @@ def make_challenges_html():
                    code='sample_code 1',
                    challenge =True)
 
-    make_html('challenges.html', challenges=challenges)
+    t2wp('challenges.html', challenges=challenges)
 
 
 def make_chars_html():
@@ -46,7 +45,7 @@ def make_chars_html():
         if bitmap_path:
             path = bitmap_path.replace('compy/chars', 'chars')
             bitmaps.append((bitmap_code, path))
-    make_html('chars.html', bitmaps=bitmaps)
+    t2wp('chars.html', bitmaps=bitmaps)
 
 
 def make_keys_html():
@@ -65,7 +64,7 @@ def make_keys_html():
     keys.append((307, 'alt'))
     keys.append((308, 'command'))
     keys.append((8, 'backspace'))
-    make_html('keys.html', keys=keys)
+    t2wp('keys.html', keys=keys)
 
 
 def make_colors_html():
@@ -76,7 +75,7 @@ def make_colors_html():
         clrs.append((col_code,
                      colors.get_color_name(col_code),
                      html_color))
-    make_html('colors.html', colors=clrs)
+    t2wp('colors.html', colors=clrs)
 
 
 

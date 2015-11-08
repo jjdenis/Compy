@@ -7,7 +7,7 @@ from compy.char_table import CharTable
 from compy.screenshot import CodeScreenShotSimple, CodeScreenShotDocs
 from compy.settings import INIT_FM_COLOR, INIT_BG_COLOR, SAVE_TO_DOCS_PATH
 from compy.settings import ESC_MESSAGE
-
+import webbrowser
 
 S_KEY = 83
 H_KEY = 72
@@ -42,8 +42,9 @@ class EscapeCommands(object):
 
         elif key == H_KEY:  # Recreate web site
             make_all_html()
-            self.command_mode = False
-            self.del_msg(ESC_MESSAGE)
+            print webbrowser.open('file:///Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/challenges.html')
+            self.cierra_por_esc()
+
         else:
             self.command_mode = False
         return None

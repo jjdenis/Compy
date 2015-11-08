@@ -3,13 +3,16 @@
 from collections import namedtuple
 from string import Template
 import codecs
-from pygments import highlight
+import pygments
+# from pygments import highlight
 from pygments.lexers import PythonLexer
 from pygments.formatters import HtmlFormatter
 
 from compy.settings import CODE_PATH
 
 Example = namedtuple('Example', ['title', 'name', 'comments', 'code', 'challenge'], verbose=False)
+
+print HtmlFormatter().get_style_defs('.highlight')
 
 example_template = Template("""
 
@@ -19,15 +22,15 @@ example_template = Template("""
 
             <button class="$name "> Solution </button>
 
-            <pre class="code $name "><code> $code </code></pre>
+            <div class="code $name "><code> $code </code></div>
 
             <hr/>
 """)
 
 jquery_template = """
 
-$("pre.{name} ").hide();
-$("button.{name} ").click(function(){{ $("pre.{name} ").toggle();  }});
+$("div.{name} ").hide();
+$("button.{name} ").click(function(){{ $("div.{name} ").toggle();  }});
 
 """
 
@@ -65,7 +68,7 @@ class Examples(object):
         return code
 
     def code2html(self, code):
-        code_html = highlight(code, PythonLexer(), HtmlFormatter())
+        code_html = pygments.highlight(code, PythonLexer(), HtmlFormatter())
         return code_html
 
     def compose_jquery(self, example):

@@ -55,7 +55,7 @@ class Examples(object):
         return html
 
     def get_code(self, name):
-        fn = 'compy/templates/temp/{}.html'.format(name)
+        fn = 'compy/templates/code/{}.html'.format(name)
         f = codecs.open(fn, 'r', 'utf-8')
         code_html = f.read()
         f.close()

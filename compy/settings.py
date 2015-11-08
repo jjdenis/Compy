@@ -28,4 +28,12 @@ INIT_CH_COLOR = 'light_blue'
 
 ESC_MESSAGE = u'esc:exit s:screenshot'
 
+# Two modes of operation, if True, it helps with docs
+# this is for development.
+# If false, the screenshots will be in the base path.
+# This is for use after pip install
+SAVE_TO_DOCS_PATH = False
+
 DOCS_PATH = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/'
+SSHOTS_PATH = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/img/'
+CODE_PATH = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/code/'

@@ -136,8 +136,9 @@ class GUIwx(wx.App):
         self.cierra_por_esc_when_turn = True
 
     def get_img_of_sceen(self):
-        os.system('screencapture docs/img/scr.png')
-        screen = wx.Bitmap('docs/img/scr.png')
+        os.system('screencapture scr.png')
+        screen = wx.Bitmap('scr.png')
+        os.remove('scr.png')
         rect = self.frame.GetRect()
         bitmap = screen.GetSubBitmap(rect)
         img = bitmap.ConvertToImage()

@@ -7,8 +7,8 @@ def main(sc):
     sc.clear_screen()
 
     sc.printf()
-    sc.printf('    SUM OF TWO VALUES', color=4)
-    sc.printf('    =================')
+    sc.printf('SUM TWO VALUES', color=4)
+    sc.printf('==============')
     sc.printf()
 
     first_value = sc.input("Give me one value: ", color=8)

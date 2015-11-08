@@ -1,21 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import shutil
-
-import wx
-
 from compy.colors import colors
 from compy.bitmaps import bitmap_images
 from compy.create_web.create_web_examples import Examples
 from compy.create_web.make_html import make_html
 
-import __main__
-name_of_project= __main__.__file__.split('/')[-1]
-
-print __main__.__file__
-
-from ..settings import DOCS_PATH
 
 def make_all_html():
     make_html('index.html')
@@ -87,17 +77,6 @@ def make_colors_html():
                      colors.get_color_name(col_code),
                      html_color))
     make_html('colors.html', colors=clrs)
-
-
-def save_img(img):
-    # fn=dtm.datetime.now().strftime('%dd%HH%MM%SS')
-    fileName = "docs/img/{}.png".format(name_of_project)
-    img.SaveFile(fileName, wx.BITMAP_TYPE_PNG)
-
-def take_code():
-    fno = __main__.__file__
-    fnc = DOCS_PATH + 'temp/{}'.format(name_of_project)
-    shutil.copyfile(fno, fnc)
 
 
 

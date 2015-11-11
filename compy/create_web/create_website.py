@@ -24,16 +24,20 @@ def make_all_html():
 def make_challenges_html():
 
     challenges = Examples()
-    challenges.add(title='Sum two numbers',
-                   name='sum_two_values',
-                   comments='This is a simple example, ',
-                   code='sample_code 1',
+
+    challenges.new(title='Draw one line',
+                   name='draw_line',
+                   comments='Can you draw a yellow line like the one in this example?',
                    challenge =True)
 
-    challenges.add(title='Guess the number',
+    challenges.new(title='Sum two numbers',
+                   name='sum_two_values',
+                   comments='This is a simple example, ',
+                   challenge =True)
+
+    challenges.new(title='Guess the number',
                    name='guess_the_number',
                    comments='This is a simple example, ',
-                   code='sample_code 1',
                    challenge =True)
 
     t2wp('challenges.html', challenges=challenges)

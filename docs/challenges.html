@@ -98,6 +98,15 @@
 
         
 
+$("div.draw_line ").hide();
+$("button.draw_line ").click(function(){ $("div.draw_line ").toggle();  });
+
+
+
+    
+
+        
+
 $("div.sum_two_values ").hide();
 $("button.sum_two_values ").click(function(){ $("div.sum_two_values ").toggle();  });
 
@@ -135,7 +144,43 @@ $("button.guess_the_number ").click(function(){ $("div.guess_the_number ").toggl
 
     
 
+        <h2 id="draw_line "> Draw one line </h2>
+
+            <p> Can you draw a yellow line like the one in this example? </p>
+
+            <p><img src="img/draw_line.png" alt="" /></p>
+
+            <button class="draw_line "> Solution </button>
+
+            <div class="code draw_line "><code> <div class="highlight"><pre><span class="kn">import</span> <span class="nn">compy</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">sc</span><span class="p">):</span>
+
+    <span class="n">sc</span><span class="o">.</span><span class="n">clear_screen</span><span class="p">()</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39;DRAW A LINE&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">()</span>
+
+    <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&#39;light-yellow&#39;</span><span class="p">)</span>
+
+
+<span class="n">compy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</pre></div>
+ </code></div>
+
+            <hr/>
+
+
+
+
+    
+
         <h2 id="sum_two_values "> Sum two numbers </h2>
+
+            <p> This is a simple example,  </p>
 
             <p><img src="img/sum_two_values.png" alt="" /></p>
 
@@ -177,6 +222,8 @@ $("button.guess_the_number ").click(function(){ $("div.guess_the_number ").toggl
     
 
         <h2 id="guess_the_number "> Guess the number </h2>
+
+            <p> This is a simple example,  </p>
 
             <p><img src="img/guess_the_number.png" alt="" /></p>
 

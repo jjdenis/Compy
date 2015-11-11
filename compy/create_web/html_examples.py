@@ -10,13 +10,15 @@ from pygments.formatters import HtmlFormatter
 
 from compy.settings import CODE_PATH
 
-Example = namedtuple('Example', ['title', 'name', 'comments', 'code', 'challenge'], verbose=False)
+Example = namedtuple('Example', ['title', 'name', 'comments', 'challenge'], verbose=False)
 
 print HtmlFormatter().get_style_defs('.highlight')
 
 example_template = Template("""
 
         <h2 id="$name "> $title </h2>
+
+            <p> $comments </p>
 
             <p><img src="img/${name}.png" alt="" /></p>
 
@@ -40,8 +42,8 @@ class Examples(object):
     def __init__(self):
         self.examples = []
 
-    def add(self, title, name, comments, code, challenge):
-        self.examples.append(Example(title, name, comments, code, challenge))
+    def new(self, title, name, comments, challenge):
+        self.examples.append(Example(title, name, comments, challenge))
 
     def __iter__(self):
         for example in self.examples:
@@ -55,7 +57,6 @@ class Examples(object):
             title=example.title,
             comments=example.comments,
             code=code_html,
-            challenge=example.challenge
             )
         return html
 

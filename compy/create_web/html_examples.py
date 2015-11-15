@@ -12,8 +12,6 @@ from compy.settings import CODE_PATH
 
 Example = namedtuple('Example', ['title', 'name', 'comments', 'challenge'], verbose=False)
 
-print HtmlFormatter().get_style_defs('.highlight')
-
 example_template = Template("""
 
         <h2 id="$name "> $title </h2>

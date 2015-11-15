@@ -39,7 +39,7 @@ def run(main):
     gui = view.GUIwx(q_to_view, q_from_view)
     gui.run()
 
-    print("Finished GUI")
+    print("Finished GUI loop")
 
     while not q_to_view.empty():
         q_to_view.get()
@@ -54,4 +54,4 @@ def run(main):
     control_parallel.terminate()
     control_parallel.join()
 
-    print("Finshed Control")
+    print("Program finished")

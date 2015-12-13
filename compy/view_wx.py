@@ -214,7 +214,7 @@ class Q(object):
 
 
 if __name__ == '__main__':
-    from compy.colors import Colors
+    from compy.color_table import Colors
     colrs = Colors()
 
     q1 = Q()

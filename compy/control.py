@@ -5,7 +5,7 @@ from time import sleep, time
 
 from compy.key import PressedKey
 from compy.map import ScreenMap, PrintMap
-from compy.colors import colors
+from compy.color_table import colors
 from compy.char_table import CharTable
 from compy.settings import INIT_MSG
 from compy.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
@@ -46,7 +46,7 @@ class Control(object):
 
         # c stands for corrected
 
-    def xyprint(self, x, y, *args):
+    def xyprintf(self, x, y, *args):
         string = u''
         for to_chain in args:
             if isinstance(to_chain, str):

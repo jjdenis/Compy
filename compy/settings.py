@@ -34,6 +34,6 @@ ESC_MESSAGE = u'esc:exit s:screenshot'
 # This is for use after pip install
 SAVE_TO_DOCS_PATH = True
 
-DOCS_PATH = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/'
+DOCS_PATH   = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/'
 SSHOTS_PATH = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/img/'
-CODE_PATH = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/code/'
+CODE_PATH   = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/code/'

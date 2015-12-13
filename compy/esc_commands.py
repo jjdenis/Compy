@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from compy.create_web.create_website import make_all_html
-from compy.colors import colors
-from compy.char_table import CharTable
 
-from compy.screenshot import CodeScreenShotSimple, CodeScreenShotDocs
-from compy.settings import INIT_FM_COLOR, INIT_BG_COLOR, SAVE_TO_DOCS_PATH
+from compy.color_table import colors
+from compy.char_table import CharTable
+from compy.settings import INIT_FM_COLOR, INIT_BG_COLOR
 from compy.settings import ESC_MESSAGE
-import webbrowser
+import __main__
+import wx
+
+name_of_project= __main__.__file__.split('/')[-1]
 
 S_KEY = 83
 H_KEY = 72
@@ -16,6 +17,7 @@ ESCAPE = 27
 
 
 class EscapeCommands(object):
+
     def __init__(self, poke, envia_comando, cierra_por_esc, get_img):
         self.poke = poke
         self.cierra_por_esc = cierra_por_esc
@@ -40,11 +42,6 @@ class EscapeCommands(object):
         elif key == S_KEY:  # Take screenshot
             self.screenshot()
 
-        elif key == H_KEY:  # Recreate web site
-            make_all_html()
-            print webbrowser.open('file:///Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/challenges.html')
-            self.cierra_por_esc()
-
         else:
             self.command_mode = False
         return None
@@ -57,10 +54,10 @@ class EscapeCommands(object):
     def screenshot(self):
         self.del_msg(ESC_MESSAGE)
         self.command_mode = False
-        if SAVE_TO_DOCS_PATH:
-            CodeScreenShotDocs(self.get_img)
-        else:
-            CodeScreenShotSimple(self.get_img)
+        img = self.get_img()
+        fileName = "{}.png".format(name_of_project[0:-3])
+        img.SaveFile(fileName, wx.BITMAP_TYPE_PNG)
+
 
     def msg(self, msg):
         color_c = colors.get_color(INIT_BG_COLOR)
@@ -77,6 +74,4 @@ class EscapeCommands(object):
         for i, ch in enumerate(msg):
             char_id = self.char_table.get_code(u'█')
             self.poke(0+i, -2, char_id, color_c, color_b)
-
-
 

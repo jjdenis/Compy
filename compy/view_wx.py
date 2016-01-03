@@ -170,6 +170,23 @@ class Pinta(object):
         dc.DrawBitmap(bmp, dcx, dcy, useMask=False)
         dc.EndDrawing()
         self.canvas.Refresh()
+        self.point(0,10,'red')
+        self.point(0, 0,'red')
+        self.point(0, 20,'red')
+        self.point(30, 0,'green')
+
+    def point(self, x, y, color):
+
+        dcx = FRAME_PTS_X + x - 1
+        dcy = TOTAL_CNVS_PTS_Y - FRAME_PTS_Y - (y + 1)
+
+        dc = wx.WindowDC(self.canvas)
+
+        dc.BeginDrawing()
+        dc.SetPen(wx.Pen(color))
+        dc.DrawPoint(dcx, dcy)
+        dc.EndDrawing()
+        self.canvas.Refresh()
 
     def to_window_units(self, x, y):
         dcx = FRAME_PTS_X + x * 16

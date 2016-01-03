@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from fuzzywuzzy import process
 
-from settings import NUMBER_OF_COLORS
+NUMBER_OF_COLORS = 20
 
 COLORS = [
     ('light_blue'  , ( 0xa6, 0xce, 0xe3) ),

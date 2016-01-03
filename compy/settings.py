@@ -20,8 +20,6 @@ INIT_MSG =  """
 
 """
 
-NUMBER_OF_COLORS = 20
-
 INIT_FM_COLOR = 'ligh_blue'
 INIT_BG_COLOR = 'blue'
 INIT_CH_COLOR = 'light_blue'

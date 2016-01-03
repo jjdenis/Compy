@@ -170,10 +170,10 @@ class Pinta(object):
         dc.DrawBitmap(bmp, dcx, dcy, useMask=False)
         dc.EndDrawing()
         self.canvas.Refresh()
-        self.point(0,10,'red')
-        self.point(0, 0,'red')
-        self.point(0, 20,'red')
-        self.point(30, 0,'green')
+        # self.point(0,10,'red')
+        # self.point(0, 0,'red')
+        # self.point(0, 20,'red')
+        # self.point(30, 0,'green')
 
     def point(self, x, y, color):
 

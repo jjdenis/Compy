@@ -60,6 +60,7 @@ class Control(object):
             char_id = self.char_table.get_code(ch)
             self.set_char_in_screen(char_id, x, y)
             x=x+1
+        time.sleep(0.1)
 
     def peek(self, x, y):
         char_id, color = self.map.get_poked(x, y)

@@ -9,6 +9,8 @@ from compy.color_table import colors
 from compy.char_table import CharTable
 from compy.settings import INIT_MSG
 from compy.settings import INIT_FM_COLOR, INIT_BG_COLOR, INIT_CH_COLOR
+from compy.settings import TIME_BETWEEN_XYPRINT
+
 from compy.helpers import MapaDeCaracteres, ListaDeColores, ListOfKeys
 
 ENTER = 13
@@ -60,7 +62,7 @@ class Control(object):
             char_id = self.char_table.get_code(ch)
             self.set_char_in_screen(char_id, x, y)
             x=x+1
-        time.sleep(0.1)
+        sleep(TIME_BETWEEN_XYPRINT)
 
     def peek(self, x, y):
         char_id, color = self.map.get_poked(x, y)

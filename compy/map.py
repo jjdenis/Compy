@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from compy.settings import NUM_COLS, NUM_ROWS, INIT_BG_COLOR
+from compy.settings import NUM_COLS, NUM_ROWS, INIT_BG_COLOR, TIME_FOR_NEXT_PAGE
 from time import sleep
 
 FIRST_X = 0
@@ -40,7 +40,7 @@ class PrintMap(object):
 
     def next_x(self):
         if self.clear_screen_next:
-            sleep(2)
+            sleep(TIME_FOR_NEXT_PAGE)
             self.clear_screen()
             self.clear_screen_next = False
 

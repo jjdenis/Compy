@@ -1,9 +1,0 @@
-Todo:
-
-Fix:
-
-- keep examples as py, convert to html at the end
-- setuptools
-- comments in examples
-
-

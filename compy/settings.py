@@ -35,3 +35,6 @@ SAVE_TO_DOCS_PATH = True
 DOCS_PATH   = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/'
 SSHOTS_PATH = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/img/'
 CODE_PATH   = u'/Users/jjdenis/Dropbox/Familia/Programas/poke/poke/docs/code/'
+
+TIME_FOR_NEXT_PAGE = 0.1  # seconds
+TIME_BETWEEN_XYPRINT = 0.01 #seconds

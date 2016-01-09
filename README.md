@@ -6,6 +6,10 @@ Compy still doesn't run on Windows and I haven't tested it on linux.
 
 It runs using wxwindows, which I have installed on my mac using the Anaconda distribution.
 
+This is a sample of the screen
+-------------------------------
+![This is a sample](https://jjdenis.github.io/Compy/img/print_hello_world.png)
+
 
 To run without installation
 -----------------------------
@@ -33,4 +37,3 @@ And the code here
 ------------------
   https://github.com/jjdenis/Create_web_Compy
 
-![This is a sample](https://jjdenis.github.io/Compy/img/print_hello_world.png)

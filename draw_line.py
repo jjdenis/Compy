@@ -26,28 +26,22 @@ def my_program():
 # but keep them, don't get rid of these lines
 ###########################################################################
 ###########################################################################
+import compy
+import time
 
+# define commands of compy, so IDE's will recognize them
 def clear_screen(): pass
-
 def set_bg_color(color): pass
-
 def set_fm_color(color): pass
-
 def printf(to_print='', color=None, stay=False, reverse=False): pass
-
 def xyprintf(x, y, *args): pass
-
 def poke(x, y, code, color = None, reverse=False): pass
-
 def peek(self, x, y): pass
-
-def input(message = '', color=None): pass
-
+def input(message = '', color=None): return None
 def wait_key(): pass
-
 def check_key(): pass
 
-def redefine_commands(screen):
+def redefine_commands_and_run(screen):
 
     global clear_screen, set_bg_color, set_fm_color, printf, xyprintf
     global poke, peek, input, wait_key, check_key
@@ -65,9 +59,8 @@ def redefine_commands(screen):
 
     my_program()
 
-import compy
-
-compy.run(redefine_commands)
+if __name__ == '__main__':
+    compy.run(redefine_commands_and_run)
 
 ###########################################################################
 ###########################################################################

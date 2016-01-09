@@ -27,4 +27,10 @@ and help would be appreciated with the packging and installing.
 Examples and challenges can be found here:
 ------------------------------------------
 
+  http://jjdenis.github.io/Compy/
+
+And the code here
+------------------
   https://github.com/jjdenis/Create_web_Compy
+
+![This is a sample](jjdenis.github.com/Compy/img/print_hello_world.png)

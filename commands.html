@@ -4,13 +4,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
-    
 
     <link rel="stylesheet" href="css/gutenweb.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-    <title>Index - Project Compy </title>
+    <title>Commands - Project Compy </title>
 
 
     <style type="text/css">
@@ -89,39 +88,46 @@
 
 
     
-    <style type="text/css">
-        .important { color: #336699; }
-    </style>
-
 </head>
 
 <body>
     <div id="content">
 
-<h1> The Compy Project - Index</h1>
+<h1> Commands - The Compy Project</h1>
 
-<p> The Compy Project is an personal project of a father of four,
-    who learnt programming with a Commodore Vic-20 and, much later,
-    felt in love with python. </p>
+<p> In this page you can find the whole list of commands used
+    to program in Compy.</p>
 
-<p> The Compy Project aims to blend the beautiful, colorful and easy
-    screen familiar to Commodore users with the elegant syntax of python.</p>
 
-<p> To start, check how to intall it, then run the examples, and then, and only then, try the challenges. </p>
+<h2> sc.printf </h2>
 
-<p><a href="install.html">   Installation and running </a></p>
 
-<p><a href="examples.html">   Examples </a></p>
 
-<p><a href="challenges.html"> Challenges </a></p>
+<pre class="code"> <code>
 
-<p><a href="commands.html">  Commands in Compy </a></p>
+    # Simple print
+    sc.printf('Hello')
 
-<p><a href="colors.html">  Colors in Compy </a></p>
+    # Print on a different color
+    sc.printf('Hello', color='black')
 
-<p><a href="keys.html">  Keys in Compy </a></p>
+    # Colors can be chosen by numbers
+    sc.printf('Hello', color=4)
 
-<p><a href="chars.html">  Chars in Compy </a></p>
+    sc.printf('Hello, ', stay=True)
+
+    sc.printf('partner!', color=0)
+
+    sc.printf()
+
+    sc.printf('Hello', reverse = True)
+
+    sc.printf('Hello, or better...', color='light-green', reverse=True, stay=True)
+
+    sc.printf('Good bye!!!')
+
+</code> </pre>
+
 
 </div>
     <div id="footer">

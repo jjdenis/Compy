@@ -12,10 +12,10 @@ This is a sample of the screen
 ![This is a sample](https://jjdenis.github.io/Compy/img/print_hello_world.png)
 
 
-To run compy::
+To run compy
 --------------
 
-  pythonw draw_line.py
+    pythonw draw_line.py
 
 **Mind the 'w'** at the end of the command python.
 

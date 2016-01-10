@@ -2,18 +2,7 @@
 
 def my_program():
 
-    clear_screen()
-
-    printf()
-    printf('             DRAW A LINE', color=17)
-    printf()
-    printf('               by Ana', color=19)
-    printf()
-    printf()
-
-    printf('             ', stay=True)
-    printf('          ', reverse = True, color = 'light-yellow')
-
+    printf('Hello world !!!')
 
 
 

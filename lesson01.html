@@ -252,8 +252,62 @@ $("button.mult_table ").click(function(){ $("div.mult_table ").toggle();  });
 
         
 
+$("div.ex_random ").hide();
+$("button.ex_random ").click(function(){ $("div.ex_random ").toggle();  });
+
+
+
+    
+
+        
+
 $("div.guess_the_number ").hide();
 $("button.guess_the_number ").click(function(){ $("div.guess_the_number ").toggle();  });
+
+
+
+    
+
+        
+
+$("div.ex_def ").hide();
+$("button.ex_def ").click(function(){ $("div.ex_def ").toggle();  });
+
+
+
+    
+
+        
+
+$("div.draw_square ").hide();
+$("button.draw_square ").click(function(){ $("div.draw_square ").toggle();  });
+
+
+
+    
+
+        
+
+$("div.draw_ladder_right ").hide();
+$("button.draw_ladder_right ").click(function(){ $("div.draw_ladder_right ").toggle();  });
+
+
+
+    
+
+        
+
+$("div.draw_ladder_left ").hide();
+$("button.draw_ladder_left ").click(function(){ $("div.draw_ladder_left ").toggle();  });
+
+
+
+    
+
+        
+
+$("div.draw_pyramid ").hide();
+$("button.draw_pyramid ").click(function(){ $("div.draw_pyramid ").toggle();  });
 
 
 
@@ -270,8 +324,8 @@ $("button.ex_xyprintf ").click(function(){ $("div.ex_xyprintf ").toggle();  });
 
         
 
-$("div.ex_def ").hide();
-$("button.ex_def ").click(function(){ $("div.ex_def ").toggle();  });
+$("div.ex_date_time ").hide();
+$("button.ex_date_time ").click(function(){ $("div.ex_date_time ").toggle();  });
 
 
 
@@ -306,7 +360,7 @@ $("button.ex_def ").click(function(){ $("div.ex_def ").toggle();  });
 
         <h2 id="ex_print_hello_world "> Example: Print hello world </h2>
 
-            <p> This is your first program, find it at the root base, run it with this command <code>ex_pythonw print_hello_world.py</code> </p>
+            <p> This is your first program, find it at the root base, run it with this command <code>pythonw ex_print_hello_world.py</code> </p>
 
             <p><img src="img/ex_print_hello_world.png" alt="" /></p>
 
@@ -1080,9 +1134,7 @@ $("button.ex_def ").click(function(){ $("div.ex_def ").toggle();  });
 
             <button class="ex_wait_time "> Solution </button>
 
-            <div class="code ex_wait_time "><code> <div class="highlight"><pre><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-
-<span class="k">def</span> <span class="nf">my_program</span><span class="p">():</span>
+            <div class="code ex_wait_time "><code> <div class="highlight"><pre><span class="k">def</span> <span class="nf">my_program</span><span class="p">():</span>
 
     <span class="n">clear_screen</span><span class="p">()</span>
 
@@ -1092,7 +1144,7 @@ $("button.ex_def ").click(function(){ $("div.ex_def ").toggle();  });
         <span class="n">seconds</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&#39;How many seconds do you want to wait? (0 to exit) &#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">seconds</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">break</span>
-        <span class="n">sleep</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
 
     <span class="n">printf</span><span class="p">(</span><span class="s">&#39;Bye!!&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-red&#39;</span><span class="p">)</span>
 
@@ -1106,6 +1158,9 @@ $("button.ex_def ").click(function(){ $("div.ex_def ").toggle();  });
 <span class="c">###########################################################################</span>
 <span class="kn">import</span> <span class="nn">compy</span>
 <span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span>
+<span class="kn">import</span> <span class="nn">random</span>
 
 <span class="c"># define commands of compy, so IDE&#39;s will recognize them</span>
 <span class="k">def</span> <span class="nf">clear_screen</span><span class="p">():</span> <span class="k">pass</span>
@@ -1741,6 +1796,95 @@ $("button.ex_def ").click(function(){ $("div.ex_def ").toggle();  });
 
     
 
+        <h2 id="ex_random "> Example: Generating random numbers </h2>
+
+            <p> Look at the way to generate random numbers in python </p>
+
+            <p><img src="img/ex_random.png" alt="" /></p>
+
+            <button class="ex_random "> Solution </button>
+
+            <div class="code ex_random "><code> <div class="highlight"><pre><span class="k">def</span> <span class="nf">my_program</span><span class="p">():</span>
+
+    <span class="n">clear_screen</span><span class="p">()</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;This program shows how to generate random numbers&#39;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&#39;Do you want a random FLOAT number between 0 and 1? &#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;yellow&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">&#39;N&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="n">printf</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-green&#39;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&#39;Do you want a random INTEGER number between 0 and 10? &#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;yellow&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">&#39;N&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">printf</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-green&#39;</span><span class="p">)</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;Bye!!&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-red&#39;</span><span class="p">)</span>
+
+
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="c"># The next lines are needed to run compy, don&#39;t mind them,</span>
+<span class="c"># but keep them, don&#39;t get rid of these lines</span>
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="kn">import</span> <span class="nn">compy</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="c"># define commands of compy, so IDE&#39;s will recognize them</span>
+<span class="k">def</span> <span class="nf">clear_screen</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_bg_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_fm_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">printf</span><span class="p">(</span><span class="n">to_print</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">xyprintf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">poke</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span> <span class="k">return</span> <span class="bp">None</span>
+<span class="k">def</span> <span class="nf">wait_key</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">check_key</span><span class="p">():</span> <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">redefine_commands_and_run</span><span class="p">(</span><span class="n">screen</span><span class="p">):</span>
+
+    <span class="k">global</span> <span class="n">clear_screen</span><span class="p">,</span> <span class="n">set_bg_color</span><span class="p">,</span> <span class="n">set_fm_color</span><span class="p">,</span> <span class="n">printf</span><span class="p">,</span> <span class="n">xyprintf</span>
+    <span class="k">global</span> <span class="n">poke</span><span class="p">,</span> <span class="n">peek</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">wait_key</span><span class="p">,</span> <span class="n">check_key</span>
+
+    <span class="n">clear_screen</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">clear_screen</span>
+    <span class="n">set_bg_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_bg_color</span>
+    <span class="n">set_fm_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_fm_color</span>
+    <span class="n">printf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">printf</span>
+    <span class="n">xyprintf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">xyprintf</span>
+    <span class="n">poke</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">poke</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">peek</span>
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">input</span>
+    <span class="n">wait_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">wait_key</span>
+    <span class="n">check_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">check_key</span>
+
+    <span class="n">my_program</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">compy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">redefine_commands_and_run</span><span class="p">)</span>
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+</pre></div>
+ </code></div>
+
+            <hr/>
+
+
+
+
+    
+
         <h2 id="guess_the_number "> Challenge: Guess the number </h2>
 
             <p> Can you do that? </p>
@@ -1784,6 +1928,445 @@ $("button.ex_def ").click(function(){ $("div.ex_def ").toggle();  });
             <span class="n">msg</span><span class="o">=</span><span class="s">&#39;Nope. The number I was thinking of was {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
             <span class="n">sc</span><span class="o">.</span><span class="n">printf</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
             <span class="k">break</span>
+
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="c"># The next lines are needed to run compy, don&#39;t mind them,</span>
+<span class="c"># but keep them, don&#39;t get rid of these lines</span>
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="kn">import</span> <span class="nn">compy</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span>
+
+<span class="c"># define commands of compy, so IDE&#39;s will recognize them</span>
+<span class="k">def</span> <span class="nf">clear_screen</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_bg_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_fm_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">printf</span><span class="p">(</span><span class="n">to_print</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">xyprintf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">poke</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span> <span class="k">return</span> <span class="bp">None</span>
+<span class="k">def</span> <span class="nf">wait_key</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">check_key</span><span class="p">():</span> <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">redefine_commands_and_run</span><span class="p">(</span><span class="n">screen</span><span class="p">):</span>
+
+    <span class="k">global</span> <span class="n">clear_screen</span><span class="p">,</span> <span class="n">set_bg_color</span><span class="p">,</span> <span class="n">set_fm_color</span><span class="p">,</span> <span class="n">printf</span><span class="p">,</span> <span class="n">xyprintf</span>
+    <span class="k">global</span> <span class="n">poke</span><span class="p">,</span> <span class="n">peek</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">wait_key</span><span class="p">,</span> <span class="n">check_key</span>
+
+    <span class="n">clear_screen</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">clear_screen</span>
+    <span class="n">set_bg_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_bg_color</span>
+    <span class="n">set_fm_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_fm_color</span>
+    <span class="n">printf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">printf</span>
+    <span class="n">xyprintf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">xyprintf</span>
+    <span class="n">poke</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">poke</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">peek</span>
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">input</span>
+    <span class="n">wait_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">wait_key</span>
+    <span class="n">check_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">check_key</span>
+
+    <span class="n">my_program</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">compy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">redefine_commands_and_run</span><span class="p">)</span>
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+</pre></div>
+ </code></div>
+
+            <hr/>
+
+
+
+
+    
+
+        <h2 id="ex_def "> Example: The command <code>def</code> </h2>
+
+            <p> The command <code>def</code> defines new commands </p>
+
+            <p><img src="img/ex_def.png" alt="" /></p>
+
+            <button class="ex_def "> Solution </button>
+
+            <div class="code ex_def "><code> <div class="highlight"><pre><span class="k">def</span> <span class="nf">my_program</span><span class="p">():</span>
+
+    <span class="n">clear_screen</span><span class="p">()</span>
+
+    <span class="n">printf</span><span class="p">()</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;This program shows how &quot;def&quot; works&#39;</span><span class="p">)</span>
+
+    <span class="n">first</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="n">ask_for_two_numbers</span><span class="p">()</span>
+
+    <span class="n">sum_of_numbers</span> <span class="o">=</span> <span class="n">sum_two_numbers</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span>
+
+    <span class="n">print_response</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">sum_of_numbers</span><span class="p">)</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;Bye!!&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-red&#39;</span><span class="p">)</span>
+
+
+<span class="c"># This function doesn&#39;t receive values, but returns two values</span>
+<span class="k">def</span> <span class="nf">ask_for_two_numbers</span><span class="p">():</span>
+    <span class="n">n1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&#39;Give me a number &#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-green&#39;</span><span class="p">)</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&#39;Give me another number &#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-green&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span>
+
+
+<span class="c"># This function receives two values and returns one</span>
+<span class="k">def</span> <span class="nf">sum_two_numbers</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span>
+    <span class="k">return</span> <span class="nb">sum</span>
+
+
+<span class="c"># This function receives three values, but doesn&#39;t return any</span>
+<span class="k">def</span> <span class="nf">print_response</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="nb">sum</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="s">&#39;The sum of {} and {} is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="c"># The next lines are needed to run compy, don&#39;t mind them,</span>
+<span class="c"># but keep them, don&#39;t get rid of these lines</span>
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="kn">import</span> <span class="nn">compy</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c"># define commands of compy, so IDE&#39;s will recognize them</span>
+<span class="k">def</span> <span class="nf">clear_screen</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_bg_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_fm_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">printf</span><span class="p">(</span><span class="n">to_print</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">xyprintf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">poke</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span> <span class="k">return</span> <span class="bp">None</span>
+<span class="k">def</span> <span class="nf">wait_key</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">check_key</span><span class="p">():</span> <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">redefine_commands_and_run</span><span class="p">(</span><span class="n">screen</span><span class="p">):</span>
+
+    <span class="k">global</span> <span class="n">clear_screen</span><span class="p">,</span> <span class="n">set_bg_color</span><span class="p">,</span> <span class="n">set_fm_color</span><span class="p">,</span> <span class="n">printf</span><span class="p">,</span> <span class="n">xyprintf</span>
+    <span class="k">global</span> <span class="n">poke</span><span class="p">,</span> <span class="n">peek</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">wait_key</span><span class="p">,</span> <span class="n">check_key</span>
+
+    <span class="n">clear_screen</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">clear_screen</span>
+    <span class="n">set_bg_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_bg_color</span>
+    <span class="n">set_fm_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_fm_color</span>
+    <span class="n">printf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">printf</span>
+    <span class="n">xyprintf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">xyprintf</span>
+    <span class="n">poke</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">poke</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">peek</span>
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">input</span>
+    <span class="n">wait_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">wait_key</span>
+    <span class="n">check_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">check_key</span>
+
+    <span class="n">my_program</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">compy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">redefine_commands_and_run</span><span class="p">)</span>
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+</pre></div>
+ </code></div>
+
+            <hr/>
+
+
+
+
+    
+
+        <h2 id="draw_square "> Challenge: Draw a square </h2>
+
+            <p> Can you do that? Use the def word. </p>
+
+            <p><img src="img/draw_square.png" alt="" /></p>
+
+            <button class="draw_square "> Solution </button>
+
+            <div class="code draw_square "><code> <div class="highlight"><pre><span class="k">def</span> <span class="nf">my_program</span><span class="p">():</span>
+
+    <span class="n">clear_screen</span><span class="p">()</span>
+
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;           DRAW A SQUARE&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">draw_line</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="k">break</span>
+
+
+<span class="k">def</span> <span class="nf">draw_line</span><span class="p">():</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;             &#39;</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;          &#39;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-yellow&#39;</span><span class="p">)</span>
+
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="c"># The next lines are needed to run compy, don&#39;t mind them,</span>
+<span class="c"># but keep them, don&#39;t get rid of these lines</span>
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="kn">import</span> <span class="nn">compy</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c"># define commands of compy, so IDE&#39;s will recognize them</span>
+<span class="k">def</span> <span class="nf">clear_screen</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_bg_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_fm_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">printf</span><span class="p">(</span><span class="n">to_print</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">xyprintf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">poke</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span> <span class="k">return</span> <span class="bp">None</span>
+<span class="k">def</span> <span class="nf">wait_key</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">check_key</span><span class="p">():</span> <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">redefine_commands_and_run</span><span class="p">(</span><span class="n">screen</span><span class="p">):</span>
+
+    <span class="k">global</span> <span class="n">clear_screen</span><span class="p">,</span> <span class="n">set_bg_color</span><span class="p">,</span> <span class="n">set_fm_color</span><span class="p">,</span> <span class="n">printf</span><span class="p">,</span> <span class="n">xyprintf</span>
+    <span class="k">global</span> <span class="n">poke</span><span class="p">,</span> <span class="n">peek</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">wait_key</span><span class="p">,</span> <span class="n">check_key</span>
+
+    <span class="n">clear_screen</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">clear_screen</span>
+    <span class="n">set_bg_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_bg_color</span>
+    <span class="n">set_fm_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_fm_color</span>
+    <span class="n">printf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">printf</span>
+    <span class="n">xyprintf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">xyprintf</span>
+    <span class="n">poke</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">poke</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">peek</span>
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">input</span>
+    <span class="n">wait_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">wait_key</span>
+    <span class="n">check_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">check_key</span>
+
+    <span class="n">my_program</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">compy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">redefine_commands_and_run</span><span class="p">)</span>
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+</pre></div>
+ </code></div>
+
+            <hr/>
+
+
+
+
+    
+
+        <h2 id="draw_ladder_right "> Challenge: Draw a right pointing ladder </h2>
+
+            <p> Can you do that? Use the def word. </p>
+
+            <p><img src="img/draw_ladder_right.png" alt="" /></p>
+
+            <button class="draw_ladder_right "> Solution </button>
+
+            <div class="code draw_ladder_right "><code> <div class="highlight"><pre><span class="k">def</span> <span class="nf">my_program</span><span class="p">():</span>
+
+    <span class="n">clear_screen</span><span class="p">()</span>
+
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;           DRAW A LADDER POINTING RIGHT&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">draw_line</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="k">break</span>
+
+
+<span class="k">def</span> <span class="nf">draw_line</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;             &#39;</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-yellow&#39;</span><span class="p">)</span>
+
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="c"># The next lines are needed to run compy, don&#39;t mind them,</span>
+<span class="c"># but keep them, don&#39;t get rid of these lines</span>
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="kn">import</span> <span class="nn">compy</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c"># define commands of compy, so IDE&#39;s will recognize them</span>
+<span class="k">def</span> <span class="nf">clear_screen</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_bg_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_fm_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">printf</span><span class="p">(</span><span class="n">to_print</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">xyprintf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">poke</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span> <span class="k">return</span> <span class="bp">None</span>
+<span class="k">def</span> <span class="nf">wait_key</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">check_key</span><span class="p">():</span> <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">redefine_commands_and_run</span><span class="p">(</span><span class="n">screen</span><span class="p">):</span>
+
+    <span class="k">global</span> <span class="n">clear_screen</span><span class="p">,</span> <span class="n">set_bg_color</span><span class="p">,</span> <span class="n">set_fm_color</span><span class="p">,</span> <span class="n">printf</span><span class="p">,</span> <span class="n">xyprintf</span>
+    <span class="k">global</span> <span class="n">poke</span><span class="p">,</span> <span class="n">peek</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">wait_key</span><span class="p">,</span> <span class="n">check_key</span>
+
+    <span class="n">clear_screen</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">clear_screen</span>
+    <span class="n">set_bg_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_bg_color</span>
+    <span class="n">set_fm_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_fm_color</span>
+    <span class="n">printf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">printf</span>
+    <span class="n">xyprintf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">xyprintf</span>
+    <span class="n">poke</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">poke</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">peek</span>
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">input</span>
+    <span class="n">wait_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">wait_key</span>
+    <span class="n">check_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">check_key</span>
+
+    <span class="n">my_program</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">compy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">redefine_commands_and_run</span><span class="p">)</span>
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+</pre></div>
+ </code></div>
+
+            <hr/>
+
+
+
+
+    
+
+        <h2 id="draw_ladder_left "> Challenge: Draw a left pointing ladder </h2>
+
+            <p> Can you do that? Use the def word. </p>
+
+            <p><img src="img/draw_ladder_left.png" alt="" /></p>
+
+            <button class="draw_ladder_left "> Solution </button>
+
+            <div class="code draw_ladder_left "><code> <div class="highlight"><pre><span class="k">def</span> <span class="nf">my_program</span><span class="p">():</span>
+
+    <span class="n">clear_screen</span><span class="p">()</span>
+
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;           DRAW A LADDER POINTING LEFT&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">draw_line</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="k">break</span>
+
+
+<span class="k">def</span> <span class="nf">draw_line</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;        &#39;</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">space</span> <span class="o">=</span> <span class="mi">11</span> <span class="o">-</span><span class="n">n</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="o">*</span><span class="n">space</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-yellow&#39;</span><span class="p">)</span>
+
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="c"># The next lines are needed to run compy, don&#39;t mind them,</span>
+<span class="c"># but keep them, don&#39;t get rid of these lines</span>
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+<span class="kn">import</span> <span class="nn">compy</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c"># define commands of compy, so IDE&#39;s will recognize them</span>
+<span class="k">def</span> <span class="nf">clear_screen</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_bg_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">set_fm_color</span><span class="p">(</span><span class="n">color</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">printf</span><span class="p">(</span><span class="n">to_print</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">xyprintf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">poke</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span> <span class="k">return</span> <span class="bp">None</span>
+<span class="k">def</span> <span class="nf">wait_key</span><span class="p">():</span> <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">check_key</span><span class="p">():</span> <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">redefine_commands_and_run</span><span class="p">(</span><span class="n">screen</span><span class="p">):</span>
+
+    <span class="k">global</span> <span class="n">clear_screen</span><span class="p">,</span> <span class="n">set_bg_color</span><span class="p">,</span> <span class="n">set_fm_color</span><span class="p">,</span> <span class="n">printf</span><span class="p">,</span> <span class="n">xyprintf</span>
+    <span class="k">global</span> <span class="n">poke</span><span class="p">,</span> <span class="n">peek</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">wait_key</span><span class="p">,</span> <span class="n">check_key</span>
+
+    <span class="n">clear_screen</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">clear_screen</span>
+    <span class="n">set_bg_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_bg_color</span>
+    <span class="n">set_fm_color</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">set_fm_color</span>
+    <span class="n">printf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">printf</span>
+    <span class="n">xyprintf</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">xyprintf</span>
+    <span class="n">poke</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">poke</span>
+    <span class="n">peek</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">peek</span>
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">input</span>
+    <span class="n">wait_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">wait_key</span>
+    <span class="n">check_key</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">check_key</span>
+
+    <span class="n">my_program</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">compy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">redefine_commands_and_run</span><span class="p">)</span>
+
+<span class="c">###########################################################################</span>
+<span class="c">###########################################################################</span>
+</pre></div>
+ </code></div>
+
+            <hr/>
+
+
+
+
+    
+
+        <h2 id="draw_pyramid "> Challenge: Draw a pyramid </h2>
+
+            <p> Can you do that? Use the def word. </p>
+
+            <p><img src="img/draw_pyramid.png" alt="" /></p>
+
+            <button class="draw_pyramid "> Solution </button>
+
+            <div class="code draw_pyramid "><code> <div class="highlight"><pre><span class="k">def</span> <span class="nf">my_program</span><span class="p">():</span>
+
+    <span class="n">clear_screen</span><span class="p">()</span>
+
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;           DRAW A PYRAMID&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">printf</span><span class="p">()</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">draw_line</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+            <span class="k">break</span>
+
+
+<span class="k">def</span> <span class="nf">draw_line</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;       &#39;</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">spaces</span><span class="o">=</span><span class="mi">10</span><span class="o">-</span><span class="n">n</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="o">*</span><span class="n">spaces</span><span class="p">,</span> <span class="n">stay</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-yellow&#39;</span><span class="p">)</span>
 
 
 <span class="c">###########################################################################</span>
@@ -1919,48 +2502,32 @@ $("button.ex_def ").click(function(){ $("div.ex_def ").toggle();  });
 
     
 
-        <h2 id="ex_def "> Example: The command <code>def</code> </h2>
+        <h2 id="ex_date_time "> Example: Use the date and time </h2>
 
-            <p> The command <code>def</code> defines new commands </p>
+            <p> Look at the way to obtain the current date and time </p>
 
-            <p><img src="img/ex_def.png" alt="" /></p>
+            <p><img src="img/ex_date_time.png" alt="" /></p>
 
-            <button class="ex_def "> Solution </button>
+            <button class="ex_date_time "> Solution </button>
 
-            <div class="code ex_def "><code> <div class="highlight"><pre><span class="k">def</span> <span class="nf">my_program</span><span class="p">():</span>
+            <div class="code ex_date_time "><code> <div class="highlight"><pre><span class="k">def</span> <span class="nf">my_program</span><span class="p">():</span>
 
     <span class="n">clear_screen</span><span class="p">()</span>
 
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;This program shows how to learn time and date&#39;</span><span class="p">)</span>
+
+    <span class="n">time</span> <span class="o">=</span> <span class="n">now</span><span class="p">()</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;yellow&#39;</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;The time now is {}:{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">minute</span><span class="p">))</span>
+
     <span class="n">printf</span><span class="p">()</span>
 
-    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;This program shows how &quot;def&quot; works&#39;</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#39;Today is the day {} of the month {} of the year {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">year</span><span class="p">))</span>
 
-    <span class="n">first</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="n">ask_for_two_numbers</span><span class="p">()</span>
-
-    <span class="n">sum_of_numbers</span> <span class="o">=</span> <span class="n">sum_two_numbers</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span>
-
-    <span class="n">print_response</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">sum_of_numbers</span><span class="p">)</span>
-
+    <span class="n">printf</span><span class="p">()</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&#39;Bye!!&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-red&#39;</span><span class="p">)</span>
 
-
-<span class="c"># This function doesn&#39;t receive values, but returns two values</span>
-<span class="k">def</span> <span class="nf">ask_for_two_numbers</span><span class="p">():</span>
-    <span class="n">n1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&#39;Give me a number &#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-green&#39;</span><span class="p">)</span>
-    <span class="n">n2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&#39;Give me another number &#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;light-green&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span>
-
-
-<span class="c"># This function receives two values and returns one</span>
-<span class="k">def</span> <span class="nf">sum_two_numbers</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
-    <span class="nb">sum</span> <span class="o">=</span> <span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span>
-    <span class="k">return</span> <span class="nb">sum</span>
-
-
-<span class="c"># This function receives three values, but doesn&#39;t return any</span>
-<span class="k">def</span> <span class="nf">print_response</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="nb">sum</span><span class="p">):</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="s">&#39;The sum of {} and {} is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
-    <span class="n">printf</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 
 
 <span class="c">###########################################################################</span>
@@ -1971,6 +2538,9 @@ $("button.ex_def ").click(function(){ $("div.ex_def ").toggle();  });
 <span class="c">###########################################################################</span>
 <span class="kn">import</span> <span class="nn">compy</span>
 <span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span>
+<span class="kn">import</span> <span class="nn">random</span>
 
 <span class="c"># define commands of compy, so IDE&#39;s will recognize them</span>
 <span class="k">def</span> <span class="nf">clear_screen</span><span class="p">():</span> <span class="k">pass</span>

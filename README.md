@@ -1,5 +1,5 @@
 # The Compy Project
-This is my prersonal project to make a programming learning environment,
+This is my personal project to make a programming learning environment,
 with the look and feel of old Commodore systems.
 
 Compy still doesn't run on Windows and I haven't tested it on linux.

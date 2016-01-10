@@ -3,14 +3,18 @@ def my_program():
 
     clear_screen()
 
-    printf('This program shows how to slow execution')
+    printf('This program shows how to learn time and date')
 
-    while True:
-        seconds = input('How many seconds do you want to wait? (0 to exit) ')
-        if seconds == 0:
-            break
-        time.sleep(seconds)
+    time = now()
 
+    printf(color='yellow')
+    printf('The time now is {}:{}'.format(time.hour, time.minute))
+
+    printf()
+
+    printf('Today is the day {} of the month {} of the year {}'.format(time.day, time.month, time.year))
+
+    printf()
     printf('Bye!!', color='light-red')
 
 
@@ -24,7 +28,7 @@ def my_program():
 import compy
 import time
 import datetime as dt
-now = dt.datetime.utcnow
+now = dt.datetime.now
 import random
 
 # define commands of compy, so IDE's will recognize them

@@ -3,13 +3,21 @@ def my_program():
 
     clear_screen()
 
-    printf('This program shows how to slow execution')
+    printf('This program shows how to generate random numbers')
 
     while True:
-        seconds = input('How many seconds do you want to wait? (0 to exit) ')
-        if seconds == 0:
+        answer = input('Do you want a random FLOAT number between 0 and 1? ', color='yellow')
+        if answer == 'N':
             break
-        time.sleep(seconds)
+        number = random.random()
+        printf(number, color='light-green')
+
+    while True:
+        answer = input('Do you want a random INTEGER number between 0 and 10? ', color='yellow')
+        if answer == 'N':
+            break
+        number = random.randint(0,10)
+        printf(number, color='light-green')
 
     printf('Bye!!', color='light-red')
 

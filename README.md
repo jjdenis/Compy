@@ -19,7 +19,7 @@ To run Compy
 
     pythonw ex_print_hello_world.py
 
-**Mind the 'w'** at the end of the command python.
+**Mind the 'w'** at the end of the command <code>pythonw</code>.
 
 
 To install the program:

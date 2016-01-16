@@ -17,7 +17,7 @@ To run Compy
 
  Just type in the console the next command.
 
-    pythonw draw_line.py
+    pythonw ex_print_hello_world.py
 
 **Mind the 'w'** at the end of the command python.
 
